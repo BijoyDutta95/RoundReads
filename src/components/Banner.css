@@ -1,0 +1,20 @@
+.bannerBlock{
+    margin: auto;
+    background-color: #389583;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bannerText p{
+    color: #EDF5E0;
+    font-style: bold;
+    font-size: 40px;
+}
+.bannerIcon{
+    height: 300px !important;
+    width: 220px !important;
+    color: #222629;
+    
+}
