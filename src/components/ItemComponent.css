@@ -1,0 +1,7 @@
+#itemsBlock{
+    background-color: #EDF5E0;
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 5px;
+}

@@ -11,7 +11,7 @@ function FilterBlock() {
     return (
         <div className="filterBlock">
             <div className="filterHeader">
-                <strong>FILTER</strong>
+                <strong>Filter</strong>
                 <small>clear all</small>
             </div>
             {/*<div className="availableHeader">
