@@ -1,0 +1,66 @@
+.filterBlock{
+    height: 400px;
+    width: 200px;
+    background-color: #EDF5E0;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.filterHeader{
+    display: flex;
+    justify-content: space-between;
+    background-color: #86C232;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.avInner{
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.conInner{
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.catInner{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.avIcons{
+    height: 30px !important;
+    width: 30px !important;
+    border: solid 2px black;
+    padding: 2px;
+}
+.conIcons{
+    height: 30px;
+    width: 30px;
+    border: solid 2px black;
+    padding: 2px;
+}
+fieldset {
+    margin: 5px;
+  }
+legend {
+    background-color:#222629;
+    margin-left: -10px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color:#EDF5E0;
+    border-radius: 2px;
+    font-size: 12px;
+}
+.catList{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.catList label{
+    margin-left: 10px;
+}

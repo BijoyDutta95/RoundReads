@@ -1,23 +1,25 @@
-import React from 'react'
-import './NavBar.css'
-import SearchIcon from "@material-ui/icons/Search"
+import React from 'react';
+import './NavBar.css';
+import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
     return (
         <nav className="navHeader">
-            <div className="headerLogo">
-                <img className="logo" src="/images/book2128.png"/>
-                <p className="text">BM</p>
-            </div>
+            <Link to= '/' className="headerLogo">
+                    <img className="logo" src="/images/book2128.png"/>
+                    <p className="text">BM</p>
+            </Link>
             <div className="headerSearch">
                 <input className="searchBar"/>
                 <SearchIcon className="searchIcon"/>
             </div>
             <div className="headerLinks">
-                <p id="linkToHome">Home</p>
-                <p id="linkToBlog">Blog</p>
-                <p id="linkToAbout">About</p>
+
+            <Link to='/' id="homeLink"><p id="linkToHome">Home</p></Link>
+            <Link to ='/blog' id="blogLink"><p id="linkToBlog">Blog</p></Link>
+            <Link to='/about' id="aboutLink"><p id="linkToAbout">About</p></Link>
             </div>
             <div className="headerUser">
                 <AccountCircleRoundedIcon className="userIcon"/>
@@ -28,7 +30,7 @@ function NavBar() {
                 
             </div>
             
-            <p id="linkToSell">POST AD</p>
+            <Link to='/postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
         </nav>
     )
 }
