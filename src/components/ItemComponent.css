@@ -1,7 +1,13 @@
 #itemsBlock{
-    background-color: #EDF5E0;
     height: 600px;
     overflow: hidden;
     overflow-y: scroll;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#itemsBlock p{
+    margin-top: 5px;
+    color: #EDF5E0;
 }

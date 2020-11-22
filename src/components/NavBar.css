@@ -8,11 +8,13 @@
     margin-right: auto;
     z-index: 1;
     background-color: #222629;
+    justify-content: space-evenly;
 }
 .headerLogo{
     display: flex;
     align-items: center;
     margin-left: 10px;
+    object-fit: contain;
 }
 .text{
     color: #86C232;

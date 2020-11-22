@@ -1,0 +1,26 @@
+#cardBlock{
+    display: flex;
+    flex-direction: column;
+    border: black ;
+    width: 250px;
+    height: 250px;
+    background-color: #EDF5E0;
+    margin: 5px;
+    align-items: center;
+}
+.cardImage{
+    height: 100px;
+    width: 100px;
+    align-items: center;
+}
+#cardMainBlock{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 35px;
+    padding-top: 10px;
+}
+#cardMainBlock{
+    flex-basis:calc(25% - 40px);
+}

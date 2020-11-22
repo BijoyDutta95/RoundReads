@@ -63,6 +63,22 @@ function FilterBlock() {
                         <input type="checkbox" id="Arts" name="arts" value="Arts"/>
                         <label for="Arts"> Arts</label>
                     </div>
+                    <div className="catList">
+                        <input type="checkbox" id="Mathematics" name="mathematics" value="Mathematics"/>
+                        <label for="Mathematics"> Mathematics</label>
+                    </div>
+                    <div className="catList">
+                        <input type="checkbox" id="Physics" name="physics" value="Physics"/>
+                        <label for="Physics"> Physics</label>
+                    </div>
+                    <div className="catList">
+                        <input type="checkbox" id="Chemistry" name="chemistry" value="Chemistry"/>
+                        <label for="Chemistry"> Chemistry</label>
+                    </div>
+                    <div className="catList">
+                        <input type="checkbox" id="LifeScience" name="life science" value="Life Science"/>
+                        <label for="Life Science"> Life Science</label>
+                    </div>
                 </div>
             </fieldset>
         </div>
