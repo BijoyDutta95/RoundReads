@@ -1,0 +1,34 @@
+form {
+    border: 5px solid #f1f1f1;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.loginForm input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.loginForm button:hover {
+  opacity: 0.8;
+}
+.loginForm button {
+background-color: #5CDA93;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+.loginForm button:hover {
+    opacity: 0.8;
+}
+
+#bottomText{
+    display: flex;
+    justify-content: space-between;
+}

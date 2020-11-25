@@ -1,0 +1,29 @@
+.ModalNavBlock{
+    display: flex;
+    justify-content: space-evenly;
+    top: 0;
+    background-color: seagreen;
+    align-items: center;
+    text-align: center;
+    height: fit-content;
+    
+}
+#navLogin{
+    align-self: center;
+    color: #05AAF6;
+    width: 50%;
+    height: 100%;
+    background-color: #EDF5E0;
+    padding: 10px;
+    font-style: bold;
+    
+}
+#navSignup{
+    align-self: center;
+    color: #EDF5E0;
+    width: 50%;
+    height: 100%;
+    background-color: #05AAF6;
+    padding: 10px;
+    font-style: bold;
+}

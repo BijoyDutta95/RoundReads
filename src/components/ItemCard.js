@@ -8,7 +8,13 @@ function ItemCard() {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
         },
         {
+            image: "/images/bookImg2.jpg", title:"Just Book", condition:"As new"
+        },
+        {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
+        },
+        {
+            image: "/images/bookImg2.jpg", title:"Just Book", condition:"As new"
         },
         {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
@@ -17,7 +23,7 @@ function ItemCard() {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
         },
         {
-            image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
+            image: "/images/bookImg2.jpg", title:"Just Book", condition:"As new"
         },
         {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
@@ -26,19 +32,13 @@ function ItemCard() {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
         },
         {
-            image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
+            image: "/images/bookImg2.jpg", title:"Just Book", condition:"As new"
         },
         {
             image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
         },
         {
-            image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
-        },
-        {
-            image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
-        },
-        {
-            image: "/images/bookImg.jpg", title:"Just Book", condition:"As new"
+            image: "/images/bookImg2.jpg", title:"Just Book", condition:"As new"
         },
     ];
 
@@ -48,7 +48,10 @@ function ItemCard() {
                 <img src={card.image} alt="cardImage" className="cardImage"/>
                 <strong className="cardTitle">{card.title}</strong>
                 <small className="cardCondition">{card.condition}</small>
-                <button className="cardButton">Contact Seller</button>
+                <div id="cardBlock_button">
+                    <button className="cardButton">Save</button>
+                    <button className="cardButton">Contact Seller</button>
+                </div>    
             </div>
         )
     }

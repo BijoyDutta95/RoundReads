@@ -1,17 +1,19 @@
 #cardBlock{
     display: flex;
     flex-direction: column;
-    border: black ;
     width: 250px;
-    height: 250px;
+    height: 200px;
     background-color: #EDF5E0;
     margin: 5px;
     align-items: center;
+    box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3);
 }
 .cardImage{
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 230px;
     align-items: center;
+    margin-top: 5px;
+    object-fit: contain;
 }
 #cardMainBlock{
     min-height: 100%;
@@ -23,4 +25,10 @@
 }
 #cardMainBlock{
     flex-basis:calc(25% - 40px);
+}
+#cardBlock_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
