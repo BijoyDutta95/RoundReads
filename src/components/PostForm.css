@@ -1,0 +1,77 @@
+#formMainBlock{
+    border: 4px solid #86C232;
+    background-color: #EDF5E0;
+    width: 50%;
+    min-height: 100%;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.formField{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formField input[type=text]{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.formField, select{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 8px 0;
+}
+.bookDetail , .adDetail{
+   padding:5px
+}
+
+.formField legend {
+    background-color:#222629;
+    margin-left: 10px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color:#EDF5E0;
+    border-radius: 2px;
+    font-size: 12px;
+}
+#availableOption input{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#fileUpload{
+    margin-top: 8px;
+}
+#buttonsDiv{
+    display: flex;
+    margin-top: 50px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.formField button:hover {
+  opacity: 0.8;
+}
+.formField button {
+background-color: #5CDA93;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+margin: auto;
+}
+#cancelButton{
+    width: 20%;
+    background-color: #C3083F;
+    margin: 2px;
+}
+#submitButton{
+    flex: 1;
+    margin: 2px;
+}

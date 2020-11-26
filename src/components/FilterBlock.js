@@ -14,13 +14,6 @@ function FilterBlock() {
                 <strong>Filter</strong>
                 <small>clear all</small>
             </div>
-            {/*<div className="availableHeader">
-                <p>By Availability</p>
-                <div className="avIconsBlock">
-                    <SaleIcon id="saleIcon"/>
-                    <BorrowIcon id="borrowIcon"/>
-                </div>
-            </div>*/}
             <fieldset className="avField">
                 <legend>By Availability</legend>
                 <div className="avInner">
