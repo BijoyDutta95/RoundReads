@@ -5,25 +5,41 @@
     background-color: seagreen;
     align-items: center;
     text-align: center;
-    height: fit-content;
-    
+    height: fit-content; 
 }
-#navLogin{
+#navLoginTrue{
     align-self: center;
     color: #05AAF6;
     width: 50%;
     height: 100%;
     background-color: #EDF5E0;
     padding: 10px;
-    font-style: bold;
-    
+    font-style: bold;   
 }
-#navSignup{
+#navSignupTrue{
     align-self: center;
     color: #EDF5E0;
     width: 50%;
     height: 100%;
     background-color: #05AAF6;
+    padding: 10px;
+    font-style: bold;
+}
+#navLoginFalse{
+    align-self: center;
+    color: #EDF5E0;
+    width: 50%;
+    height: 100%;
+    background-color: #05AAF6;
+    padding: 10px;
+    font-style: bold;   
+}
+#navSignupFalse{
+    align-self: center;
+    color: #05AAF6;
+    width: 50%;
+    height: 100%;
+    background-color: #EDF5E0;
     padding: 10px;
     font-style: bold;
 }
