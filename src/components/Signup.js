@@ -6,7 +6,14 @@ function Signup() {
         <div id="signUpForm">
             <form>
                 <div className="inputField">
-                    <label for="uname"><b>Username</b></label>
+                    <label for="uname"><b>Name</b></label>
+                    <div id="NameBlock">
+                        <input id="fname" type="text" placeholder="First Name" name="fname" required></input>
+                        <input id="lname" type="text" placeholder="Last Name" name="lname" required></input>
+                    </div>    
+                </div>
+                <div className="inputField">
+                    <label for="uname"><b>Email ID</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required></input>
                 </div>
                 <div className="inputField">
