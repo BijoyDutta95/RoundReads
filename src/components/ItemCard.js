@@ -49,8 +49,8 @@ function ItemCard() {
                 <strong className="cardTitle">{card.title}</strong>
                 <small className="cardCondition">{card.condition}</small>
                 <div id="cardBlock_button">
-                    <button className="cardButton">Save</button>
-                    <button className="cardButton">Contact Seller</button>
+                    <button className="cardButtonSave">Save</button>
+                    <button className="cardButtonContact">Contact Seller</button>
                 </div>    
             </div>
         )
