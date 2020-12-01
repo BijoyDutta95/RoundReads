@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
 import Login from './Login'
 import Signup from './Signup'
-import { UserContext } from './UserContext';
+import { ModalContext } from './Context/ModalContext';
 
 
 function Auth() {
-    const {flag,setFlag} = useContext(UserContext);
+    const {flag} = useContext(ModalContext);
 
     if(flag){
         return (

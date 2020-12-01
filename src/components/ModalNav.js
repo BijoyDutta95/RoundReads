@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
 import './ModalNav.css'
-import { UserContext } from './UserContext';
+import { ModalContext } from './Context/ModalContext';
 
 function ModalNav() {
-    const {flag,setFlag} = useContext(UserContext);
+    const {flag,setFlag} = useContext(ModalContext);
 
     
     return (
