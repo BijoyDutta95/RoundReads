@@ -7,6 +7,7 @@ import GentleIcon from '../icons/gentleUse.svg';
 import HeavyIcon from '../icons/heavyUse.svg';
 
 import { FilterContext } from './Context/FilterContext';
+import { SearchContext } from './Context/DataContext';
 
 function FilterBlock(props) {
 
@@ -18,7 +19,8 @@ function FilterBlock(props) {
 
     //const {searchTerm, searchFlag} = React.useContext(FilterContext)
     const {setAvailability, setCondition, setCategory, getItems} = React.useContext(FilterContext)
-    
+    const {searchTerm} = React.useContext(SearchContext)
+
     let availability = []
     let condition = []
     let category = []
@@ -60,11 +62,21 @@ function FilterBlock(props) {
     const filterItems = () =>{
         getAvailabilityArray()
         getConditionArray()
+        if(availability.length == 0 && condition.length == 0 && category.length == 0){
+            alert("Please select some Filters")
+            return
+        }
         setAvailability(availability)
         setCondition(condition)
         setCategory(category)
-        getItems("http://localhost:8000/api/test", availability, condition, category)
-        
+        if(searchTerm){
+            getItems("http://localhost:8000/api/test/?search=" + searchTerm, availability, condition, category)
+        }else{
+            getItems("http://localhost:8000/api/test", availability, condition, category)
+        }
+        setAvailability([])
+        setCondition([])
+        setCategory([])  
     }
 
     

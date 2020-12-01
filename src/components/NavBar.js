@@ -2,7 +2,7 @@ import React from 'react';
 import './NavBar.css';
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import Modal from './Modal'
 import Submenu from './Submenu' 
 import { UserContext } from './Context/UserContext';
@@ -20,7 +20,7 @@ function NavBar(props) {
 
     const handleSearch = () =>{
         console.log("Search click " + searchTerm)
-        props.setSearchFlag(true)
+        //props.setSearchFlag(true)
         props.setSearchTerm(searchTerm)
         
     }
