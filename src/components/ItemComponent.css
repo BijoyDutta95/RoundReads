@@ -11,3 +11,14 @@
     margin-top: 5px;
     color: #EDF5E0;
 }
+
+.prev-next-button{
+    
+    background-color: #86C232;
+    color: black;
+    padding: 8px 10px;
+    margin: 8px 5px;
+    border: none;
+    cursor: pointer;  
+    align-items: center;  
+}

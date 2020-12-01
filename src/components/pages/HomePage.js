@@ -1,20 +1,55 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Banner from '../Banner'
 import FilterBlock from '../FilterBlock'
 import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
+import axios from 'axios'
+import { DataContext } from '../Context/DataContext'
 
-export class HomePage extends Component {
-    render() {
-        return (
-            <div>
-                <Banner/>
-                <FilterBlock/>
-                <ItemHeader/>
-                <ItemComponent/>
-            </div>
-        )
+function HomePage() {
+    let url = "http://localhost:8000/api/test/"
+
+    const [items, setItems] = React.useState([])
+    const [count, setCount] = React.useState(0)
+    const [prev, setPrev] = React.useState('')
+    const [next, setNext] = React.useState('')
+
+    React.useEffect(() => {
+        getItems(url)
+    }, [url])
+
+    const getItems = (url) =>{
+        console.log("get Items called")
+        axios.get(url, {
+            params : {
+                'availability' : [],
+                'condition' : [],
+                'category' : []
+            }
+        })
+        .then(data =>{
+            console.log("Returning data from getItems  " + data.data.count)
+            setItems(data.data.results)
+            setCount(data.data.count)
+            setPrev(data.data.previous)
+            setNext(data.data.next)
+                  
+    })
+    .catch(err =>{
+        console.log(err)
+    })
     }
+
+    return (
+        <div>
+            <Banner/>
+            <FilterBlock/>
+            <ItemHeader/>
+            <DataContext.Provider value={{items, count, prev, next, getItems}}>
+            <ItemComponent/>
+            </DataContext.Provider>
+        </div>
+    )
 }
 
 export default HomePage
