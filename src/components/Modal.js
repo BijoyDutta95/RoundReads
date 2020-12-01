@@ -27,7 +27,7 @@ const Modal=forwardRef( (props,ref) => {
             <div className="modalWrapper">
                 <div onClick={close} className="modalBackdrop"/>
                 <div className="modalBox">
-                    <ModalContext.Provider value={{flag, setFlag}}>
+                    <ModalContext.Provider value={{flag, setFlag, setDisplay}}>
                         <ModalNav/>
                         <Auth/>
                     </ModalContext.Provider>
