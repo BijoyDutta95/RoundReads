@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { Link, Redirect } from 'react-router-dom';
 import Modal from './Modal'
-
+import Submenu from './Submenu' 
 import { UserContext } from './Context/UserContext';
 
 function NavBar(props) {
@@ -68,7 +68,9 @@ function NavBar(props) {
                         
                             
                         </div>
-                        
+                        <UserContext.Provider value={{setName}}>
+                            <Submenu/>
+                        </UserContext.Provider>
                     </div>
                     <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
                 </div>

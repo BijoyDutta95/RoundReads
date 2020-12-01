@@ -1,0 +1,43 @@
+.dropdown-submenu {
+    font-weight: 300;
+    text-transform: none;
+    display: none;
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    margin-top: 20px;
+    background-color: #00aeef;
+    border-radius: 5px;
+    
+}
+
+.dropdown-submenu-item {
+    display: block;
+    margin-top: 8px;
+}
+
+
+#menu-item{
+    background-color: #00aeef;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: whitesmoke;
+    font-style: bold;
+    flex: 1;
+    margin-left: 0px;
+    text-align: center;
+    text-decoration: none;
+    text-align: left;
+    margin-left: -35px;
+    margin-right: 10px;
+}
+
+#menu-item:hover {
+    background: #062029;
+}
+
+#menu-item-link{
+    text-decoration: none;
+}
