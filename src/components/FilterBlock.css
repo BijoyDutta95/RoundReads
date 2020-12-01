@@ -1,6 +1,6 @@
 .filterBlock{
     position: relative;
-    height: 450px;
+    height: 500px;
     width: 200px;
     background-color: #EDF5E0;
     border-radius: 5px;
@@ -39,12 +39,30 @@
     width: 30px !important;
     border: solid 2px black;
     padding: 2px;
+    cursor: pointer;
+}
+.avIconsClicked{
+    height: 30px !important;
+    width: 30px !important;
+    border: solid 2px black;
+    padding: 2px;
+    cursor: pointer;
+    background-color: #00aeef;
 }
 .conIcons{
     height: 30px;
     width: 30px;
     border: solid 2px black;
     padding: 2px;
+    cursor: pointer;
+}
+.conIconsClicked{
+    height: 30px;
+    width: 30px;
+    border: solid 2px black;
+    padding: 2px;
+    cursor: pointer;
+    background-color: #00aeef;
 }
 fieldset {
     margin: 5px;
@@ -66,4 +84,15 @@ fieldset {
 }
 .catList label{
     margin-left: 10px;
+}
+
+.button{
+    
+    background-color: #86C232;
+    color: black;
+    padding: 8px 10px;
+    margin: 8px 5px;
+    border: none;
+    cursor: pointer;  
+    align-items: center;  
 }

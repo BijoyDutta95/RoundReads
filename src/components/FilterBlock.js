@@ -6,8 +6,69 @@ import NewIcon from '../icons/New.svg';
 import GentleIcon from '../icons/gentleUse.svg';
 import HeavyIcon from '../icons/heavyUse.svg';
 
+import { FilterContext } from './Context/FilterContext';
 
-function FilterBlock() {
+function FilterBlock(props) {
+
+    const [saleIcon, setSaleIcon] = React.useState(false)
+    const [borrowIcon, setBorrowIcon] = React.useState(false)
+    const [asNewIcon, setAsNewIcon] = React.useState(false)
+    const [lightUsedIcon, setLightUsedIcon] = React.useState(false)
+    const [heavyUsedIcon, setHeavyUsedIcon] = React.useState(false)
+
+    //const {searchTerm, searchFlag} = React.useContext(FilterContext)
+    const {setAvailability, setCondition, setCategory, getItems} = React.useContext(FilterContext)
+    
+    let availability = []
+    let condition = []
+    let category = []
+    
+    const getAvailabilityArray = () =>{
+        if(saleIcon){
+            availability.push('sale')
+        }
+        if(borrowIcon){
+            availability.push('borrow')
+        }
+        if(saleIcon && borrowIcon){
+            availability.push('both')
+        }
+    }
+
+    const getConditionArray = () =>{
+        if(asNewIcon){
+            condition.push('asNew')
+        }
+        if(lightUsedIcon){
+            condition.push('lightUsed')
+        }
+        if(heavyUsedIcon){
+            condition.push('heavyUsed')
+        }
+    }
+
+    const getCategoryArray = (e) =>{
+        if(category.includes(e.target.name)){
+            console.log('exist  ' + e.target.name)
+            category.splice(category.indexOf(e.target.name), 1)
+        }else{
+            console.log('pushed')
+            category.push(e.target.name)
+        }
+    }
+
+    const filterItems = () =>{
+        getAvailabilityArray()
+        getConditionArray()
+        setAvailability(availability)
+        setCondition(condition)
+        setCategory(category)
+        getItems("http://localhost:8000/api/test", availability, condition, category)
+        
+    }
+
+    
+
     return (
         <div className="filterBlock">
             <div className="filterHeader">
@@ -17,63 +78,88 @@ function FilterBlock() {
             <fieldset className="avField">
                 <legend>By Availability</legend>
                 <div className="avInner">
-                    <SaleIcon className="avIcons"/>
-                    <BorrowIcon className="avIcons"/>
+                    {saleIcon?(
+                        <SaleIcon className="avIconsClicked" onClick={() => setSaleIcon(false)} />
+                    ):(
+                        <SaleIcon className="avIcons" onClick={() => setSaleIcon(true)} />
+                    )}
+                    {borrowIcon?(
+                        <BorrowIcon className="avIconsClicked" onClick={() => setBorrowIcon(false)} />
+                    ):(
+                        <BorrowIcon className="avIcons" onClick={() => setBorrowIcon(true)} />
+                    )}
                 </div>
             </fieldset>
             <fieldset className="conditionField">
                 <legend>By Condition</legend>
                 <div className="conInner">
-                    <img src={NewIcon} alt="AsNew" className="conIcons"/>
-                    <img src={GentleIcon} alt="AsNew" className="conIcons"/>
-                    <img src={HeavyIcon} alt="AsNew" className="conIcons"/>
+                    {asNewIcon?(
+                        <img src={NewIcon} alt="AsNew" className="conIconsClicked" onClick={() => setAsNewIcon(false)}/>
+                    ):(
+                        <img src={NewIcon} alt="AsNew" className="conIcons" onClick={() => setAsNewIcon(true)}/>
+                    )}
+                    {lightUsedIcon?(
+                        <img src={GentleIcon} alt="AsNew" className="conIconsClicked" onClick={() => setLightUsedIcon(false)}/>
+                    ):(
+                        <img src={GentleIcon} alt="AsNew" className="conIcons" onClick={() => setLightUsedIcon(true)}/>
+                    )}
+                    {heavyUsedIcon?(
+                        <img src={HeavyIcon} alt="AsNew" className="conIconsClicked" onClick={() => setHeavyUsedIcon(false)}/>
+                    ):(
+                        <img src={HeavyIcon} alt="AsNew" className="conIcons" onClick={() => setHeavyUsedIcon(true)}/>
+                    )}
+                    
+                    
                 </div>
             </fieldset>
             <fieldset className="categoryField">
                 <legend>By Category</legend>
                 <div className="catInner">
                     <div className="catList">
-                        <input type="checkbox" id="engineering" name="Engineering" value="Engineering"/>
+                        <input type="checkbox" name="engineering"onChange={getCategoryArray}/>
                         <label for="Engineering"> Engineering</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="business" name="Business" value="Business"/>
+                        <input type="checkbox" name="business" onChange={getCategoryArray}/>
                         <label for="Business"> Business</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="management" name="Management" value="Management"/>
+                        <input type="checkbox" name="management" onChange={getCategoryArray}/>
                         <label for="Management"> Management</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="novel" name="Novel" value="Novel"/>
+                        <input type="checkbox" name="novel" onChange={getCategoryArray}/>
                         <label for="Novel"> Novel</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="entertainment" name="Entertainment" value="Entertainment"/>
+                        <input type="checkbox" name="entertainment" onChange={getCategoryArray}/>
                         <label for="Entertainment"> Entertainment</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="Arts" name="arts" value="Arts"/>
+                        <input type="checkbox" name="arts" onChange={getCategoryArray}/>
                         <label for="Arts"> Arts</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="Mathematics" name="mathematics" value="Mathematics"/>
+                        <input type="checkbox" name="mathematics" onChange={getCategoryArray}/>
                         <label for="Mathematics"> Mathematics</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="Physics" name="physics" value="Physics"/>
+                        <input type="checkbox" name="physics" onChange={getCategoryArray}/>
                         <label for="Physics"> Physics</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="Chemistry" name="chemistry" value="Chemistry"/>
+                        <input type="checkbox" name="chemistry" onChange={getCategoryArray}/>
                         <label for="Chemistry"> Chemistry</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" id="LifeScience" name="life science" value="Life Science"/>
+                        <input type="checkbox" name="lifeScience" onChange={getCategoryArray}/>
                         <label for="Life Science"> Life Science</label>
                     </div>
                 </div>
             </fieldset>
+            <div align='center'>
+                <button className="button" onClick={filterItems}>Filter</button>
+            </div>
         </div>
     )
 }

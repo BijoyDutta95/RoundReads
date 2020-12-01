@@ -5,6 +5,7 @@ import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import axios from 'axios'
 import { DataContext } from '../Context/DataContext'
+import { FilterContext } from '../Context/FilterContext'
 
 function HomePage() {
     let url = "http://localhost:8000/api/test/"
@@ -13,18 +14,21 @@ function HomePage() {
     const [count, setCount] = React.useState(0)
     const [prev, setPrev] = React.useState('')
     const [next, setNext] = React.useState('')
+    const [availability, setAvailability] = React.useState([])
+    const [condition, setCondition] = React.useState([])
+    const [category, setCategory] = React.useState([])
 
     React.useEffect(() => {
-        getItems(url)
+        getItems(url, availability, condition, category)
     }, [url])
 
-    const getItems = (url) =>{
+    const getItems = (url, availability, condition, category) =>{
         console.log("get Items called")
         axios.get(url, {
             params : {
-                'availability' : [],
-                'condition' : [],
-                'category' : []
+                'availability' : availability,
+                'condition' : condition,
+                'category' : category,
             }
         })
         .then(data =>{
@@ -43,10 +47,12 @@ function HomePage() {
     return (
         <div>
             <Banner/>
-            <FilterBlock/>
+            <FilterContext.Provider value={{setAvailability, setCondition, setCategory, getItems}}>
+                <FilterBlock/>
+            </FilterContext.Provider>
             <ItemHeader/>
             <DataContext.Provider value={{items, count, prev, next, getItems}}>
-            <ItemComponent/>
+                <ItemComponent/>
             </DataContext.Provider>
         </div>
     )
