@@ -6,7 +6,7 @@ function Login() {
             <form>
                 <div className="inputField">
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Email" name="uname" required></input>
+                    <input type="text" placeholder="Enter Email " name="uname" required></input>
                 </div>
                 <div className="inputField">
                     <label for="pwd"><b>Password</b></label>
