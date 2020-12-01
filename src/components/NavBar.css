@@ -38,6 +38,7 @@
     height: 20px !important;
     padding: 3px;
 }
+
 .headerLinks{
     display: flex;
     margin-left: 20px;
@@ -54,6 +55,7 @@
 .headerUser{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .headerUser span{
     color: #EDF5E0;
@@ -63,6 +65,10 @@
 .userName{
     display: flex;
     flex-direction: column;
+}
+.userAndPost{
+    display: flex;
+    flex-direction: row;
 }
 #linkToHome:checked {
     color: #86C232;
@@ -84,3 +90,29 @@
 #postLink, #aboutLink, #homeLink, #blogLink{
     text-decoration: none;
 }
+
+
+.drop-down {
+    display: flex;
+    position: relative;
+    color: white;
+    margin-left: 0px;
+    border-radius: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+
+.drop-down:hover{
+    background-color: #00aeef;
+    cursor: pointer;
+}
+
+.drop-down:hover .dropdown-submenu {
+    background-color: #00aeef;
+    display: block;
+}
+
+
+
+
+    

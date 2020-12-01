@@ -1,14 +1,16 @@
 import React from 'react'
-import Banner from '../Banner'
 import FilterBlock from '../FilterBlock'
 import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
+import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { DataContext } from '../Context/DataContext'
 import { FilterContext } from '../Context/FilterContext'
+import { DataContext } from '../Context/DataContext'
 
-function HomePage() {
-    let url = "http://localhost:8000/api/test/"
+
+export default function SearchPage(){
+    let params = useParams()
+    let url = "http://localhost:8000/api/test/?search=" + params.term
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)
@@ -17,7 +19,8 @@ function HomePage() {
     const [availability, setAvailability] = React.useState([])
     const [condition, setCondition] = React.useState([])
     const [category, setCategory] = React.useState([])
-
+    //const [searchTerm, setSearchTerm] = React.useState(null)
+    
     React.useEffect(() => {
         getItems(url, availability, condition, category)
     }, [url])
@@ -43,10 +46,10 @@ function HomePage() {
         console.log(err)
     })
     }
-
+    
     return (
         <div>
-            <Banner/>
+           
             <FilterContext.Provider value={{setAvailability, setCondition, setCategory, getItems}}>
                 <FilterBlock/>
             </FilterContext.Provider>
@@ -58,4 +61,3 @@ function HomePage() {
     )
 }
 
-export default HomePage
