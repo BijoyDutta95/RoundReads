@@ -61,7 +61,7 @@ function FilterBlock(props) {
     const filterItems = () =>{
         getAvailabilityArray()
         getConditionArray()
-        if(availability.length == 0 && condition.length == 0 && category.length == 0){
+        if(availability.length === 0 && condition.length === 0 && category.length === 0){
             alert("Please select some Filters")
             return
         }

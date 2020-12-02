@@ -40,7 +40,7 @@ function NavBar(props) {
                     }} 
 
                     onKeyPress={event => {
-                        if(event.key == 'Enter'){
+                        if(event.key === 'Enter'){
                             handleSearch()
                         }
                     }}/>
@@ -73,7 +73,6 @@ function NavBar(props) {
                         <Submenu setUserSession={setUserSession}/>
                         
                     </div>
-                    
                 </div>
             ):(
                 <div className="headerUser" title="Login/Sign-up" onClick={openModal}>

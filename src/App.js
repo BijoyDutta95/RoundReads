@@ -34,6 +34,7 @@ function App() {
           <Route path='/about' exact component={AboutPage}/>
         </SearchContext.Provider>
         
+
       </Switch>
       </UserContext.Provider>
     </Router>
