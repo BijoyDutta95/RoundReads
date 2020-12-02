@@ -14,7 +14,9 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    const [name, setName] = React.useState(null)
+    const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
+
+    const {user} = React.useContext(UserContext)
 
     const [searchTerm, setSearchTerm] = React.useState("")
 
@@ -52,25 +54,24 @@ function NavBar(props) {
                 <Link to='/about' id="aboutLink"><p id="linkToAbout">About</p></Link>
             </div>
             
-            {name || sessionStorage.getItem('fname')?(
+            {user || userSession?(
                 <div className="userAndPost">
                     <div className="drop-down">
                         <div className="headerUser" title="Login/Sign-up">
                             <AccountCircleRoundedIcon className="userIcon"/>
                             <div className="userName">
                                 <span>Welcome</span>
-                                {name ? (
-                                    <span>{name}</span>
+                                {user ? (
+                                    <span>{JSON.parse(user).fname}</span>
                                 ):(      
-                                    <span>{sessionStorage.getItem('fname')}</span>
+                                    <span>{JSON.parse(userSession).fname}</span>
                                 )}
                             </div>
                         
                             
                         </div>
-                        <UserContext.Provider value={{setName}}>
-                            <Submenu/>
-                        </UserContext.Provider>
+                        <Submenu setUserSession={setUserSession}/>
+                        
                     </div>
                     <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
                 </div>
@@ -82,11 +83,8 @@ function NavBar(props) {
                     </div>                   
                 </div>
             )}
-            <UserContext.Provider value={{setName}}>
-                <Modal ref={modalRef}/>
-            </UserContext.Provider>
             
-
+            <Modal ref={modalRef}/>
             
         </nav>
     )
