@@ -9,8 +9,7 @@ import AboutPage from './components/pages/AboutPage'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';
-import { SearchContext } from './components/Context/DataContext';
-import { UserContext } from './components/Context/UserContext';
+import { SearchContext, UserContext } from './components/Context/Contexts';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import Login from './Login'
 import Signup from './Signup'
-import { ModalContext } from './Context/ModalContext';
+import { ModalContext } from './Context/Contexts';
 
 
 function Auth() {

@@ -1,9 +1,7 @@
 import React from 'react'
 import './Login.css'
 import axios from 'axios'
-import { UserContext } from './Context/UserContext';
-import { ModalContext } from './Context/ModalContext';
-//import Login from './Login2'
+import { UserContext, ModalContext } from './Context/Contexts';
 
 function Login(){
 

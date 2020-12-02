@@ -1,7 +1,7 @@
 import React from 'react'
 import './Signup.css'
 import axios from 'axios'
-import { ModalContext } from './Context/ModalContext'
+import { ModalContext } from './Context/Contexts'
 
 function Signup(){
     const [fname, setFname] = React.useState("")

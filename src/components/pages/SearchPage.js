@@ -4,8 +4,7 @@ import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { FilterContext } from '../Context/FilterContext'
-import { DataContext } from '../Context/DataContext'
+import { FilterContext, DataContext} from '../Context/Contexts'
 
 
 export default function SearchPage(){

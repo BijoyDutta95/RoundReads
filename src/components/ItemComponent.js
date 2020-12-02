@@ -1,7 +1,7 @@
 import React from 'react'
 import './ItemComponent.css'
 import ItemCard from './ItemCard'
-import { DataContext } from './Context/DataContext'
+import { DataContext } from './Context/Contexts'
 
 
 function ItemComponent() {

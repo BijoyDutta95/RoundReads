@@ -5,7 +5,7 @@ import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { Link} from 'react-router-dom';
 import Modal from './Modal'
 import Submenu from './Submenu' 
-import { UserContext } from './Context/UserContext';
+import { UserContext } from './Context/Contexts';
 
 function NavBar(props) {
     const modalRef=React.useRef();
@@ -73,7 +73,7 @@ function NavBar(props) {
                         <Submenu setUserSession={setUserSession}/>
                         
                     </div>
-                    <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
+                    
                 </div>
             ):(
                 <div className="headerUser" title="Login/Sign-up" onClick={openModal}>
@@ -85,7 +85,7 @@ function NavBar(props) {
             )}
             
             <Modal ref={modalRef}/>
-            
+            <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
         </nav>
     )
 }

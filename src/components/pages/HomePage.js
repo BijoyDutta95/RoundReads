@@ -4,8 +4,7 @@ import FilterBlock from '../FilterBlock'
 import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import axios from 'axios'
-import { DataContext } from '../Context/DataContext'
-import { FilterContext } from '../Context/FilterContext'
+import { DataContext, FilterContext } from '../Context/Contexts'
 
 function HomePage() {
     let url = "http://localhost:8000/api/test/"

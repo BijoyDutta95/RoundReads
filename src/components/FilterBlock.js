@@ -6,8 +6,7 @@ import NewIcon from '../icons/New.svg';
 import GentleIcon from '../icons/gentleUse.svg';
 import HeavyIcon from '../icons/heavyUse.svg';
 
-import { FilterContext } from './Context/FilterContext';
-import { SearchContext } from './Context/DataContext';
+import { FilterContext, SearchContext } from './Context/Contexts';
 
 function FilterBlock(props) {
 
