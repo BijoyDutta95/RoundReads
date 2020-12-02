@@ -5,6 +5,7 @@ import { ModalContext } from './Context/Contexts'
 
 function Signup(){
     const [fname, setFname] = React.useState("")
+    const [mname, setMname] = React.useState("")
     const [lname, setLname] = React.useState("")
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
@@ -18,6 +19,7 @@ function Signup(){
         let url = "http://127.0.0.1:8000/auth/users/"
         let body = JSON.stringify({
             'fname' : fname,
+            'mname' : mname,
             'lname' : lname,
             'email' : email,
             'password' : password,
@@ -47,6 +49,7 @@ function Signup(){
                     <label for="uname"><b>Name</b></label>
                     <div id="NameBlock">
                         <input id="fname" type="text" placeholder="First Name" name="fname" value={fname} onChange={(e) => setFname(e.target.value)} required></input>
+                        <input id="mname" type="text" placeholder="Middle Name" name="mname" value={mname} onChange={(e) => setMname(e.target.value)} required></input>
                         <input id="lname" type="text" placeholder="Last Name" name="lname" value={lname} onChange={(e) => setLname(e.target.value)} required></input>
                     </div>    
                 </div>

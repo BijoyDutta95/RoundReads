@@ -9,32 +9,25 @@
 }
 #navLoginTrue{
     align-self: center;
-    color: #05AAF6;
+    color: #EDF5E0;
     width: 50%;
     height: 100%;
-    background-color: #EDF5E0;
+    background-color: #05AAF6;
     padding: 10px;
-    font-style: bold;   
+    font-style: bold;
+     
 }
 #navSignupTrue{
     align-self: center;
-    color: #EDF5E0;
+    color: #05AAF6;
     width: 50%;
     height: 100%;
-    background-color: #05AAF6;
+    background-color: #EDF5E0;
     padding: 10px;
     font-style: bold;
+    cursor: pointer;
 }
 #navLoginFalse{
-    align-self: center;
-    color: #EDF5E0;
-    width: 50%;
-    height: 100%;
-    background-color: #05AAF6;
-    padding: 10px;
-    font-style: bold;   
-}
-#navSignupFalse{
     align-self: center;
     color: #05AAF6;
     width: 50%;
@@ -42,4 +35,15 @@
     background-color: #EDF5E0;
     padding: 10px;
     font-style: bold;
+    cursor: pointer;   
+}
+#navSignupFalse{
+    align-self: center;
+    color: #EDF5E0;
+    width: 50%;
+    height: 100%;
+    background-color: #05AAF6;
+    padding: 10px;
+    font-style: bold;
+    
 }

@@ -7,7 +7,7 @@ import axios from 'axios'
 import { DataContext, FilterContext } from '../Context/Contexts'
 
 function HomePage() {
-    let url = "http://localhost:8000/api/test/"
+    let url = "http://localhost:8000/api/books/"
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)

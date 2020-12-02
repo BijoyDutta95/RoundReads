@@ -9,7 +9,7 @@ import { FilterContext, DataContext} from '../Context/Contexts'
 
 export default function SearchPage(){
     let params = useParams()
-    let url = "http://localhost:8000/api/test/?search=" + params.term
+    let url = "http://localhost:8000/api/books/?search=" + params.term
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)
