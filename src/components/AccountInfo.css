@@ -1,0 +1,23 @@
+#abstractInfo{
+    width: 25%;
+    display: flex;
+    background-color: #EDF5E0;
+    padding: 10px;
+    align-items: center;
+    float: left;
+}
+#usrIcon{
+    height: 70px !important;
+    width: 70px !important;
+    border-radius: 50%;
+
+}
+#infoText{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 5%;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+    

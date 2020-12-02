@@ -38,7 +38,7 @@ function NavBar(props) {
                     }} 
 
                     onKeyPress={event => {
-                        if(event.key == 'Enter'){
+                        if(event.key === 'Enter'){
                             handleSearch()
                         }
                     }}/>
@@ -72,7 +72,7 @@ function NavBar(props) {
                             <Submenu/>
                         </UserContext.Provider>
                     </div>
-                    <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
+                 
                 </div>
             ):(
                 <div className="headerUser" title="Login/Sign-up" onClick={openModal}>
@@ -85,7 +85,7 @@ function NavBar(props) {
             <UserContext.Provider value={{setName}}>
                 <Modal ref={modalRef}/>
             </UserContext.Provider>
-            
+            <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
 
             
         </nav>

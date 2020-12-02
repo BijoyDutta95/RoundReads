@@ -22,14 +22,15 @@ function App() {
         <Redirect to={'/search/' + searchTerm}/>
       ):(null)}
       <Switch>
-        <SearchContext.Provider value={{searchTerm}}>
-          <Route path='/' exact component={HomePage}/>
-          <Route path='/search/:term' component={SearchPage}/>
-        </SearchContext.Provider>
+        
         <Route path='/postad' exact component={PostPage}/>
         <Route path='/blog' exact component={BlogPage}/>
         <Route path='/wishlist' exact component={WishlistPage}/>
         <Route path='/about' exact component={AboutPage}/>
+        <SearchContext.Provider value={{searchTerm}}>
+          <Route path='/' exact component={HomePage}/>
+          <Route path='/search/:term' component={SearchPage}/>
+        </SearchContext.Provider>
       </Switch>
     </Router>
     </div>
