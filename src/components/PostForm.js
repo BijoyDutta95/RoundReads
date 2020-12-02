@@ -6,14 +6,21 @@ class PostForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            title:"", author:"", desc:"", category:"engineering", condition:"new", price:"", availability:"both",
-            image1:"", image2:""
+            title:"", author:"", desc:"", category:"engineering", condition:"asNew", 
+            price:"", availability:"both",
+            image1:"", image2:"", user:""
         }
 
         this.handleChanged = this.handleChanged.bind(this)
         this.handlePostAd = this.handlePostAd.bind(this)
         this.handleChangeImage1 = this.handleChangeImage1.bind(this);
         this.handleChangeImage2 = this.handleChangeImage2.bind(this);
+    }
+
+    componentDidMount(){
+        this.setState({
+            user : sessionStorage.getItem('user')
+        })
     }
 
     handleChanged(e){
@@ -73,6 +80,7 @@ class PostForm extends React.Component {
         form_data.append('price', this.state.price);
         form_data.append('availability', this.state.availability);
         form_data.append('desc', this.state.desc);
+        form_data.append('posted_by', JSON.parse(this.state.user).email);
 
         let url = "http://127.0.0.1:8000/api/books/"
        

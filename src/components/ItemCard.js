@@ -1,6 +1,6 @@
 import React from 'react';
 import './ItemCard.css'
-import { DataContext } from './Context/DataContext';
+import { DataContext } from './Context/Contexts';
 
 function ItemCard() {
     const {items} = React.useContext(DataContext)

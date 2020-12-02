@@ -1,9 +1,7 @@
 import React from 'react'
 import './Login.css'
 import axios from 'axios'
-import { UserContext } from './Context/UserContext';
-import { ModalContext } from './Context/ModalContext';
-//import Login from './Login2'
+import { UserContext, ModalContext } from './Context/Contexts';
 
 function Login(){
 
@@ -11,7 +9,7 @@ function Login(){
     const [password, setPassword] = React.useState("")
 
     const {setDisplay} = React.useContext(ModalContext)
-    const {setName} = React.useContext(UserContext)
+    const {setUser} = React.useContext(UserContext)
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -47,12 +45,8 @@ function Login(){
         })
         .then(data => {
             console.log("success : " + JSON.stringify(data))
-
-            //this.props.setName(data.data.fname)
-            setName(data.data.fname)
-            sessionStorage.setItem('fname', (data.data.fname))
-            sessionStorage.setItem('email', (data.data.email))
-            
+            setUser(JSON.stringify(data.data))
+            sessionStorage.setItem('user', JSON.stringify(data.data))
             setDisplay(false)
         })
         .catch(e => {

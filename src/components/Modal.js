@@ -2,8 +2,9 @@ import React, {forwardRef,useImperativeHandle} from 'react';
 import ModalNav from './ModalNav'
 import './Modal.css'
 import './ModalNav.css'
-import { ModalContext } from './Context/ModalContext';
+import { ModalContext } from './Context/Contexts';
 import Auth from './Auth';
+
 const Modal=forwardRef( (props,ref) => {
     const [display, setDisplay]=React.useState(false); 
     const [flag, setFlag]=React.useState(true);

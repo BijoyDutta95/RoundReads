@@ -1,16 +1,17 @@
 import React from 'react'
 import './Submenu.css'
 import {Link} from 'react-router-dom'
-import { UserContext } from './Context/UserContext'
+import { UserContext } from './Context/Contexts'
 
-function Submenu() {
+function Submenu(props) {
 
-  const {setName} = React.useContext(UserContext)
+  const {setUser} = React.useContext(UserContext)
 
   const logout = () =>{
         console.log("logout")
-        setName(null)
+        setUser(null)
         sessionStorage.clear()
+        props.setUserSession(null)
         
     }
 

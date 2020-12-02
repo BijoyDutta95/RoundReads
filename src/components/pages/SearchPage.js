@@ -4,13 +4,12 @@ import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import { FilterContext } from '../Context/FilterContext'
-import { DataContext } from '../Context/DataContext'
+import { FilterContext, DataContext} from '../Context/Contexts'
 
 
 export default function SearchPage(){
     let params = useParams()
-    let url = "http://localhost:8000/api/test/?search=" + params.term
+    let url = "http://localhost:8000/api/books/?search=" + params.term
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)

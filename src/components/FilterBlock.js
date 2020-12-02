@@ -6,8 +6,7 @@ import NewIcon from '../icons/New.svg';
 import GentleIcon from '../icons/gentleUse.svg';
 import HeavyIcon from '../icons/heavyUse.svg';
 
-import { FilterContext } from './Context/FilterContext';
-import { SearchContext } from './Context/DataContext';
+import { FilterContext, SearchContext } from './Context/Contexts';
 
 function FilterBlock(props) {
 
@@ -70,9 +69,9 @@ function FilterBlock(props) {
         setCondition(condition)
         setCategory(category)
         if(searchTerm){
-            getItems("http://localhost:8000/api/test/?search=" + searchTerm, availability, condition, category)
+            getItems("http://localhost:8000/api/bookd/?search=" + searchTerm, availability, condition, category)
         }else{
-            getItems("http://localhost:8000/api/test", availability, condition, category)
+            getItems("http://localhost:8000/api/books", availability, condition, category)
         }
         setAvailability([])
         setCondition([])
