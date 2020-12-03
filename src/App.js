@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';
 import { SearchContext, UserContext } from './components/Context/Contexts';
+import UserAccount from './components/pages/UserAccount';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -29,6 +30,7 @@ function App() {
           <Route path='/search/:term' component={SearchPage}/>
         
           <Route path='/postad' exact component={PostPage}/>
+          <Route path='/user_account' exact component={UserAccount}/>          
           <Route path='/blog' exact component={BlogPage}/>
           <Route path='/wishlist' exact component={WishlistPage}/>
           <Route path='/about' exact component={AboutPage}/>

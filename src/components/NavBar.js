@@ -44,7 +44,7 @@ function NavBar(props) {
                             handleSearch()
                         }
                     }}/>
-                <SearchIcon  className="searchIcon"/> 
+                <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
             </div>
 
             <div className="headerLinks">

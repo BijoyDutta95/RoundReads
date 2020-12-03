@@ -24,6 +24,13 @@ function Signup(){
             'email' : email,
             'password' : password,
             're_password' : repassword,
+            'phone' : '9957664737',
+            'address' : '',
+            'yearOfEnrollment' : '',
+            'yearOfGraduation' : '',
+            'dept' : '',
+            'roll' : '',
+            'hostel' : ''
         })
 
         axios.post(url, body, {
@@ -65,7 +72,9 @@ function Signup(){
                     <label for="pwd"><b>Confirm Password</b></label>
                     <input type="password" placeholder="Enter Password" name="repassword" value={repassword} onChange={(e) => setRepassword(e.target.value)} required></input>
                 </div>
-                <button type="submit" onClick={handleSignup}>Register</button>
+                <button type="submit" onClick={handleSignup} 
+                    
+                >Register</button>
             </form>
         </div>
     )

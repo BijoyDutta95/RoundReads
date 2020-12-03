@@ -37,6 +37,7 @@
     background-color: #86C232;
     height: 20px !important;
     padding: 3px;
+    cursor: pointer;
 }
 
 .headerLinks{

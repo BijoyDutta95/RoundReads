@@ -19,7 +19,7 @@ function Submenu(props) {
     return (
       <ul className="dropdown-submenu">
         <li className="dropdown-submenu-item ">
-          <Link to='#' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
+          <Link to='/user_account' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
         </li>
         <li className="dropdown-submenu-item ">
           <Link to='#' id="menu-item-link"><p id="menu-item">View Orders</p></Link>
