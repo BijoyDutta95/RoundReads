@@ -15,11 +15,12 @@ import UserAccount from './components/pages/UserAccount';
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
   const [user, setUser] = React.useState(null)
+  const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
 
   return (
     <div className="App">
     <Router>
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser, userSession, setUserSession}}>
       <NavBar setSearchTerm={setSearchTerm}/>
       {searchTerm?(
         <Redirect to={'/search/' + searchTerm}/>

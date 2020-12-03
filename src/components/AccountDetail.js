@@ -4,7 +4,7 @@ import axios from 'axios'
 import { UserContext } from './Context/Contexts'
 
 
-function AccountDetail() {
+function AccountDetail(props) {
     
     const [fname, setFname] = React.useState(JSON.parse(sessionStorage.getItem('user')).fname)
     const [mname, setMname] = React.useState(JSON.parse(sessionStorage.getItem('user')).mname)

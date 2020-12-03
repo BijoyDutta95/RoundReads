@@ -4,7 +4,7 @@ import './AccountInfo.css'
 import { UserContext } from './Context/Contexts';
 
 function AccountInfo() {
-    const {user} = React.useContext(UserContext)
+    const {user, userSession} = React.useContext(UserContext)
 
     return (
         <div id="abstractInfo">
@@ -19,9 +19,9 @@ function AccountInfo() {
                 </span>
                 ):(
                     <span>
-                    {JSON.parse(sessionStorage.getItem('user')).fname} {" "}
-                    {JSON.parse(sessionStorage.getItem('user')).mname} {" "}
-                    {JSON.parse(sessionStorage.getItem('user')).lname}
+                    {JSON.parse(userSession).fname} {" "}
+                    {JSON.parse(userSession).mname} {" "}
+                    {JSON.parse(userSession).lname}
                 </span>
                 )}
                 
