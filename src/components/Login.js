@@ -9,7 +9,7 @@ function Login(){
     const [password, setPassword] = React.useState("")
 
     const {setDisplay} = React.useContext(ModalContext)
-    const {setUser} = React.useContext(UserContext)
+    const {setUser, setUserSession} = React.useContext(UserContext)
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -47,6 +47,7 @@ function Login(){
             console.log("success : " + JSON.stringify(data))
             setUser(JSON.stringify(data.data))
             sessionStorage.setItem('user', JSON.stringify(data.data))
+            setUserSession(sessionStorage.getItem('user'))
             setDisplay(false)
         })
         .catch(e => {

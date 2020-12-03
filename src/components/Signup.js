@@ -16,6 +16,7 @@ function Signup(){
     const handleSignup = (e) =>{
         e.preventDefault();
 
+        
         let url = "http://127.0.0.1:8000/auth/users/"
         let body = JSON.stringify({
             'fname' : fname,
@@ -24,7 +25,7 @@ function Signup(){
             'email' : email,
             'password' : password,
             're_password' : repassword,
-            'phone' : '9957664737',
+            'phone' : '',
             'address' : '',
             'yearOfEnrollment' : '',
             'yearOfGraduation' : '',
