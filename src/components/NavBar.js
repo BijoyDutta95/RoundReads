@@ -14,9 +14,9 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
+    
 
-    const {user} = React.useContext(UserContext)
+    const {user, userSession, setUserSession} = React.useContext(UserContext)
 
     const [searchTerm, setSearchTerm] = React.useState("")
 
@@ -44,7 +44,7 @@ function NavBar(props) {
                             handleSearch()
                         }
                     }}/>
-                <SearchIcon  className="searchIcon"/> 
+                <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
             </div>
 
             <div className="headerLinks">
@@ -70,7 +70,7 @@ function NavBar(props) {
                         
                             
                         </div>
-                        <Submenu setUserSession={setUserSession}/>
+                        <Submenu/>
                         
                     </div>
                 </div>

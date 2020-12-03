@@ -1,10 +1,9 @@
 import React from 'react'
-import UserAccount from './UserAccount'
 
 function BlogPage() {
     return (
         <div>
-            <UserAccount/>
+            <h1>This is Bloggggg</h1>
         </div>
     )
 }

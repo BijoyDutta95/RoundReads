@@ -128,7 +128,7 @@ class PostForm extends React.Component {
                                     <input type="text" placeholder="Enter Author Name" name="author" value={this.state.author} onChange={this.handleChanged} required></input>
                                 </div>
                                 <div className="inputField">
-                                    <label for="description"><b>Description</b></label>
+                                    <label for="description"><b>Description</b></label><br/><br/>
                                     <textarea type="text" placeholder="Enter Description" name="desc" value={this.state.desc} onChange={this.handleChanged} rows="5" cols="86" required></textarea>
                                 </div>
                                 <div className="inputField">

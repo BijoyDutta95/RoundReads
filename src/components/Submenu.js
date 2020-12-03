@@ -5,13 +5,13 @@ import { UserContext } from './Context/Contexts'
 
 function Submenu(props) {
 
-  const {setUser} = React.useContext(UserContext)
+  const {setUser, setUserSession} = React.useContext(UserContext)
 
   const logout = () =>{
         console.log("logout")
         setUser(null)
         sessionStorage.clear()
-        props.setUserSession(null)
+        setUserSession(null)
         
     }
 
@@ -19,7 +19,7 @@ function Submenu(props) {
     return (
       <ul className="dropdown-submenu">
         <li className="dropdown-submenu-item ">
-          <Link to='#' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
+          <Link to='/user_account' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
         </li>
         <li className="dropdown-submenu-item ">
           <Link to='#' id="menu-item-link"><p id="menu-item">View Orders</p></Link>
