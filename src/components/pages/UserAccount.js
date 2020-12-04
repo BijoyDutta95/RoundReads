@@ -1,7 +1,7 @@
 import React from 'react'
 import AccountDetail from '../AccountDetail'
 import AccountInfo from '../AccountInfo'
-import './UserAccount.css'
+import './GlobalChange.css'
 import { UserContext } from '../Context/Contexts'
 import { Redirect } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ function UserAccount() {
     
     if(user || userSession){
         return (
-            <div className="accountBlock">
+            <div className="globalBlock">
                 <AccountInfo/>
                 <AccountDetail/>
             </div>
