@@ -41,12 +41,31 @@ function Signup(){
         })
         .then(data =>{
             console.log("success : " + JSON.stringify(data))
-            setFlag(true)
+            createWishList(data.data.id)
+            //setFlag(true)
         })
         .catch(err => {
             console.log("error : " + err)
         })
 
+    }
+
+    const createWishList = (id) =>{
+        let url = "http://localhost:8000/api/wishlist/"
+        let body = JSON.stringify({
+            user_id : id,
+            wishlist : []
+        })
+        axios.post(url, body, {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then((data) =>{
+            console.log("wishlist created  " + JSON.stringify(data.data))
+            setFlag(true)
+
+        })
     }
 
     

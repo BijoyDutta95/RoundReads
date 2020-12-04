@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import HomePage from './components/pages/HomePage'
 import PostPage from './components/pages/PostPage'
 import BlogPage from './components/pages/BlogPage'
-import WishlistPage from './components/pages/WishlistPage'
+import WishListTemp from './components/pages/WishListTemp'
 import AboutPage from './components/pages/AboutPage'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
@@ -16,11 +16,12 @@ function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
   const [user, setUser] = React.useState(null)
   const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
+  const [wishList, setWishList] = React.useState(sessionStorage.getItem('wishlist'))
 
   return (
     <div className="App">
     <Router>
-    <UserContext.Provider value={{user, setUser, userSession, setUserSession}}>
+    <UserContext.Provider value={{user, setUser, userSession, setUserSession, wishList, setWishList}}>
       <NavBar setSearchTerm={setSearchTerm}/>
       {searchTerm?(
         <Redirect to={'/search/' + searchTerm}/>
@@ -33,7 +34,7 @@ function App() {
           <Route path='/postad' exact component={PostPage}/>
           <Route path='/user_account' exact component={UserAccount}/>          
           <Route path='/blog' exact component={BlogPage}/>
-          <Route path='/wishlist' exact component={WishlistPage}/>
+          <Route path='/wishlist' exact component={WishListTemp}/>
           <Route path='/about' exact component={AboutPage}/>
         </SearchContext.Provider>
         

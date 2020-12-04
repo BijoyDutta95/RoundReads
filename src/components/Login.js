@@ -9,7 +9,7 @@ function Login(){
     const [password, setPassword] = React.useState("")
 
     const {setDisplay} = React.useContext(ModalContext)
-    const {setUser, setUserSession} = React.useContext(UserContext)
+    const {setUser, setUserSession, setWishList, wishList} = React.useContext(UserContext)
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -48,10 +48,26 @@ function Login(){
             setUser(JSON.stringify(data.data))
             sessionStorage.setItem('user', JSON.stringify(data.data))
             setUserSession(sessionStorage.getItem('user'))
-            setDisplay(false)
+            getWishList(data.data.id)
+            
         })
         .catch(e => {
             console.log("failed catched error : " + e)
+            
+        });
+    }
+
+    const getWishList = (id) =>{
+        let url = "http://127.0.0.1:8000/api/wishlist/" + id
+        axios.get(url)
+        .then(data => {
+            console.log("success wishlist : " + JSON.stringify(data))
+            setWishList(JSON.stringify(data.data.wishlist))
+            sessionStorage.setItem('wishlist', JSON.stringify(data.data.wishlist))
+            setDisplay(false)
+        })
+        .catch(e => {
+            console.log("failed catched error wishlist : " + e)
             
         });
     }
