@@ -22,7 +22,7 @@ function Submenu(props) {
           <Link to='/user_account' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
         </li>
         <li className="dropdown-submenu-item ">
-          <Link to='#' id="menu-item-link"><p id="menu-item">View Orders</p></Link>
+          <Link to='/wishlist' id="menu-item-link"><p id="menu-item">Wishlist</p></Link>
         </li>
         <li className="dropdown-submenu-item ">
           <Link to='/postad' id="menu-item-link"><p id="menu-item">Post an Ad</p></Link>
