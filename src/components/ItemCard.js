@@ -2,7 +2,7 @@ import React from 'react';
 import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
 import Axios from 'axios';
-import WishlistTemp from './pages/WishListTemp';
+//import WishlistTemp from './pages/WishListTemp';
 
 function ItemCard() {
     const {items} = React.useContext(DataContext)
