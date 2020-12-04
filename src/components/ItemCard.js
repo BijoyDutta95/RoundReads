@@ -1,6 +1,7 @@
 import React from 'react';
 import './ItemCard.css'
 import { DataContext } from './Context/Contexts';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 
 function ItemCard() {
     const {items} = React.useContext(DataContext)
@@ -13,8 +14,12 @@ function ItemCard() {
                 <strong className="cardTitle">{card.title}</strong>
                 <small className="cardCondition">{card.condition}</small>
                 <div id="cardBlock_button">
-                    <button className="cardButtonSave">Save</button>
-                    <button className="cardButtonContact">Contact Seller</button>
+                    {/*<button className="cardButtonSave">Save</button>*/}
+                    <div id="saveButton">
+                        <p>Save</p>
+                        <BookmarkIcon id="bookmarkIcon"/>
+                    </div>
+                    <button id="cardButtonContact">Contact Seller</button>
                 </div>    
             </div>
         )
