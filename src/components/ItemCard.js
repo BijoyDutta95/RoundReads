@@ -11,7 +11,7 @@ function ItemCard() {
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
 
     const saveToWishList = (id) =>{
-        console.log("books id" + id)
+        console.log("books id to save" + id)
         let wishListTemp = []
         for(let i in JSON.parse(wishList)){
             console.log(JSON.parse(wishList)[i])
@@ -43,8 +43,39 @@ function ItemCard() {
         })
     }
 
-    const removeFromWishList = () =>{
+    const removeFromWishList = (id) =>{
+        console.log("books id to remove" + id)
+        let wishListTemp = []
+        for(let i in JSON.parse(wishList)){
+            console.log(JSON.parse(wishList)[i])
+            wishListTemp.push(JSON.parse(wishList)[i])
+        }
+        //wishListTemp.push(id)
+        wishListTemp.splice(wishListTemp.indexOf(id), 1)
+        console.log("after delete : " + wishListTemp)
+       
+        setWishList(JSON.stringify(wishListTemp))
+        sessionStorage.setItem('wishlist', JSON.stringify(wishListTemp))
+        //console.log("after : " + wishList)
+        
 
+        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let body = JSON.stringify({
+            
+            wishlist : wishListTemp
+        })
+        Axios.patch(url, body, {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(JSON.stringify(data.data))
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    
     }
     
     const renderCard= (card, index) =>{
@@ -58,7 +89,7 @@ function ItemCard() {
                     {wishList?(
                         <>
                         {JSON.parse(wishList).includes(card.id)?(
-                            <div id="saveButton" onClick={removeFromWishList}>
+                            <div id="saveButton" onClick={() => removeFromWishList(card.id)}>
                                 <p>Saved</p>
                                 <BookmarkIcon id="bookmarkIcon"/>
                             </div>

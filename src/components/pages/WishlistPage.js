@@ -16,12 +16,12 @@ function WishlistPage() {
             let url = "http://localhost:8000/api/get_wishlist/"
             Axios.get(url, {
                 params : {
-                    wishlist : JSON.parse(wishList)
+                    wishlist : JSON.parse(wishList).reverse()
                 }
             })
             .then(data =>{
                 console.log(data.data)
-                setItems((data.data).reverse())
+                setItems((data.data))
             })
             .catch(err =>{
                 console.log(err)
