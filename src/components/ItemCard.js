@@ -2,7 +2,8 @@ import React from 'react';
 import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
 import Axios from 'axios';
-//import WishlistTemp from './pages/WishListTemp';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+
 
 function ItemCard() {
     const {items} = React.useContext(DataContext)
@@ -52,19 +53,12 @@ function ItemCard() {
                 <strong className="cardTitle">{card.title}</strong>
                 <small className="cardCondition">{card.condition}</small>
                 <div id="cardBlock_button">
-                    {wishList?(
-                        <>
-                        {JSON.parse(wishList).includes(card.id)?(
-                            <button className="cardButtonSave" onClick={()=>saveToWishlist(card.id)}>Saved</button>
-                            ):(
-                                <button className="cardButtonSave" onClick={()=>saveToWishlist(card.id)}>Save</button>
-                            )}
-                        </>
-                    ):(
-                        <button className="cardButtonSave" onClick={()=>saveToWishlist(card.id)}>Save</button>
-                    )}
-                    
-                    <button className="cardButtonContact">Contact Seller</button>
+                    {/*<button className="cardButtonSave">Save</button>*/}
+                    <div id="saveButton">
+                        <p>Save</p>
+                        <BookmarkIcon id="bookmarkIcon"/>
+                    </div>
+                    <button id="cardButtonContact">Contact Seller</button>
                 </div>    
             </div>
         )
