@@ -5,3 +5,39 @@
     display: flex;
     flex-direction: column;
 }
+#SingleItem{
+    display: flex;
+    flex-direction: row;
+    background-color: #EDF5E0;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 2px;
+}
+#SingleItemImage{
+    height: 150px;
+    width: 100px;
+    align-items: center;
+    object-fit: contain;
+    background-color: black;
+}
+#singleItemInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 10px;
+    font-size: 20px;
+}
+#singleItemInfo strong,small{
+    margin-top: 5%;
+}
+#singleItemButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+#singleItemButtons button{
+    margin-top: 40%;
+}

@@ -9,10 +9,8 @@ function ItemCard() {
     const {items} = React.useContext(DataContext)
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
-    const [saved, setSaved] = React.useState(false)
-    
 
-    const saveToWishlist = (id) =>{
+    const saveToWishList = (id) =>{
         console.log("books id" + id)
         let wishListTemp = []
         for(let i in JSON.parse(wishList)){
@@ -39,11 +37,14 @@ function ItemCard() {
         })
         .then(data =>{
             console.log(JSON.stringify(data.data))
-            setSaved(true)
         })
         .catch(err=>{
             console.log(err)
         })
+    }
+
+    const removeFromWishList = () =>{
+
     }
     
     const renderCard= (card, index) =>{
@@ -54,10 +55,28 @@ function ItemCard() {
                 <small className="cardCondition">{card.condition}</small>
                 <div id="cardBlock_button">
                     {/*<button className="cardButtonSave">Save</button>*/}
-                    <div id="saveButton">
+                    {wishList?(
+                        <>
+                        {JSON.parse(wishList).includes(card.id)?(
+                            <div id="saveButton" onClick={removeFromWishList}>
+                                <p>Saved</p>
+                                <BookmarkIcon id="bookmarkIcon"/>
+                            </div>
+                        ):( 
+                            <div id="saveButton" onClick={() => saveToWishList(card.id)}>
+                                <p>Save</p>
+                                <BookmarkIcon id="bookmarkIcon"/>
+                            </div>
+                        )}
+                        </>
+                    ):(
+                        <div id="saveButton">
                         <p>Save</p>
                         <BookmarkIcon id="bookmarkIcon"/>
                     </div>
+                    )}
+                    
+                    
                     <button id="cardButtonContact">Contact Seller</button>
                 </div>    
             </div>

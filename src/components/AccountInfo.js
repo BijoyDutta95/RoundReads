@@ -18,11 +18,15 @@ function AccountInfo() {
                     {JSON.parse(user).lname}
                 </span>
                 ):(
-                    <span>
-                    {JSON.parse(userSession).fname} {" "}
-                    {JSON.parse(userSession).mname} {" "}
-                    {JSON.parse(userSession).lname}
-                </span>
+                    <>
+                    {userSession?(
+                        <span>
+                            {JSON.parse(userSession).fname} {" "}
+                            {JSON.parse(userSession).mname} {" "}
+                            {JSON.parse(userSession).lname}
+                        </span>
+                    ):(null)}
+                    </>
                 )}
                 
             </div>
