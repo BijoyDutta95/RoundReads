@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import HomePage from './components/pages/HomePage'
 import PostPage from './components/pages/PostPage'
 import BlogPage from './components/pages/BlogPage'
-import WishListTemp from './components/pages/WishListTemp'
+import WishListPage from './components/pages/WishlistPage'
 import AboutPage from './components/pages/AboutPage'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
@@ -34,7 +34,7 @@ function App() {
           <Route path='/postad' exact component={PostPage}/>
           <Route path='/user_account' exact component={UserAccount}/>          
           <Route path='/blog' exact component={BlogPage}/>
-          <Route path='/wishlist' exact component={WishListTemp}/>
+          <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
         </SearchContext.Provider>
         
