@@ -11,6 +11,10 @@ function ItemCard() {
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
 
     const saveToWishList = (id) =>{
+        if(JSON.parse(wishList).length == 3){
+            alert("You can add maximum 10 items to Your WishList")
+            return
+        }
         console.log("books id to save" + id)
         let wishListTemp = []
         for(let i in JSON.parse(wishList)){
