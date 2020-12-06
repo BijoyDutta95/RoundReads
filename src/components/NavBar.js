@@ -57,16 +57,16 @@ function NavBar(props) {
             {user || userSession?(
                 <div className="userAndPost">
                     <div className="drop-down">
-                        <div className="headerUser" title="Login/Sign-up">
+                        <div className="headerUser">
                             <AccountCircleRoundedIcon className="userIcon"/>
-                            <div className="userName">
+                           {/* <div className="userName">
                                 <span>Welcome</span>
                                 {user ? (
                                     <span>{JSON.parse(user).fname}</span>
                                 ):(      
                                     <span>{JSON.parse(userSession).fname}</span>
                                 )}
-                            </div>
+                                </div>*/}
                         
                             
                         </div>
