@@ -1,5 +1,6 @@
 .bannerBlock{
     background-color: #EDF5E0;
+    position: relative;
     /* mask-image: linear-gradient(to bottom, rgba(0,0,0,1) , rgba(0,0,0,0)); */
     display: flex;
     align-items: center;
@@ -14,4 +15,14 @@
     height: 300px !important;
     width: 220px !important;
     color: #222629; 
+}
+#forwardIcon{
+    position: absolute;
+    left: 0;
+    margin-left: 5px;
+}
+#backwardIcon{
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
 }

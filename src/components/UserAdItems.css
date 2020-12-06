@@ -1,0 +1,36 @@
+#userItemsBlock{
+    position: relative;
+    width: 70%;
+    min-height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #EDF5E0;
+    padding: 5px;
+    
+}
+#itemInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 2px;
+}
+#itemButton{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+#itemImage{
+    height: 150px;
+    width: 150px;
+    align-items: center;
+    object-fit: contain;
+    background-color: #222629;
+}
+#itemInfo strong{
+    margin-top: 5%;
+}

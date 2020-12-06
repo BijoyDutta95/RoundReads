@@ -6,6 +6,7 @@ import PostPage from './components/pages/PostPage'
 import BlogPage from './components/pages/BlogPage'
 import WishListPage from './components/pages/WishlistPage'
 import AboutPage from './components/pages/AboutPage'
+import UserAd from './components/pages/UserAd'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';
@@ -36,6 +37,7 @@ function App() {
           <Route path='/blog' exact component={BlogPage}/>
           <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
+          <Route path='/userAd' exact component={UserAd}/>
         </SearchContext.Provider>
         
 
