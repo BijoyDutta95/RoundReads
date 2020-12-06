@@ -5,3 +5,4 @@ export const SearchContext= React.createContext(null);
 export const FilterContext= React.createContext(null);
 export const ModalContext= React.createContext(null);
 export const UserContext= React.createContext(null);
+export const WishListContext= React.createContext(null);

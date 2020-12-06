@@ -5,13 +5,14 @@ import { UserContext } from './Context/Contexts'
 
 function Submenu(props) {
 
-  const {setUser, setUserSession} = React.useContext(UserContext)
+  const {setUser, setUserSession, setWishList} = React.useContext(UserContext)
 
   const logout = () =>{
         console.log("logout")
         setUser(null)
         sessionStorage.clear()
         setUserSession(null)
+        setWishList(null)
         
     }
 

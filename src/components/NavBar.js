@@ -16,7 +16,7 @@ function NavBar(props) {
 
     
 
-    const {user, userSession, setUserSession} = React.useContext(UserContext)
+    const {user, userSession} = React.useContext(UserContext)
 
     const [searchTerm, setSearchTerm] = React.useState("")
 
@@ -75,11 +75,8 @@ function NavBar(props) {
                     </div>
                 </div>
             ):(
-                <div className="headerUser" title="Login/Sign-up" onClick={openModal}>
-                    <AccountCircleRoundedIcon className="userIcon"/>
-                    <div className="userName">
-                        <span>Welcome</span><span>Guest</span>
-                    </div>                   
+                <div className="headerLinks" onClick={openModal}>
+                    <p>Login</p>                
                 </div>
             )}
             

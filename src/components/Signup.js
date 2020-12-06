@@ -16,6 +16,7 @@ function Signup(){
     const handleSignup = (e) =>{
         e.preventDefault();
 
+        
         let url = "http://127.0.0.1:8000/auth/users/"
         let body = JSON.stringify({
             'fname' : fname,
@@ -24,7 +25,7 @@ function Signup(){
             'email' : email,
             'password' : password,
             're_password' : repassword,
-            'phone' : '9957664737',
+            'phone' : '',
             'address' : '',
             'yearOfEnrollment' : '',
             'yearOfGraduation' : '',
@@ -40,12 +41,31 @@ function Signup(){
         })
         .then(data =>{
             console.log("success : " + JSON.stringify(data))
-            setFlag(true)
+            createWishList(data.data.id)
+            //setFlag(true)
         })
         .catch(err => {
             console.log("error : " + err)
         })
 
+    }
+
+    const createWishList = (id) =>{
+        let url = "http://localhost:8000/api/wishlist/"
+        let body = JSON.stringify({
+            user_id : id,
+            wishlist : []
+        })
+        axios.post(url, body, {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then((data) =>{
+            console.log("wishlist created  " + JSON.stringify(data.data))
+            setFlag(true)
+
+        })
     }
 
     

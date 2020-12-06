@@ -44,6 +44,7 @@
     display: flex;
     margin-left: 20px;
     align-items: center;
+    cursor: pointer;
 }
 .headerLinks p{
     color: #EDF5E0;
