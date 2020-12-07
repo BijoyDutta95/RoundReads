@@ -111,7 +111,7 @@ function ItemCard() {
                         )}
                         </>
                     ):(
-                        <div id="saveButton">
+                        <div id="saveButtonCard">
                         <p>Save</p>
                         <BookmarkIcon id="bookmarkIcon"/>
                     </div>
