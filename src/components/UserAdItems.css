@@ -4,8 +4,8 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    
 }
-
 
 #userItemsBlock{
     display: flex;

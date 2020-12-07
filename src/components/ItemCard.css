@@ -42,7 +42,7 @@
     height: 24px;
     cursor: pointer;
 }
-#saveButton{
+#saveButtonCard{
     border: 1px solid black;
     display: flex;
     flex-direction: row;
