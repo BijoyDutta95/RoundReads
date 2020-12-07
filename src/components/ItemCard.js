@@ -83,6 +83,12 @@ function ItemCard() {
     }
     
     const renderCard= (card, index) =>{
+        if(userSession){
+            if(card.posted_by == JSON.parse(userSession).email){
+                return
+            }
+        }
+        
         return(
             <div id="cardBlock" key={index}>
                 <img src={card.image1} alt="cardImage" className="cardImage"/>
