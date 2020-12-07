@@ -1,12 +1,19 @@
-#userItemsBlock{
-    position: relative;
+#itemsDiplayedBlock{
     width: 70%;
     min-height: 100%;
     margin: auto;
     display: flex;
+    flex-direction: column;
+}
+
+
+#userItemsBlock{
+    display: flex;
     flex-direction: row;
     background-color: #EDF5E0;
     padding: 5px;
+    position: relative;
+    margin-bottom: 2px;
     
 }
 #itemInfo{
