@@ -7,7 +7,6 @@ function UserAd() {
         <div className="globalBlock">
             <AccountInfo/>
             <UserAdItems/>
-            <UserAdItems/>
         </div>
     )
 }
