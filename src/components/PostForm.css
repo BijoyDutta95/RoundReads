@@ -75,3 +75,9 @@ margin: auto;
     flex: 1;
     margin: 2px;
 }
+.onAvailable{
+    display: none;
+}
+/* .onAvailable{
+    display: initial;
+} */

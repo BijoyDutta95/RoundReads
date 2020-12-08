@@ -70,7 +70,6 @@ function UserAdItems() {
             {items.map(renderItem)}
         </div>
     )
-
 }
 
 export default UserAdItems

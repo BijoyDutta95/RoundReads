@@ -1,0 +1,36 @@
+#ItemBlockRight{
+    background-color: #EDF5E0;
+    width: 29%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin-top: 5px;
+}
+#sellerInfo{
+    padding: 5px;
+}
+#sellerInfo label{
+    font-weight: bold;
+    font-size: 20px;
+}
+#sellerInfo p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+hr{
+    border-color: 2px #86C232;
+}
+#contactSellerItem{
+    background-color: #86C232;
+    width: 80%;
+    margin: auto;
+    color: #EDF5E0;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 10%; 
+    border: none;
+    margin-top: 30px;
+}
+

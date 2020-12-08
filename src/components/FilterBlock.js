@@ -2,9 +2,9 @@ import React from 'react'
 import './FilterBlock.css'
 import SaleIcon from '@material-ui/icons/MonetizationOn';
 import BorrowIcon from '@material-ui/icons/History'
-import NewIcon from '../icons/New.svg';
-import GentleIcon from '../icons/gentleUse.svg';
-import HeavyIcon from '../icons/heavyUse.svg';
+import NewIcon from '../icons/5stars.svg';
+import GentleIcon from '../icons/3stars.svg';
+import HeavyIcon from '../icons/1star.svg';
 
 import { FilterContext, SearchContext } from './Context/Contexts';
 
@@ -90,14 +90,14 @@ function FilterBlock(props) {
                 <legend>By Availability</legend>
                 <div className="avInner">
                     {saleIcon?(
-                        <SaleIcon className="avIconsClicked" onClick={() => setSaleIcon(false)} />
+                        <SaleIcon className="avIconsClicked" title="For Sale" onClick={() => setSaleIcon(false)}  />
                     ):(
-                        <SaleIcon className="avIcons" onClick={() => setSaleIcon(true)} />
+                        <SaleIcon className="avIcons" title="For Sale" onClick={() => setSaleIcon(true)}  />
                     )}
                     {borrowIcon?(
-                        <BorrowIcon className="avIconsClicked" onClick={() => setBorrowIcon(false)} />
+                        <BorrowIcon className="avIconsClicked" onClick={() => setBorrowIcon(false)} title="For Borrow" />
                     ):(
-                        <BorrowIcon className="avIcons" onClick={() => setBorrowIcon(true)} />
+                        <BorrowIcon className="avIcons" onClick={() => setBorrowIcon(true)} title="For Borrow"/>
                     )}
                 </div>
             </fieldset>
@@ -105,19 +105,19 @@ function FilterBlock(props) {
                 <legend>By Condition</legend>
                 <div className="conInner">
                     {asNewIcon?(
-                        <img src={NewIcon} alt="AsNew" className="conIconsClicked" onClick={() => setAsNewIcon(false)}/>
+                        <img src={NewIcon} alt="AsNew" className="conIconsClicked" onClick={() => setAsNewIcon(false)} title="Almost New"/>
                     ):(
-                        <img src={NewIcon} alt="AsNew" className="conIcons" onClick={() => setAsNewIcon(true)}/>
+                        <img src={NewIcon} alt="AsNew" className="conIcons" onClick={() => setAsNewIcon(true)} title="Almost New"/>
                     )}
                     {lightUsedIcon?(
-                        <img src={GentleIcon} alt="AsNew" className="conIconsClicked" onClick={() => setLightUsedIcon(false)}/>
+                        <img src={GentleIcon} alt="AsNew" className="conIconsClicked" onClick={() => setLightUsedIcon(false)} title="Lightly Used"/>
                     ):(
-                        <img src={GentleIcon} alt="AsNew" className="conIcons" onClick={() => setLightUsedIcon(true)}/>
+                        <img src={GentleIcon} alt="AsNew" className="conIcons" onClick={() => setLightUsedIcon(true)} title="Lightly Used"/>
                     )}
                     {heavyUsedIcon?(
-                        <img src={HeavyIcon} alt="AsNew" className="conIconsClicked" onClick={() => setHeavyUsedIcon(false)}/>
+                        <img src={HeavyIcon} alt="AsNew" className="conIconsClicked" onClick={() => setHeavyUsedIcon(false)} title="Heavily Used"/>
                     ):(
-                        <img src={HeavyIcon} alt="AsNew" className="conIcons" onClick={() => setHeavyUsedIcon(true)}/>
+                        <img src={HeavyIcon} alt="AsNew" className="conIcons" onClick={() => setHeavyUsedIcon(true)} title="Heavily Used"/>
                     )}
                     
                     

@@ -99,19 +99,19 @@ function ItemCard() {
                     {wishList?(
                         <>
                         {JSON.parse(wishList).includes(card.id)?(
-                            <div id="saveButton" onClick={() => removeFromWishList(card.id)}>
+                            <div id="saveButtonCard" onClick={() => removeFromWishList(card.id)}>
                                 <p>Saved</p>
                                 <BookmarkIcon id="bookmarkIcon"/>
                             </div>
                         ):( 
-                            <div id="saveButton" onClick={() => saveToWishList(card.id)}>
+                            <div id="saveButtonCard" onClick={() => saveToWishList(card.id)}>
                                 <p>Save</p>
                                 <BookmarkIcon id="bookmarkIcon"/>
                             </div>
                         )}
                         </>
                     ):(
-                        <div id="saveButton">
+                        <div id="saveButtonCard">
                         <p>Save</p>
                         <BookmarkIcon id="bookmarkIcon"/>
                     </div>

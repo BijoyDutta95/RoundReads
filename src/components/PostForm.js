@@ -141,10 +141,7 @@ function PostForm() {
                 <fieldset className="adDetail">
                     <legend>Ad Details</legend>
                         <form>
-                            <div className="inputField">
-                                <label for="price"><b>Price</b></label>
-                                <input type="text" placeholder="Enter Price" onChange={(e) => setPrice(e.target.value)} required></input>
-                            </div>
+                            
                             <div id="availableOption">
                                 <label for="availability"><b>Choose Availability</b></label>
                                 <select name="availability" id="availability" onChange={(e) => setAvailability(e.target.value)}>
@@ -152,6 +149,14 @@ function PostForm() {
                                     <option value="sale">For Sale</option>
                                     <option value="borrow">For Borrow</option>
                                 </select>
+                            </div>
+                            <div className="inputField">
+                                <label className="onAvailable" for="saleprice"><b>Sale Price</b></label>
+                                <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setPrice(e.target.value)} required></input>
+                            </div>
+                            <div className="inputField">
+                                <label className="onAvailable" for="borrowPrice"><b>Borrow Price (Per Month)</b></label>
+                                <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setPrice(e.target.value)} required></input>
                             </div>
                             <label for="image"><b>Upload Images</b></label>
                             <div id="fileUpload">

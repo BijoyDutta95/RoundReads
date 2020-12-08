@@ -6,7 +6,7 @@ import PostPage from './components/pages/PostPage'
 import BlogPage from './components/pages/BlogPage'
 import WishListPage from './components/pages/WishlistPage'
 import AboutPage from './components/pages/AboutPage'
-import UserAd from './components/pages/UserAd'
+import UserAd from './components/pages/UserAdDetails'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';

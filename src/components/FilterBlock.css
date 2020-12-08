@@ -1,6 +1,6 @@
 .filterBlock{
     position: relative;
-    height: 500px;
+    
     width: 200px;
     background-color: #EDF5E0;
     border-radius: 5px;
@@ -35,34 +35,34 @@
     overflow-y: scroll;
 }
 .avIcons{
-    height: 30px !important;
-    width: 30px !important;
+    height: 35px !important;
+    width: 35px !important;
     border: solid 2px black;
     padding: 2px;
     cursor: pointer;
 }
 .avIconsClicked{
-    height: 30px !important;
-    width: 30px !important;
+    height: 35px !important;
+    width: 35px !important;
     border: solid 2px black;
     padding: 2px;
     cursor: pointer;
-    background-color: #00aeef;
+    background-color: #86C232;
 }
 .conIcons{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     border: solid 2px black;
     padding: 2px;
     cursor: pointer;
 }
 .conIconsClicked{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     border: solid 2px black;
     padding: 2px;
     cursor: pointer;
-    background-color: #00aeef;
+    background-color: #86C232;
 }
 fieldset {
     margin: 5px;
