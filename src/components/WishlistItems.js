@@ -2,7 +2,7 @@ import React from 'react'
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import './WishlistItems.css'
 import { WishListContext, UserContext } from './Context/Contexts';
-import Axios from 'axios'
+import { API } from './API/Api'
 
 function WishlistItems() {
     const {items, setItems} = React.useContext(WishListContext)
@@ -33,12 +33,12 @@ function WishlistItems() {
         //console.log("after : " + wishList)
         
 
-        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
         let body = JSON.stringify({
             
             wishlist : wishListTemp
         })
-        Axios.patch(url, body, {
+        API.patch(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }

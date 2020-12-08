@@ -1,6 +1,6 @@
 import React from 'react'
 import './Signup.css'
-import axios from 'axios'
+import { API } from './API/Api'
 import { ModalContext } from './Context/Contexts'
 
 function Signup(){
@@ -17,7 +17,7 @@ function Signup(){
         e.preventDefault();
 
         
-        let url = "http://127.0.0.1:8000/auth/users/"
+        let url = "auth/users/"
         let body = JSON.stringify({
             'fname' : fname,
             'mname' : mname,
@@ -34,7 +34,7 @@ function Signup(){
             'hostel' : ''
         })
 
-        axios.post(url, body, {
+        API.post(url, body, {
             headers : {
                 'Content-Type': 'application/json'
             }
@@ -51,12 +51,12 @@ function Signup(){
     }
 
     const createWishList = (id) =>{
-        let url = "http://localhost:8000/api/wishlist/"
+        let url = "api/wishlist/"
         let body = JSON.stringify({
             user_id : id,
             wishlist : []
         })
-        axios.post(url, body, {
+        API.post(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }

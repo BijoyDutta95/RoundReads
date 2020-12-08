@@ -2,7 +2,7 @@ import React from 'react'
 import ItemMoreInfo from '../ItemMoreInfo'
 import ItemImageBlock from '../ItemImageBlock'
 import { useParams } from 'react-router-dom'
-import Axios from 'axios'
+import { API } from '../API/Api'
 function IndividualItem() {
     let params = useParams()
     const [items, setItems] = React.useState([])
@@ -10,7 +10,7 @@ function IndividualItem() {
     React.useEffect(() =>{
         function getCurrentItem(){
             console.log("getcurrent called")
-            Axios.get("http://localhost:8000/api/books/" + params.id)
+            API.get("api/books/" + params.id)
             .then(data =>{
                 console.log(data.data)
                 setItems(data.data)

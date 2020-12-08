@@ -1,11 +1,12 @@
 import React from 'react'
 import './PostForm.css'
-import axios from 'axios'
+import { API } from './API/Api'
 import { UserContext } from './Context/Contexts'
 import { Redirect } from 'react-router-dom'
 
 
 function PostForm() {
+
     const [title, setTitle] = React.useState('')
     const [author, setAuthor] = React.useState('')
     const [desc, setDesc] = React.useState('')
@@ -81,9 +82,9 @@ function PostForm() {
        
         
 
-        let url = "http://127.0.0.1:8000/api/books/"
+        let url = "api/books/"
        
-        axios.post(url, form_data, {
+        API.post(url, form_data, {
              headers: {
                     'content-type': 'multipart/form-data'
                 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import './AccountDetail.css'
-import axios from 'axios'
 import { UserContext } from './Context/Contexts'
-
+import { API } from './API/Api'
 
 function AccountDetail(props) {
     
@@ -27,13 +26,13 @@ function AccountDetail(props) {
     }
 
     const verifyUser = () =>{
-        let url = "http://localhost:8000/auth/jwt/create/"
+        let url = "auth/jwt/create/"
         let body = JSON.stringify({
             email : email,
             password : password
         })
 
-        axios.post(url, body, {
+        API.post(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -75,9 +74,9 @@ function AccountDetail(props) {
             'hostel' : hostel
         })
 
-        let url = "http://localhost:8000/auth/users/me/"
+        let url = "auth/users/me/"
 
-        axios.patch(url, body, {
+        API.patch(url, body, {
             headers: {
                 'Authorization' : 'JWT ' + token,
                 'Content-Type' : 'application/json'

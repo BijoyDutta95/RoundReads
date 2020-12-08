@@ -3,13 +3,12 @@ import FilterBlock from '../FilterBlock'
 import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import {useParams} from 'react-router-dom'
-import axios from 'axios'
 import { FilterContext, DataContext} from '../Context/Contexts'
-
+import { API } from '../API/Api'
 
 export default function SearchPage(){
     let params = useParams()
-    let url = "http://localhost:8000/api/books/?search=" + params.term
+    let url = "api/books/?search=" + params.term
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)
@@ -26,7 +25,7 @@ export default function SearchPage(){
 
     const getItems = (url, availability, condition, category) =>{
         console.log("get Items called")
-        axios.get(url, {
+        API.get(url, {
             params : {
                 'availability' : availability,
                 'condition' : condition,

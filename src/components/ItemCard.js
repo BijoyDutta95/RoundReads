@@ -1,9 +1,9 @@
 import React from 'react';
 import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
-import Axios from 'axios';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { Redirect } from 'react-router-dom';
+import { API } from './API/Api'
 
 
 function ItemCard() {
@@ -33,12 +33,12 @@ function ItemCard() {
         //console.log("after : " + wishList)
         
 
-        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
         let body = JSON.stringify({
             
             wishlist : wishListTemp
         })
-        Axios.patch(url, body, {
+        API.patch(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -67,12 +67,12 @@ function ItemCard() {
         //console.log("after : " + wishList)
         
 
-        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
         let body = JSON.stringify({
             
             wishlist : wishListTemp
         })
-        Axios.patch(url, body, {
+        API.patch(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
