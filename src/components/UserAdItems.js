@@ -52,9 +52,30 @@ function UserAdItems() {
             <div id="userItemsBlock" key={index}>
                 <img src={item.image1} alt="itemImage" id="itemImage"/>
                 <div id="itemInfo">
-                    <strong>Title : {item.title} </strong>
-                    <strong>Views: 30 </strong>
-                    <strong>Price: {item.price}</strong>
+                    <strong>Title: {item.title} </strong>
+                    <strong>Views: {item.views} </strong>
+                    {item.availability === 'both'?(
+                        <>
+                        <strong>Sale Price: {item.sale_price}</strong>
+                        <strong>Borrow Price (Per Month): {item.borrow_price}</strong>
+                        <strong>Sale Status: {item.is_sold} </strong>
+                        <strong>Borrow Status: {item.is_borrowed} </strong>
+                        </>
+                    ):(null)}
+                    {item.availability === 'sale'?(
+                        <>
+                        <strong>Sale Price: {item.sale_price}</strong>
+                        <strong>Sale Status: {item.is_sold} </strong>
+                        </>
+                    ):(null)}
+                    {item.availability === 'borrow'?(
+                        <>
+                        <strong>Borrow Price (Per Month): {item.borrow_price}</strong>
+                        <strong>Borrow Status: {item.is_borrowed} </strong>
+                       </>
+                    ):(null)}
+
+                    
                     
                 </div>
                 <div id="itemButton">

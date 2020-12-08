@@ -3,12 +3,16 @@ import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
 import Axios from 'axios';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import { Redirect } from 'react-router-dom';
 
 
 function ItemCard() {
     const {items} = React.useContext(DataContext)
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
+
+    const [itemClicked, setItemClciked] = React.useState(false)
+    const [itemId, setItemId] = React.useState(null)
 
     const saveToWishList = (id) =>{
         if(JSON.parse(wishList).length == 3){
@@ -81,6 +85,12 @@ function ItemCard() {
         })
     
     }
+
+    if(itemClicked && itemId){
+        return <Redirect to={"currentItem/" + itemId}/>
+    }
+
+
     
     const renderCard= (card, index) =>{
         if(userSession){
@@ -90,10 +100,17 @@ function ItemCard() {
         }
         
         return(
-            <div id="cardBlock" key={index}>
-                <img src={card.image1} alt="cardImage" className="cardImage"/>
-                <strong className="cardTitle">{card.title}</strong>
-                <small className="cardCondition">{card.condition}</small>
+            <div id="cardBlock" key={index} href="/blog">
+            
+                <div id="itemBlockLink" onClick={() =>{
+                    setItemId(card.id)
+                    setItemClciked(true)
+                    
+                    }}>
+                    <img src={card.image1} alt="cardImage" className="cardImage"/>
+                    <strong className="cardTitle">{card.title}</strong>
+                    <small className="cardCondition">{card.condition}</small>
+                </div>
                 <div id="cardBlock_button">
                     {/*<button className="cardButtonSave">Save</button>*/}
                     {wishList?(

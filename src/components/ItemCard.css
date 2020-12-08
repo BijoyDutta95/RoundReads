@@ -59,3 +59,12 @@
     height: 20px;
     margin-left: 5px;
 }
+
+#itemBlockLink{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    cursor: pointer;
+}

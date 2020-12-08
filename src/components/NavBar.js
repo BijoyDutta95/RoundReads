@@ -81,7 +81,7 @@ function NavBar(props) {
             )}
             
             <Modal ref={modalRef}/>
-            <Link to='postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
+            <Link to='/postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
         </nav>
     )
 }

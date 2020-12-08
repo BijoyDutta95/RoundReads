@@ -11,7 +11,8 @@ function PostForm() {
     const [desc, setDesc] = React.useState('')
     const [category, setCategory] = React.useState('engineering')
     const [condition, setCondition] = React.useState('asNew')
-    const [price, setPrice] = React.useState('')
+    const [salePrice, setSalePrice] = React.useState(null)
+    const [borrowPrice, setBorrowPrice] = React.useState(null)
     const [availability, setAvailability] = React.useState('both')
     const [image1, setImage1] = React.useState('')
     const [image2, setImage2] = React.useState('')
@@ -58,10 +59,27 @@ function PostForm() {
         form_data.append('author', author);
         form_data.append('category', category);
         form_data.append('condition', condition);
-        form_data.append('price', price);
+        if(salePrice){
+            form_data.append('sale_price', salePrice);
+        }else{
+            form_data.append('sale_price', 0);
+        }
+        if(borrowPrice){
+            form_data.append('borrow_price', borrowPrice);
+        }else{
+            form_data.append('borrow_price', 0);
+        }
         form_data.append('availability', availability);
         form_data.append('desc', desc);
-        form_data.append('posted_by', JSON.parse(userSession).email);
+        form_data.append('poster_email', JSON.parse(userSession).email);
+        form_data.append('poster_name', JSON.parse(userSession).fname + " " + JSON.parse(userSession).mname + " " + JSON.parse(userSession).lname);
+        form_data.append('is_borrowed', "No");
+        form_data.append('is_sold', "No");
+        form_data.append('is_verified', false);
+        form_data.append('views', 0);
+        
+       
+        
 
         let url = "http://127.0.0.1:8000/api/books/"
        
@@ -150,14 +168,33 @@ function PostForm() {
                                     <option value="borrow">For Borrow</option>
                                 </select>
                             </div>
-                            <div className="inputField">
-                                <label className="onAvailable" for="saleprice"><b>Sale Price</b></label>
-                                <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setPrice(e.target.value)} required></input>
-                            </div>
-                            <div className="inputField">
-                                <label className="onAvailable" for="borrowPrice"><b>Borrow Price (Per Month)</b></label>
-                                <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setPrice(e.target.value)} required></input>
-                            </div>
+                            {availability == "both"?(
+                                <>
+                                <div className="inputField">
+                                    <label className="onAvailable" for="saleprice"><b>Sale Price</b></label>
+                                    <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setSalePrice(e.target.value)} required></input>
+                                </div>
+                                <div className="inputField">
+                                    <label className="onAvailable" for="borrowPrice"><b>Borrow Price (Per Month)</b></label>
+                                    <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setBorrowPrice(e.target.value)} required></input>
+                                </div></>
+                            ):(null)}
+                            
+                            {availability == "sale"?(
+                                <div className="inputField">
+                                    <label className="onAvailable" for="saleprice"><b>Sale Price</b></label>
+                                    <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setSalePrice(e.target.value)} required></input>
+                                </div>
+                            ):(null)}
+                            {availability == "borrow"?(
+                                <div className="inputField">
+                                    <label className="onAvailable" for="borrowPrice"><b>Borrow Price (Per Month)</b></label>
+                                    <input className="onAvailable" type="text" placeholder="Enter Price" onChange={(e) => setBorrowPrice(e.target.value)} required></input>
+                                </div>
+                            ):(null)}
+                                
+                            
+                            
                             <label for="image"><b>Upload Images</b></label>
                             <div id="fileUpload">
                                 <input type="file" onChange={handleChangeImage1}/>
