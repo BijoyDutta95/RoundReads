@@ -1,9 +1,10 @@
 import React from 'react'
+import IndividualItem from './IndividualItem'
 
 function BlogPage() {
     return (
         <div>
-            <h1>This is Bloggggg</h1>
+            <IndividualItem/>
         </div>
     )
 }
