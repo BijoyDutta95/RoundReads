@@ -40,3 +40,7 @@
 #itemInfo strong{
     margin-top: 5%;
 }
+#itemButton > *{
+    color: #86C232;
+    padding-bottom: 5px;
+}
