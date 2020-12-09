@@ -27,7 +27,8 @@
     z-index: 101;
 }
 .popUpBox > *{
-    margin-left: 6px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 #message{
     width: 100%;
@@ -35,9 +36,12 @@
 #message textarea{
     width: 95%;
     height: 70px;
+    margin-top: 10px;
+    resize: none;
 }
 #popButtons{
     margin-top: 10%;
+    margin-bottom: 5%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -55,4 +59,22 @@
     background-color: #86C232;
     color: #EDF5E0;
     font-weight: bold;
+}
+.popUpBox input[type=text]{
+    width: 100%;
+    padding: 3px 3px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.popUpBox select{
+    width: 100%;
+    padding: 3px 3px;
+    margin: 4px 0;
+}
+#buyRequest{
+    display: none;
+}
+#borrowRequest{
+    display: none;
 }

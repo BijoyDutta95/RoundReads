@@ -81,3 +81,6 @@ margin: auto;
 /* .onAvailable{
     display: initial;
 } */
+.inputField textarea{
+    resize: none;
+}
