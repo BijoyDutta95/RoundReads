@@ -4,6 +4,8 @@ import WishlistItems from '../WishlistItems'
 import './GlobalChange.css'
 import { UserContext, WishListContext } from '../Context/Contexts'
 import { Redirect } from 'react-router-dom'
+import { API } from '../API/Api'
+
 
 function WishlistPage() {
     const {wishList, userSession} = React.useContext(UserContext)

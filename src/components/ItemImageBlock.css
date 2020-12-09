@@ -86,9 +86,15 @@
     margin-left: 5px;
     margin-top: 25%;
 }
+#forIcon:hover{
+    cursor: pointer;
+}
 #backIcon{
     position: absolute;
     right: 0;
     margin-right: 5px;
     margin-top: 25%;
+}
+#backIcon:hover{
+    cursor: pointer;
 }
