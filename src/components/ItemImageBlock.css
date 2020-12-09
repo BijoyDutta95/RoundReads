@@ -83,8 +83,11 @@
 #forIcon{
     position: absolute;
     left: 0;
-    margin-left: 5px;
+    margin-left: 2px;
     margin-top: 25%;
+    background-color: #86C232;
+    border-radius: 50%;
+    padding: 5px;
 }
 #forIcon:hover{
     cursor: pointer;
@@ -92,9 +95,13 @@
 #backIcon{
     position: absolute;
     right: 0;
-    margin-right: 5px;
+    margin-right: 2px;
     margin-top: 25%;
+
 }
 #backIcon:hover{
     cursor: pointer;
+    background-color: #86C232;
+    border-radius: 50%;
+    padding: 5px;
 }

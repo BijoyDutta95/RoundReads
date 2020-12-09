@@ -1,0 +1,58 @@
+.popWrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.popBackdrop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.7);
+}
+.popUpBox{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-height: 30%;
+    width: 30%;
+    background-color: #EDF5E0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    border: 5px solid #86C232;
+    z-index: 101;
+}
+.popUpBox > *{
+    margin-left: 6px;
+}
+#message{
+    width: 100%;
+}
+#message textarea{
+    width: 95%;
+    height: 70px;
+}
+#popButtons{
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#messageCancel , #messageSend{ 
+    width: 40%;
+    height: 30px;
+    border: none;
+}
+#messageCancel{
+    background-color: #B6073B;
+    color: #EDF5E0;
+    font-weight: bold;
+}
+#messageSend{
+    background-color: #86C232;
+    color: #EDF5E0;
+    font-weight: bold;
+}
