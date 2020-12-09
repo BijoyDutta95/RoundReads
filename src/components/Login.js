@@ -1,6 +1,6 @@
 import React from 'react'
 import './Login.css'
-import axios from 'axios'
+import { API } from './API/Api'
 import { UserContext, ModalContext } from './Context/Contexts';
 
 function Login(){
@@ -14,13 +14,13 @@ function Login(){
     const handleLogin = (e) =>{
         e.preventDefault();
 
-        let url = "http://127.0.0.1:8000/auth/jwt/create/"
+        let url = "auth/jwt/create/"
         let body = JSON.stringify({
             email : email,
             password : password
         })
 
-        axios.post(url, body, {
+        API.post(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -37,8 +37,8 @@ function Login(){
     }
 
     const getUserData = () =>{
-        let url = "http://127.0.0.1:8000/auth/users/me/"
-        axios.get(url,{
+        let url = "auth/users/me/"
+        API.get(url,{
             headers: {
                 'Authorization' : 'JWT ' + sessionStorage.getItem('access_token')
             }
@@ -58,8 +58,8 @@ function Login(){
     }
 
     const getWishList = (id) =>{
-        let url = "http://127.0.0.1:8000/api/wishlist/" + id
-        axios.get(url)
+        let url = "api/wishlist/" + id
+        API.get(url)
         .then(data => {
             console.log("success wishlist : " + JSON.stringify(data))
             setWishList(JSON.stringify(data.data.wishlist))

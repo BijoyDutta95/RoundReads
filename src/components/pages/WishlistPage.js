@@ -3,8 +3,9 @@ import AccountInfo from '../AccountInfo'
 import WishlistItems from '../WishlistItems'
 import './GlobalChange.css'
 import { UserContext, WishListContext } from '../Context/Contexts'
-import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import { API } from '../API/Api'
+
 
 function WishlistPage() {
     const {wishList, userSession} = React.useContext(UserContext)
@@ -13,8 +14,8 @@ function WishlistPage() {
     React.useEffect(() =>{
         function getWishList(wishList){
             console.log("getWishlist called")
-            let url = "http://localhost:8000/api/get_wishlist/"
-            Axios.get(url, {
+            let url = "api/get_wishlist/"
+            API.get(url, {
                 params : {
                     wishlist : JSON.parse(wishList).reverse()
                 }

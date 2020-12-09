@@ -1,9 +1,13 @@
 import React from 'react';
 import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
-import Axios from 'axios';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+
+import { Redirect } from 'react-router-dom';
+import { API } from './API/Api'
+
 import MakeOfferPopUp from './MakeOfferPopUp';
+
 
 
 function ItemCard() {
@@ -13,9 +17,13 @@ function ItemCard() {
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
 
+    const [itemClicked, setItemClciked] = React.useState(false)
+    const [itemId, setItemId] = React.useState(null)
+
     const openPopUp=()=>{
         popRef.current.openModal();
     }
+
 
     const saveToWishList = (id) =>{
         if(JSON.parse(wishList).length == 3){
@@ -36,12 +44,12 @@ function ItemCard() {
         //console.log("after : " + wishList)
         
 
-        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
         let body = JSON.stringify({
             
             wishlist : wishListTemp
         })
-        Axios.patch(url, body, {
+        API.patch(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -70,12 +78,12 @@ function ItemCard() {
         //console.log("after : " + wishList)
         
 
-        let url = "http://localhost:8000/api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
         let body = JSON.stringify({
             
             wishlist : wishListTemp
         })
-        Axios.patch(url, body, {
+        API.patch(url, body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -88,6 +96,12 @@ function ItemCard() {
         })
     
     }
+
+    if(itemClicked && itemId){
+        return <Redirect to={"currentItem/" + itemId}/>
+    }
+
+
     
     const renderCard= (card, index) =>{
         if(userSession){
@@ -97,10 +111,17 @@ function ItemCard() {
         }
         
         return(
-            <div id="cardBlock" key={index}>
-                <img src={card.image1} alt="cardImage" className="cardImage"/>
-                <strong className="cardTitle">{card.title}</strong>
-                <small className="cardCondition">{card.condition}</small>
+            <div id="cardBlock" key={index} href="/blog">
+            
+                <div id="itemBlockLink" onClick={() =>{
+                    setItemId(card.id)
+                    setItemClciked(true)
+                    
+                    }}>
+                    <img src={card.image1} alt="cardImage" className="cardImage"/>
+                    <strong className="cardTitle">{card.title}</strong>
+                    <small className="cardCondition">{card.condition}</small>
+                </div>
                 <div id="cardBlock_button">
                     {/*<button className="cardButtonSave">Save</button>*/}
                     {wishList?(

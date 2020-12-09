@@ -4,7 +4,7 @@ import IndividualItem from './IndividualItem'
 function BlogPage() {
     return (
         <div>
-            <IndividualItem/>
+            <h1>Blog page</h1>
         </div>
     )
 }

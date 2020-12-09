@@ -12,6 +12,7 @@ import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';
 import { SearchContext, UserContext } from './components/Context/Contexts';
 import UserAccount from './components/pages/UserAccount';
+import IndividualItem from './components/pages/IndividualItem';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -38,6 +39,7 @@ function App() {
           <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
           <Route path='/userAd' exact component={UserAd}/>
+          <Route path='/currentItem/:id' exact component={IndividualItem}/>
         </SearchContext.Provider>
         
 

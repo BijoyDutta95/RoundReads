@@ -5,9 +5,10 @@ import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
 import axios from 'axios'
 import { DataContext, FilterContext } from '../Context/Contexts'
+import { API } from '../API/Api'
 
 function HomePage() {
-    let url = "http://localhost:8000/api/books/"
+    let url = "api/books/"
 
     const [items, setItems] = React.useState([])
     const [count, setCount] = React.useState(0)
@@ -23,7 +24,7 @@ function HomePage() {
 
     const getItems = (url, availability, condition, category) =>{
         console.log("get Items called")
-        axios.get(url, {
+        API.get(url, {
             params : {
                 'availability' : availability,
                 'condition' : condition,

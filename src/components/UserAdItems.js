@@ -3,7 +3,7 @@ import './UserAdItems.css'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { UserContext } from './Context/Contexts';
-import Axios from 'axios';
+import { API } from './API/Api'
 
 function UserAdItems() {
     const {userSession} = React.useContext(UserContext)
@@ -11,9 +11,9 @@ function UserAdItems() {
     
     React.useEffect(() =>{
         function getUserItems(){
-            let url = "http://localhost:8000/api/get_user_books/?search=" + JSON.parse(userSession).email
+            let url = "api/get_user_books/?search=" + JSON.parse(userSession).email
             console.log("User items called")
-            Axios.get(url)
+            API.get(url)
             .then(data =>{
                 console.log(data.data)
                 setItems(data.data)
@@ -35,8 +35,8 @@ function UserAdItems() {
         }
         console.log("after delete : " + itemsTemp)
         setItems(itemsTemp)
-        let url = "http://localhost:8000/api/books/" + id
-        Axios.delete(url)
+        let url = "api/books/" + id
+        API.delete(url)
         .then(data =>{
             console.log("success " + data.data)
         })
@@ -52,9 +52,30 @@ function UserAdItems() {
             <div id="userItemsBlock" key={index}>
                 <img src={item.image1} alt="itemImage" id="itemImage"/>
                 <div id="itemInfo">
-                    <strong>Title : {item.title} </strong>
-                    <strong>Views: 30 </strong>
-                    <strong>Price: {item.price}</strong>
+                    <strong>Title: {item.title} </strong>
+                    <strong>Views: {item.views} </strong>
+                    {item.availability === 'both'?(
+                        <>
+                        <strong>Sale Price: {item.sale_price}</strong>
+                        <strong>Borrow Price (Per Month): {item.borrow_price}</strong>
+                        <strong>Sale Status: {item.is_sold} </strong>
+                        <strong>Borrow Status: {item.is_borrowed} </strong>
+                        </>
+                    ):(null)}
+                    {item.availability === 'sale'?(
+                        <>
+                        <strong>Sale Price: {item.sale_price}</strong>
+                        <strong>Sale Status: {item.is_sold} </strong>
+                        </>
+                    ):(null)}
+                    {item.availability === 'borrow'?(
+                        <>
+                        <strong>Borrow Price (Per Month): {item.borrow_price}</strong>
+                        <strong>Borrow Status: {item.is_borrowed} </strong>
+                       </>
+                    ):(null)}
+
+                    
                     
                 </div>
                 <div id="itemButton">
