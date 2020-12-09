@@ -3,12 +3,19 @@ import './ItemCard.css'
 import { DataContext, UserContext } from './Context/Contexts';
 import Axios from 'axios';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import MakeOfferPopUp from './MakeOfferPopUp';
 
 
 function ItemCard() {
+    const popRef=React.useRef();
+
     const {items} = React.useContext(DataContext)
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
+
+    const openPopUp=()=>{
+        popRef.current.openModal();
+    }
 
     const saveToWishList = (id) =>{
         if(JSON.parse(wishList).length == 3){
@@ -118,7 +125,8 @@ function ItemCard() {
                     )}
                     
                     
-                    <button id="cardButtonContact">Contact Seller</button>
+                    <button id="cardButtonContact" onClick={openPopUp}>Contact Seller</button>
+                    <MakeOfferPopUp ref={popRef}/>
                 </div>    
             </div>
         )
