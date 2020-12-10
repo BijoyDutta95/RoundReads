@@ -149,9 +149,9 @@ function PostForm() {
                             <div className="inputField">
                                 <label for="bookCondition"><b>Select Book Condition</b></label>
                                 <select name="condition" id="condition" onChange={(e) => setCondition(e.target.value)}>
-                                    <option value="asNew">Almost New</option>
-                                    <option value="lightUsed">Lightly Used</option>
-                                    <option value="heavyUsed">Heavily Used</option>
+                                    <option value="Almost New">Almost New</option>
+                                    <option value="Lightly Used">Lightly Used</option>
+                                    <option value="Heavily Used">Heavily Used</option>
                                 </select>
                             </div>
                         </form>

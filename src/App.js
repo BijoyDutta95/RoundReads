@@ -12,6 +12,7 @@ import {Redirect} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage';
 import { SearchContext, UserContext } from './components/Context/Contexts';
 import UserAccount from './components/pages/UserAccount';
+import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
 
 function App() {
@@ -39,7 +40,9 @@ function App() {
           <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
           <Route path='/userAd' exact component={UserAd}/>
+          <Route path='/messages' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
+          
         </SearchContext.Provider>
         
 

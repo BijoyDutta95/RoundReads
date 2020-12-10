@@ -4,6 +4,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { UserContext } from './Context/Contexts';
 import { API } from './API/Api'
+import ChatIcon from '@material-ui/icons/ChatBubble';
+import ChatNotificationIcon from '@material-ui/icons/Announcement';
+import { Link } from 'react-router-dom';
+
 
 function UserAdItems() {
     const {userSession} = React.useContext(UserContext)
@@ -73,14 +77,13 @@ function UserAdItems() {
                         <strong>Borrow Price (Per Month): {item.borrow_price}</strong>
                         <strong>Borrow Status: {item.is_borrowed} </strong>
                        </>
-                    ):(null)}
-
-                    
+                    ):(null)}      
                     
                 </div>
                 <div id="itemButton">
                     <DeleteIcon id="deleteIcon" onClick={() => deleteItem(item.id)}/>
                     <EditIcon id="editIcon"/>
+                    <Link to='/messages' id="messages-link"><ChatIcon id="chatIcon"/></Link>
                 </div>
             </div>
         )
