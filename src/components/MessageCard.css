@@ -1,0 +1,22 @@
+#messageCard{
+    display: flex;
+    flex-direction: row;
+    background-color: #EDF5E0;
+    width: 70%;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 5px;
+}
+#messageCard img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    padding: 10px;
+}
+#messageCard hr{
+    width: 100%;
+}
+#offers{
+    display: flex;
+    flex-direction: row;
+}
