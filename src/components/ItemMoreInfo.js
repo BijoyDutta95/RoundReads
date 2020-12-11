@@ -10,7 +10,8 @@ function ItemMoreInfo(props) {
     const openPopUp=()=>{
         popRef.current.openModal();
     }
-    
+    const [currentItem, setCurrentItem] = React.useState([])
+
     return (
         <div id="ItemBlockRight">
            <div id="sellerInfo">
@@ -18,8 +19,12 @@ function ItemMoreInfo(props) {
                 <hr/>
                 <p>Seller Name : {props.items.poster_name}</p>
                 <p>Seller Email : {props.items.poster_email}</p>
-                <button id="contactSellerItem" onClick={openPopUp}>Contact Seller</button>
-                <MakeOfferPopUp ref={popRef}/>
+                <button id="contactSellerItem" onClick={() =>{
+                    setCurrentItem(props.items)
+                    openPopUp()
+                }}
+                >Contact Seller</button>
+                <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
 
            </div>
         </div>

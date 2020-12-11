@@ -40,7 +40,7 @@ function App() {
           <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
           <Route path='/userAd' exact component={UserAd}/>
-          <Route path='/messages' exact component={Messages}/>
+          <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           
         </SearchContext.Provider>

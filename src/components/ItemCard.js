@@ -19,6 +19,7 @@ function ItemCard() {
 
     const [itemClicked, setItemClciked] = React.useState(false)
     const [itemId, setItemId] = React.useState(null)
+    const [currentItem, setCurrentItem] = React.useState([])
 
     const openPopUp=()=>{
         popRef.current.openModal();
@@ -146,8 +147,13 @@ function ItemCard() {
                     )}
                     
                     
-                    <button id="cardButtonContact" onClick={openPopUp}>Contact Seller</button>
-                    <MakeOfferPopUp ref={popRef}/>
+                    <button id="cardButtonContact" onClick={() =>{
+                        setCurrentItem(card)
+                        openPopUp()
+
+                    }}
+                    >Contact Seller</button>
+                    <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
                 </div>    
             </div>
         )
