@@ -5,7 +5,7 @@ export default function SearchDropDown(props){
     
     const renderSearches = (item, index) =>{
         return(
-            <div key={index} className="dropdown-submenu-item">
+            <div key={index} className="searchDropdownItem">
                 
                 <li>{item}</li>
                 
@@ -14,7 +14,7 @@ export default function SearchDropDown(props){
     }
     
     return (
-        <div className="dropdown-submenu">
+        <div className="searchDropdown">
             {props.suggessions.map(renderSearches)}
         </div>
     )

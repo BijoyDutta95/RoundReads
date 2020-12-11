@@ -1,0 +1,48 @@
+.declineWrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.declineBackdrop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.7);
+}
+.declineBox{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-height: 20%;
+    width: 20%;
+    background-color: #EDF5E0;
+    box-shadow: 0 0 10px rgba(237, 245, 224,1);
+    z-index: 101;
+    padding: 10px;
+}
+#declinePopButtons{
+    margin-top: 10%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#declineCancel , #declineSend{ 
+    width: 40%;
+    height: 30px;
+    border: none;
+}
+#declineCancel{
+    background-color: #B6073B;
+    color: #EDF5E0;
+    font-weight: bold;
+}
+#declineSend{
+    background-color: #222629;
+    color: #EDF5E0;
+    font-weight: bold;
+}

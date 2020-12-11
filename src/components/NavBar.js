@@ -6,6 +6,7 @@ import { Link} from 'react-router-dom';
 import Modal from './Modal'
 import Submenu from './Submenu' 
 import { UserContext } from './Context/Contexts';
+import SearchDropDown from './SearchDropDown';
 
 function NavBar(props) {
     const modalRef=React.useRef();
@@ -14,18 +15,52 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    
-
-    const {user, userSession} = React.useContext(UserContext)
-
+    const {user, userSession, books} = React.useContext(UserContext)
+    const [suggessions, setSugessions] = React.useState([])
     const [searchTerm, setSearchTerm] = React.useState("")
 
     const handleSearch = () =>{
         console.log("Search click " + searchTerm)
         //props.setSearchFlag(true)
         props.setSearchTerm(searchTerm)
-        
     }
+
+    const search = (term) =>{
+        console.log(term)
+        let suggessionsTemp = []
+        if(term.length >= 3){
+            console.log("search")
+            for(let i in books){
+                if(books[i].author.toLowerCase().includes(term.toLowerCase())){
+                    if(!suggessionsTemp.includes(books[i].author)){
+                        suggessionsTemp.push(books[i].author)
+                    }
+                    
+                }
+                if(books[i].category.toLowerCase().includes(term.toLowerCase())){
+                    //console.log(books[i].category)
+                    if(!suggessionsTemp.includes(books[i].category)){
+                        suggessionsTemp.push(books[i].category)
+                    }
+                }
+                if(books[i].title.toLowerCase().includes(term.toLowerCase())){
+                    //console.log(books[i].title)
+                    if(!suggessionsTemp.includes(books[i].title)){
+                        suggessionsTemp.push(books[i].title)
+                    }
+                }
+                /*if(books[i].desc.toLowerCase().includes(term.toLowerCase())){
+                    //console.log(books[i].desc)
+                    suggessionsTemp.push(books[i].desc)
+                }*/
+            }
+            setSugessions(suggessionsTemp)
+            console.log(suggessionsTemp)
+
+        }
+
+    }
+
  
     return (
         <nav className="navHeader">
@@ -36,7 +71,9 @@ function NavBar(props) {
             <div className="headerSearch">
                 <input className="searchBar" 
                     onChange={event => {
+                        setSugessions([])
                         setSearchTerm(event.target.value)
+                        search(event.target.value)
                     }} 
 
                     onKeyPress={event => {
@@ -45,6 +82,7 @@ function NavBar(props) {
                         }
                     }}/>
                 <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
+                <SearchDropDown suggessions={suggessions}/>
             </div>
 
             <div className="headerLinks">
