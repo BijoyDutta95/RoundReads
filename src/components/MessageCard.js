@@ -3,12 +3,17 @@ import './MessageCard.css'
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import ReplyPopUp from './ReplyPopUp';
+import DeclinePopUp from './DeclinePopUp';
 
 function MessageCard() {
     const replyRef=React.useRef();
+    const declineRef=React.useRef();
 
     const openPopUp=()=>{
         replyRef.current.openModal();
+    }
+    const openDeclinePop=()=>{
+        declineRef.current.openModal();
     }
 
     return (
@@ -28,7 +33,8 @@ function MessageCard() {
             <div id="messageButtons">
                 <CheckIcon id="accept" onClick={openPopUp}/>
                 <ReplyPopUp ref={replyRef}/>
-                <CloseIcon id="decline"/>
+                <CloseIcon id="decline" onClick={openDeclinePop}/>
+                <DeclinePopUp ref={declineRef} />
             </div>
         </div>
     )
