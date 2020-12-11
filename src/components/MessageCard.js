@@ -46,7 +46,7 @@ function MessageCard(props) {
                         }}/>
                         <ReplyPopUp ref={replyRef} currentMessage={currentMessage}/>
                         <CloseIcon id="decline" onClick={openDeclinePop}/>
-                        <DeclinePopUp ref={declineRef} />
+                        <DeclinePopUp ref={declineRef} currentMessage={currentMessage} />
                     </div>
                 </div>
             </div>

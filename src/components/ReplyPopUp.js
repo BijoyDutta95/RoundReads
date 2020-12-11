@@ -45,6 +45,7 @@ const ReplyPopUp = forwardRef((props,ref) => {
         })
         .then(data =>{
             console.log(data.data)
+            close()
         })
         .catch(err =>{
             console.log(err)
