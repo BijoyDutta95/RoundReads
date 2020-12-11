@@ -5,9 +5,9 @@ import { UserContext } from './Context/Contexts'
 import UserIcon from '../icons/user.svg';
 
 
-function Submenu(props) {
+function Submenu() {
 
-  const {setUser, setUserSession, setWishList} = React.useContext(UserContext)
+  const {setUser, setUserSession, setWishList, userSession} = React.useContext(UserContext)
 
   const logout = () =>{
         console.log("logout")
@@ -25,7 +25,7 @@ function Submenu(props) {
           <li className="dropdown-submenu-item">
             <div id="userInfo">
               <img src={UserIcon} alt="userIcon" id="usrIcon"/>
-              <strong>Hello UserName</strong>
+              <strong>Hello {JSON.parse(userSession).fname}</strong>
             </div>
 
           </li>

@@ -58,8 +58,26 @@ function WishlistItems() {
                 <img src={item.image1} alt="itemImage" id="SingleItemImage"/>
                 <div id="singleItemInfo">
                     <strong>Title : {item.title}</strong>
-                    <small>Posted By : {item.posted_by}</small>
-                    <small>Price : {item.price}</small>
+                    <small>Posted By : {item.poster_name}</small>
+                    <small>Available For : {item.availability}</small>
+                    {item.availability == 'both'?(
+                        <>
+                        <small>Buying Price : {item.sale_price}</small>
+                        <small>Borrowing Price : {item.borrow_price}</small>
+                        </>
+                    ):(null)}
+                    {item.availability == 'sale'?(
+                        <>
+                        <small>Buying Price : {item.sale_price}</small>
+                        
+                        </>
+                    ):(null)}
+                    {item.availability == 'borrow'?(
+                        <>
+                        <small>Borrowing Price : {item.borrow_price}</small>
+                        </>
+                    ):(null)}
+                    
                 </div>
                 <div id="singleItemButtons">
                     <BookmarkIcon id="saveButton" onClick={() => removeFromWishList(item.id)}/>

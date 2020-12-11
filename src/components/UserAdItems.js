@@ -83,7 +83,7 @@ function UserAdItems() {
                 <div id="itemButton">
                     <DeleteIcon id="deleteIcon" onClick={() => deleteItem(item.id)}/>
                     <EditIcon id="editIcon"/>
-                    <Link to='/messages' id="messages-link"><ChatIcon id="chatIcon"/></Link>
+                    <Link to={'/messages/' + item.id} id="messages-link"><ChatIcon id="chatIcon"/></Link>
                 </div>
             </div>
         )

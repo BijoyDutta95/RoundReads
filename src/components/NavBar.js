@@ -6,6 +6,7 @@ import { Link} from 'react-router-dom';
 import Modal from './Modal'
 import Submenu from './Submenu' 
 import { UserContext } from './Context/Contexts';
+import SearchDropDown from './SearchDropDown';
 
 function NavBar(props) {
     const modalRef=React.useRef();
@@ -14,19 +15,17 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    
-
-    const {user, userSession} = React.useContext(UserContext)
-
+    const {userSession} = React.useContext(UserContext)
+    //const [suggessions, setSugessions] = React.useState([])
     const [searchTerm, setSearchTerm] = React.useState("")
 
     const handleSearch = () =>{
         console.log("Search click " + searchTerm)
         //props.setSearchFlag(true)
         props.setSearchTerm(searchTerm)
-        
     }
- 
+
+    
     return (
         <nav className="navHeader">
             <Link to= '/' className="headerLogo">
@@ -36,7 +35,9 @@ function NavBar(props) {
             <div className="headerSearch">
                 <input className="searchBar" 
                     onChange={event => {
+                        //setSugessions([])
                         setSearchTerm(event.target.value)
+                        //search(event.target.value)
                     }} 
 
                     onKeyPress={event => {
@@ -45,6 +46,7 @@ function NavBar(props) {
                         }
                     }}/>
                 <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
+               
             </div>
 
             <div className="headerLinks">
@@ -54,20 +56,11 @@ function NavBar(props) {
                 <Link to='/about' id="aboutLink"><p id="linkToAbout">About</p></Link>
             </div>
             
-            {user || userSession?(
+            {userSession?(
                 <div className="userAndPost">
                     <div className="drop-down">
                         <div className="headerUser">
                             <AccountCircleRoundedIcon className="userIcon"/>
-                           {/* <div className="userName">
-                                <span>Welcome</span>
-                                {user ? (
-                                    <span>{JSON.parse(user).fname}</span>
-                                ):(      
-                                    <span>{JSON.parse(userSession).fname}</span>
-                                )}
-                                </div>*/}
-                        
                             
                         </div>
                         <Submenu/>
