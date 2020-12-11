@@ -14,6 +14,8 @@ import { SearchContext, UserContext } from './components/Context/Contexts';
 import UserAccount from './components/pages/UserAccount';
 import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
+import SearchSuggest from './components/pages/SearchSuggest';
+import {API} from './components/API/Api'
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -21,10 +23,28 @@ function App() {
   const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
   const [wishList, setWishList] = React.useState(sessionStorage.getItem('wishlist'))
 
+  const [books, setBooks] = React.useState([])
+  
+    
+  React.useEffect(() =>{
+      function getItems(){
+          console.log('getBoooksss')
+          API.get('api/get_user_books')
+          .then(data=>{
+              setBooks(data.data)
+              console.log(data.data)
+          })
+          .catch(err=>{
+              console.log(err)
+          })
+      }
+      getItems()
+  }, [])
+
   return (
     <div className="App">
     <Router>
-    <UserContext.Provider value={{user, setUser, userSession, setUserSession, wishList, setWishList}}>
+    <UserContext.Provider value={{user, setUser, userSession, setUserSession, wishList, setWishList, books}}>
       <NavBar setSearchTerm={setSearchTerm}/>
       {searchTerm?(
         <Redirect to={'/search/' + searchTerm}/>
@@ -42,6 +62,7 @@ function App() {
           <Route path='/userAd' exact component={UserAd}/>
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
+          <Route path='/searchSuggest' exact component={SearchSuggest}/>
           
         </SearchContext.Provider>
         

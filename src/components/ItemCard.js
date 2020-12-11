@@ -106,7 +106,7 @@ function ItemCard() {
     
     const renderCard= (card, index) =>{
         if(userSession){
-            if(card.posted_by == JSON.parse(userSession).email){
+            if(card.poster_email == JSON.parse(userSession).email){
                 return
             }
         }

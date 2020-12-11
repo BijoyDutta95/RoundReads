@@ -58,7 +58,7 @@ function WishlistItems() {
                 <img src={item.image1} alt="itemImage" id="SingleItemImage"/>
                 <div id="singleItemInfo">
                     <strong>Title : {item.title}</strong>
-                    <small>Posted By : {item.posted_by}</small>
+                    <small>Posted By : {item.poster_name}</small>
                     <small>Available For : {item.availability}</small>
                     {item.availability == 'both'?(
                         <>
