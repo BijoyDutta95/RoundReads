@@ -40,9 +40,9 @@ const ReplyPopUp = forwardRef((props,ref) => {
                     <hr id="hline"/>
                     <div id="senderBlock">
                         <b><label id="detailLabel">Share Contact Details</label></b>
-                        <input type="text" id="contactDetail"/>
+                        <input type="text" id="contactDetail" required/>
                         <div id="message">
-                            <textarea type="text" placeholder="Additional Message" required></textarea>
+                            <textarea type="text" placeholder="Additional Message"></textarea>
                         </div>
                     </div>
                     <div id="replyPopButtons">
