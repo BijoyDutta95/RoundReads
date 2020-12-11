@@ -26,7 +26,7 @@ function App() {
   const [books, setBooks] = React.useState([])
   
     
-  React.useEffect(() =>{
+  /*React.useEffect(() =>{
       function getItems(){
           console.log('getBoooksss')
           API.get('api/get_user_books')
@@ -39,7 +39,7 @@ function App() {
           })
       }
       getItems()
-  }, [])
+  }, [])*/
 
   return (
     <div className="App">
@@ -62,7 +62,7 @@ function App() {
           <Route path='/userAd' exact component={UserAd}/>
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
-          <Route path='/searchSuggest' exact component={SearchSuggest}/>
+          {/*<Route path='/searchSuggest' exact component={SearchSuggest}/>*/}
           
         </SearchContext.Provider>
         

@@ -47,7 +47,7 @@ function Login(){
             console.log("success : " + JSON.stringify(data))
             setUser(JSON.stringify(data.data))
             sessionStorage.setItem('user', JSON.stringify(data.data))
-            setUserSession(sessionStorage.getItem('user'))
+            setUserSession(JSON.stringify(data.data))
             getWishList(data.data.id)
             
         })

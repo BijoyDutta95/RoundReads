@@ -16,10 +16,12 @@ function MessageCard(props) {
     const openDeclinePop=()=>{
         declineRef.current.openModal();
     }
+
+    const [currentMessage, setCurrentMessage] = React.useState([])
     
     const renderMessages = (message, index) =>{
         return (
-            <div id="messageCard">
+            <div id="messageCard" key={index}>
                 <img src="/images/bookImg.jpg"/>
                 <div id="messageText">
                     <p id="receivedMessage">{message.message}</p>
@@ -38,8 +40,11 @@ function MessageCard(props) {
                     </div>
                     <div id="vl"></div>
                     <div id="messageButtons">
-                        <CheckIcon id="accept" onClick={openPopUp}/>
-                        <ReplyPopUp ref={replyRef}/>
+                        <CheckIcon id="accept" onClick={() =>{
+                            setCurrentMessage(message)
+                            openPopUp()
+                        }}/>
+                        <ReplyPopUp ref={replyRef} currentMessage={currentMessage}/>
                         <CloseIcon id="decline" onClick={openDeclinePop}/>
                         <DeclinePopUp ref={declineRef} />
                     </div>
@@ -57,30 +62,3 @@ function MessageCard(props) {
 }
     
 export default MessageCard
-/*
-
-function MessageCard() {
-    
-
-    return (
-        <div id="messageCard">
-            <img src="/images/bookImg.jpg"/>
-            <div id="messageText">
-                <p id="receivedMessage">Received messageReceived messageReceived messageReceived messageReceived message................................</p>
-                <hr/>
-                <div id="offers">
-                    <label>Offered Amount: </label>
-                    <p>394</p>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Requested Duration: </label>
-                    <p>2months</p>
-                </div>
-            </div>
-            <div id="vl"></div>
-            <div id="messageButtons">
-                <CheckIcon id="accept" onClick={openPopUp}/>
-                <ReplyPopUp ref={replyRef}/>
-                <CloseIcon id="decline" onClick={openDeclinePop}/>
-                <DeclinePopUp ref={declineRef} />
-            </div>
-        </div>
-   */

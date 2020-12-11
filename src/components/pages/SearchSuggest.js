@@ -1,9 +1,46 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
+/*import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export default function ComboBox() {
+  
+  const search = (term) =>{
+    console.log(term)
+    let suggessionsTemp = []
+    if(term.length >= 3){
+        console.log("search")
+        for(let i in books){
+            if(books[i].author.toLowerCase().includes(term.toLowerCase())){
+                if(!suggessionsTemp.includes(books[i].author)){
+                    suggessionsTemp.push(books[i].author)
+                }
+                
+            }
+            if(books[i].category.toLowerCase().includes(term.toLowerCase())){
+                //console.log(books[i].category)
+                if(!suggessionsTemp.includes(books[i].category)){
+                    suggessionsTemp.push(books[i].category)
+                }
+            }
+            if(books[i].title.toLowerCase().includes(term.toLowerCase())){
+                //console.log(books[i].title)
+                if(!suggessionsTemp.includes(books[i].title)){
+                    suggessionsTemp.push(books[i].title)
+                }
+            }
+          if(books[i].desc.toLowerCase().includes(term.toLowerCase())){
+                //console.log(books[i].desc)
+                suggessionsTemp.push(books[i].desc)
+            }
+        }
+        setSugessions(suggessionsTemp)
+        console.log(suggessionsTemp)
+
+    }
+  }
+
+  
   return (
     <Autocomplete
       id="combo-box-demo"
@@ -118,3 +155,4 @@ const top100Films = [
   { title: '3 Idiots', year: 2009 },
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
+*/

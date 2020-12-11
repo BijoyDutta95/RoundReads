@@ -15,8 +15,8 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    const {user, userSession, books} = React.useContext(UserContext)
-    const [suggessions, setSugessions] = React.useState([])
+    const {userSession} = React.useContext(UserContext)
+    //const [suggessions, setSugessions] = React.useState([])
     const [searchTerm, setSearchTerm] = React.useState("")
 
     const handleSearch = () =>{
@@ -25,43 +25,7 @@ function NavBar(props) {
         props.setSearchTerm(searchTerm)
     }
 
-    const search = (term) =>{
-        console.log(term)
-        let suggessionsTemp = []
-        if(term.length >= 3){
-            console.log("search")
-            for(let i in books){
-                if(books[i].author.toLowerCase().includes(term.toLowerCase())){
-                    if(!suggessionsTemp.includes(books[i].author)){
-                        suggessionsTemp.push(books[i].author)
-                    }
-                    
-                }
-                if(books[i].category.toLowerCase().includes(term.toLowerCase())){
-                    //console.log(books[i].category)
-                    if(!suggessionsTemp.includes(books[i].category)){
-                        suggessionsTemp.push(books[i].category)
-                    }
-                }
-                if(books[i].title.toLowerCase().includes(term.toLowerCase())){
-                    //console.log(books[i].title)
-                    if(!suggessionsTemp.includes(books[i].title)){
-                        suggessionsTemp.push(books[i].title)
-                    }
-                }
-                /*if(books[i].desc.toLowerCase().includes(term.toLowerCase())){
-                    //console.log(books[i].desc)
-                    suggessionsTemp.push(books[i].desc)
-                }*/
-            }
-            setSugessions(suggessionsTemp)
-            console.log(suggessionsTemp)
-
-        }
-
-    }
-
- 
+    
     return (
         <nav className="navHeader">
             <Link to= '/' className="headerLogo">
@@ -71,9 +35,9 @@ function NavBar(props) {
             <div className="headerSearch">
                 <input className="searchBar" 
                     onChange={event => {
-                        setSugessions([])
+                        //setSugessions([])
                         setSearchTerm(event.target.value)
-                        search(event.target.value)
+                        //search(event.target.value)
                     }} 
 
                     onKeyPress={event => {
@@ -82,7 +46,7 @@ function NavBar(props) {
                         }
                     }}/>
                 <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
-                <SearchDropDown suggessions={suggessions}/>
+               
             </div>
 
             <div className="headerLinks">
@@ -92,20 +56,11 @@ function NavBar(props) {
                 <Link to='/about' id="aboutLink"><p id="linkToAbout">About</p></Link>
             </div>
             
-            {user || userSession?(
+            {userSession?(
                 <div className="userAndPost">
                     <div className="drop-down">
                         <div className="headerUser">
                             <AccountCircleRoundedIcon className="userIcon"/>
-                           {/* <div className="userName">
-                                <span>Welcome</span>
-                                {user ? (
-                                    <span>{JSON.parse(user).fname}</span>
-                                ):(      
-                                    <span>{JSON.parse(userSession).fname}</span>
-                                )}
-                                </div>*/}
-                        
                             
                         </div>
                         <Submenu/>

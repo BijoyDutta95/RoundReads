@@ -19,9 +19,6 @@
 }
 #offers{
     display: flex;
-<<<<<<< HEAD
-    flex-direction: column;
-=======
     flex-direction: row;
     margin-top: 10px;
 }
@@ -58,5 +55,5 @@
 }
 #accept:hover ,#decline:hover{
     box-shadow: none;
->>>>>>> 41f2d4f5ba56c7174a39b9a5b64da385ad5fafe0
+
 }
