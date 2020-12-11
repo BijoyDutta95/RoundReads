@@ -1,0 +1,61 @@
+.replyWrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.replyBackdrop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.7);
+}
+.replyBox{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-height: 30%;
+    width: 30%;
+    background-color: #EDF5E0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    z-index: 101;
+    padding: 2px;
+}
+#requestedFor, #buyingRequest, #borrowingRequest{
+    display: flex;
+}
+#contactDetail{
+    width: 95%;
+    margin: auto;
+}
+#senderBlock{
+    margin-top: 2%;
+}
+#senderDetail{
+    background-color: #86C232;
+}
+#replyPopButtons{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#replyCancel , #replySend{ 
+    width: 40%;
+    height: 30px;
+    border: none;
+}
+#replyCancel{
+    background-color: #B6073B;
+    color: #EDF5E0;
+    font-weight: bold;
+}
+#replySend{
+    background-color: #222629;
+    color: #EDF5E0;
+    font-weight: bold;
+}
