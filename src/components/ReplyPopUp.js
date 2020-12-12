@@ -59,7 +59,7 @@ const ReplyPopUp = forwardRef((props,ref) => {
                 <div className="replyBox">
                     <div id="senderDetail">
                         <div id="requestedFor">
-                            <b><label>Requested For: </label></b>&nbsp;
+                            <b><label>Requested For: {props.currentMessage.id}</label></b>&nbsp;
                             <p>{props.currentMessage.request_for}</p>
                         </div>
                         {props.currentMessage.request_for == 'buying'?(

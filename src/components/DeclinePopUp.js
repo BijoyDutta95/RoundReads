@@ -27,14 +27,11 @@ const DeclinePopUp = forwardRef((props,ref) => {
         //console.log(phone)
         console.log(message)
         let body = JSON.stringify({
-            book_id : props.currentMessage.book_id,
-            customer_email : props.currentMessage.requester_email,
             accepted : false,
-            seller_contact : '1',
-            message : message
+            response : message
         })
 
-        API.post('api/responses/', body, {
+        API.patch('api/requests/' + props.currentMessage.id + '/', body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -54,7 +51,7 @@ const DeclinePopUp = forwardRef((props,ref) => {
                 <div onClick={close} className="declineBackdrop"/>
                 <div className="declineBox">
                     <div id="reason">
-                        <label>Reason for declining</label>
+                        <label>Reason for declining </label>
                         <select name="declinedFor" id="declinedFor" onChange={(e)=>{setMessage(e.target.value)}}>
                             <option value="Price too Low">Price too low</option>
                             <option value="Already Sold">Already Sold</option>
