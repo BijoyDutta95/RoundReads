@@ -1,7 +1,20 @@
 import React from 'react'
 import './OfferItems.css'
+import MakeOfferPopUp from './MakeOfferPopUp';
+import SellerContactInfo from './SellerContactInfo';
 
 function OfferItems() {
+
+    const offerRef=React.useRef();
+    const infoRef=React.useRef();
+
+    const openPopUp=()=>{
+        offerRef.current.openModal();
+    }
+    const infoPopUp=()=>{
+        infoRef.current.openModal();
+    }
+
     return (
         <div>
             <div id="offerItemCard">
@@ -18,8 +31,10 @@ function OfferItems() {
                             <label>Status: </label>   
                         </div>
                         <div id="replyButtons">
-                            <button>Contact Info</button>
-                            <button>Make New Offer</button>
+                            <button onClick={infoPopUp} >Contact Info</button>
+                            <SellerContactInfo ref={infoRef}/>
+                            <button onClick={openPopUp}>Make New Offer</button>
+                            <MakeOfferPopUp ref={offerRef}/>
                         </div>
                     </div>
                 </div>
