@@ -16,6 +16,7 @@ import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
 import SearchSuggest from './components/pages/SearchSuggest';
 import {API} from './components/API/Api'
+import UserOffers from './components/pages/UserOffers';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -60,6 +61,7 @@ function App() {
           <Route path='/wishlist' exact component={WishListPage}/>
           <Route path='/about' exact component={AboutPage}/>
           <Route path='/userAd' exact component={UserAd}/>
+          <Route path='/userOffers' exact component={UserOffers}/>
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           {/*<Route path='/searchSuggest' exact component={SearchSuggest}/>*/}
