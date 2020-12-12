@@ -14,8 +14,8 @@ import { SearchContext, UserContext } from './components/Context/Contexts';
 import UserAccount from './components/pages/UserAccount';
 import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
-import SearchSuggest from './components/pages/SearchSuggest';
-import {API} from './components/API/Api'
+//import SearchSuggest from './components/pages/SearchSuggest';
+//import {API} from './components/API/Api'
 import UserOffers from './components/pages/UserOffers';
 
 function App() {
