@@ -33,7 +33,7 @@
 #noMessages p{
     margin-top: 10px;
 }
-#mailImage{
+#mailImage, #dealImage{
     height: 200px !important;
     width: 200px !important;
     margin-top: 20%;

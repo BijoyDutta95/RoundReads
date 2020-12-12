@@ -1,0 +1,50 @@
+#offerItemCard{
+    display: flex;
+    flex-direction: row;
+    background-color: #EDF5E0;
+    width: 70%;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
+    box-shadow: 0 0 10px rgba(237, 245, 224,1);
+}
+#offerItemCard img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    padding: 5px;
+}
+#userOffer{
+    background-color: #86C232;
+    border-top-right-radius: 15%;
+    padding: 5px;
+
+}
+#offerReply{
+    width: 100%;
+}
+#sellerReply{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#replyButtons{
+    margin-right: 5%;
+}
+#replyButtons button{
+    border: none;
+    background-color: #222629;
+    color: #EDF5E0;
+    margin-right: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,1);
+    padding: 4px;
+}
+#replyButtons button:hover{
+    box-shadow: none;
+}
+
