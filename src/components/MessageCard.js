@@ -35,11 +35,12 @@ function MessageCard(props) {
                         ):(
                             <label>Requested Duration: {message.borrowing_offer} months</label>
                         )}
-                        
-            
                     </div>
-                    <div id="vl"></div>
-                    <div id="messageButtons">
+                    
+                    
+                </div>
+                <div id="vl"></div>
+                <div id="messageButtons">
                         <CheckIcon id="accept" onClick={() =>{
                             setCurrentMessage(message)
                             openPopUp()
@@ -48,7 +49,6 @@ function MessageCard(props) {
                         <CloseIcon id="decline" onClick={openDeclinePop}/>
                         <DeclinePopUp ref={declineRef} currentMessage={currentMessage} />
                     </div>
-                </div>
             </div>
         )
     }

@@ -27,7 +27,6 @@ function Submenu() {
               <img src={UserIcon} alt="userIcon" id="usrIcon"/>
               <strong>Hello {JSON.parse(userSession).fname}</strong>
             </div>
-
           </li>
           <li className="dropdown-submenu-item">
             <Link to='/user_account' id="menu-item-link"><p id="menu-item">View Profile</p></Link>
@@ -37,6 +36,9 @@ function Submenu() {
           </li>
           <li className="dropdown-submenu-item ">
             <Link to='/userAd' id="menu-item-link"><p id="menu-item">My Ads</p></Link>
+          </li>
+          <li className="dropdown-submenu-item ">
+            <Link to='/userOffers' id="menu-item-link"><p id="menu-item">My Offers</p></Link>
           </li>
           <li className="dropdown-submenu-item ">
             <Link to='#' id="menu-item-link"><p id="menu-item">My Blogs</p></Link>
