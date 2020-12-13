@@ -16,6 +16,7 @@ function OfferItems(props) {
     }
 
     const [currentOffer, setCurrentOffer] = React.useState([])
+    const [currentBook, setCurrentBook] = React.useState([])
 
     const renderOffers = (offer, index) =>{
         
@@ -71,8 +72,15 @@ function OfferItems(props) {
                                 ):(null)}
                                 {offer.status == 'declined'?(
                                     <>
-                                        <button onClick={openPopUp}>Make New Offer</button>
-                                        <MakeOfferPopUp ref={offerRef}/>
+                                        <button onClick={() =>{
+                                            for(let i in props.books){
+                                                if(props.books[i].id == offer.book_id){
+                                                    setCurrentBook(props.books[i])
+                                                }
+                                            }
+                                            openPopUp()
+                                        }}>Make New Offer</button>
+                                        <MakeOfferPopUp ref={offerRef} currentItem={currentBook}/>
                                     </>
                                 ):(null)}
                                 
