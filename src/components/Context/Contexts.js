@@ -6,3 +6,4 @@ export const FilterContext= React.createContext(null);
 export const ModalContext= React.createContext(null);
 export const UserContext= React.createContext(null);
 export const WishListContext= React.createContext(null);
+export const MessageContext= React.createContext(null);

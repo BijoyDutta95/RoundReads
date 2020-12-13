@@ -1,6 +1,7 @@
 import React, {forwardRef,useImperativeHandle} from 'react';
 import './DeclinePopUp.css'
 import {API} from './API/Api'
+import { MessageContext } from './Context/Contexts';
 
 const DeclinePopUp = forwardRef((props,ref) => {
 
@@ -21,13 +22,14 @@ const DeclinePopUp = forwardRef((props,ref) => {
     })
 
     const [message, setMessage] = React.useState('Price too low')
+    const {messages, setMessages, declinedCount, setDeclinedCount, pendingCount, setPendingCount} = React.useContext(MessageContext)
 
 
     const sendMessage = () =>{
         //console.log(phone)
         console.log(message)
         let body = JSON.stringify({
-            accepted : false,
+            status : 'declined',
             response : message
         })
 
@@ -38,11 +40,26 @@ const DeclinePopUp = forwardRef((props,ref) => {
         })
         .then(data =>{
             console.log(data.data)
+            setLocalMessages()
             close()
         })
         .catch(err =>{
             console.log(err)
         })
+    }
+
+    const setLocalMessages = () =>{
+        let messagesTemp = []
+        for(let i in messages){
+            if(messages[i].id != props.currentMessage.id){
+                messagesTemp.push(messages[i])
+                /*messagesTemp.push(messages[i])
+                messagesTemp[i].status = 'declined'*/
+            }
+        }
+        setMessages(messagesTemp)
+        setDeclinedCount(declinedCount+1)
+        setPendingCount(pendingCount-1)
     }
 
     if(display){

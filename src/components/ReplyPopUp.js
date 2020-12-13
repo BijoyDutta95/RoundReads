@@ -2,6 +2,7 @@ import React, {forwardRef,useImperativeHandle} from 'react';
 import './ReplyPopUp.css'
 //import {UserContext} from './Context/Contexts'
 import {API} from './API/Api'
+import { MessageContext } from './Context/Contexts';
 
 const ReplyPopUp = forwardRef((props,ref) => {
 
@@ -22,7 +23,7 @@ const ReplyPopUp = forwardRef((props,ref) => {
         }
     })
 
-    //const {userSession} = React.useContext(UserContext)
+    const {messages, setMessages, acceptedCount, setAcceptedCount, pendingCount, setPendingCount} = React.useContext(MessageContext)
 
     const [phone, setPhone] = React.useState('')
     const [message, setMessage] = React.useState('')
@@ -31,25 +32,39 @@ const ReplyPopUp = forwardRef((props,ref) => {
         console.log(phone)
         console.log(message)
         let body = JSON.stringify({
-            book_id : props.currentMessage.book_id,
-            customer_email : props.currentMessage.requester_email,
-            accepted : true,
             seller_contact : phone,
-            message : message
+            status : 'accepted',
+            response : message
         })
 
-        API.post('api/responses/', body, {
+        API.patch('api/requests/' + props.currentMessage.id + '/', body, {
             headers : {
                 'Content-Type' : 'application/json'
             }
         })
         .then(data =>{
             console.log(data.data)
+            setLocalMessages()
             close()
         })
         .catch(err =>{
             console.log(err)
         })
+    }
+
+    const setLocalMessages = () =>{
+        let messagesTemp = []
+        for(let i in messages){
+            if(messages[i].id == props.currentMessage.id){
+                messagesTemp.push(messages[i])
+                messagesTemp[i].status = 'accepted'
+            }else{
+                messagesTemp.push(messages[i])
+            }
+        }
+        setMessages(messagesTemp)
+        setAcceptedCount(acceptedCount + 1)
+        setPendingCount(pendingCount-1)
     }
 
     if(display){
@@ -59,7 +74,7 @@ const ReplyPopUp = forwardRef((props,ref) => {
                 <div className="replyBox">
                     <div id="senderDetail">
                         <div id="requestedFor">
-                            <b><label>Requested For: {props.currentMessage.id}</label></b>&nbsp;
+                            <b><label>Requested For: </label></b>&nbsp;
                             <p>{props.currentMessage.request_for}</p>
                         </div>
                         {props.currentMessage.request_for == 'buying'?(

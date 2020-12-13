@@ -13,6 +13,8 @@ function UserOffers() {
     const [offers, setOffers] = React.useState([])
     const [fetched, setFetched] = React.useState(false)
     const [books, setBooks] = React.useState([])
+    
+
     React.useEffect(() =>{
         function getMessages(){
             console.log("get offers called :  " + url)
@@ -61,7 +63,7 @@ function UserOffers() {
             return (
                 <div className="globalBlock">
                     <div id="noMessages">
-                        <p>No Offers Made Yet! {JSON.parse(userSession).email}</p>
+                        <p>No Offers Made Yet!</p>
                         <p>Search for your favourite book and get the deal done</p>
                         <img src={Deal} alt="deal" id="dealImage"/>
                     </div>

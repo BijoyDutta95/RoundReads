@@ -3,11 +3,8 @@ import './OfferItems.css'
 import MakeOfferPopUp from './MakeOfferPopUp';
 import SellerContactInfo from './SellerContactInfo';
 
-
 function OfferItems(props) {
-    /*const getBookInfo = (book, index) =>{
-        if(book.id == offer)
-    }*/
+    
     const offerRef=React.useRef();
     const infoRef=React.useRef();
 
@@ -17,6 +14,8 @@ function OfferItems(props) {
     const infoPopUp=()=>{
         infoRef.current.openModal();
     }
+
+    const [currentOffer, setCurrentOffer] = React.useState([])
 
     const renderOffers = (offer, index) =>{
         
@@ -44,18 +43,39 @@ function OfferItems(props) {
                                 ))}
                                 </label><br/>
                             <label>Offer For: {offer.request_for}</label><br/>
-                            <label>Cost/Duration: {offer.buying_offer}  {offer.borrowing_offer}months</label><br/>                        
+                            {offer.request_for == 'buying'?(
+                                <><label>Cost: Rs {offer.buying_offer}</label><br/></>                        
+                            ):(
+                                <><label>Duration: {offer.borrowing_offer} months</label><br/></>                        
+
+                            )}
                         </div>
                         <div id="sellerReply">
                             <div id="replyText">
-                                <p id="sellerMessage">Seller Reply: NA</p>
-                                <label>Status: NULL</label>   
+                                <label>Status: {offer.status}</label>
+                                {offer.status != 'pending'?(
+                                    <p id="sellerMessage">Seller Reply: {offer.response}</p>
+                                ):(null)}
+                                   
                             </div>
                             <div id="replyButtons">
-                                <button onClick={infoPopUp} >Contact Info</button>
-                                <SellerContactInfo ref={infoRef}/>
-                                <button onClick={openPopUp}>Make New Offer</button>
-                                <MakeOfferPopUp ref={offerRef}/>
+                                {offer.status == 'accepted'?(
+                                    <>
+                                        <button onClick={() =>{
+                                            setCurrentOffer(offer)
+                                            infoPopUp()
+                                        }} 
+                                        >Contact Info</button>
+                                        <SellerContactInfo ref={infoRef} currentOffer={currentOffer} books={props.books}/>
+                                    </>
+                                ):(null)}
+                                {offer.status == 'declined'?(
+                                    <>
+                                        <button onClick={openPopUp}>Make New Offer</button>
+                                        <MakeOfferPopUp ref={offerRef}/>
+                                    </>
+                                ):(null)}
+                                
                             </div>
 
                         </div>
