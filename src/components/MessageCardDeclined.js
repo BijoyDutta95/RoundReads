@@ -4,22 +4,15 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import ReplyPopUp from './ReplyPopUp';
 import DeclinePopUp from './DeclinePopUp';
+import { MessageContext } from './Context/Contexts';
 
-function MessageCard(props) {
+function MessageCardDeclined(props) {
+    const {messages, declinedCount} = React.useContext(MessageContext)
 
-    const replyRef=React.useRef();
-    const declineRef=React.useRef();
-
-    const openPopUp=()=>{
-        replyRef.current.openModal();
-    }
-    const openDeclinePop=()=>{
-        declineRef.current.openModal();
-    }
-
-    const [currentMessage, setCurrentMessage] = React.useState([])
-    
     const renderMessages = (message, index) =>{
+        if(message.status == 'accepted' || message.status == 'pending'){
+            return null
+        }
         return (
             <div id="messageCard" key={index}>
                 <img src="/images/bookImg.jpg"/>
@@ -35,30 +28,28 @@ function MessageCard(props) {
                         ):(
                             <label>Requested Duration: {message.borrowing_offer} months</label>
                         )}
+                        
                     </div>
                     
                     
                 </div>
                 <div id="vl"></div>
-                <div id="messageButtons">
-                        <CheckIcon id="accept" onClick={() =>{
-                            setCurrentMessage(message)
-                            openPopUp()
-                        }}/>
-                        <ReplyPopUp ref={replyRef} currentMessage={currentMessage}/>
-                        <CloseIcon id="decline" onClick={openDeclinePop}/>
-                        <DeclinePopUp ref={declineRef} currentMessage={currentMessage} />
-                    </div>
+                
             </div>
         )
     }
     
+    if(declinedCount == 0){
+        return(
+            <h1>No Declined Requests</h1>
+        )
+    }
 
     return (
         <div id="cardMainBlock">
-            {props.messages.map(renderMessages)}
+            {messages.map(renderMessages)}
         </div>
     )
 }
     
-export default MessageCard
+export default MessageCardDeclined

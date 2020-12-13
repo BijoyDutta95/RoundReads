@@ -1,0 +1,11 @@
+#messageNav{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    color: black;
+}
+#messageNavItem{
+    margin-right: 50px;
+    font-size: 25px;
+    cursor: pointer;
+}

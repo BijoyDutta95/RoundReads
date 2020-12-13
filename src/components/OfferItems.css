@@ -1,3 +1,10 @@
+#offerMainBlock{
+    width: 70%;
+    min-height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
 #offerItemCard{
     display: flex;
     flex-direction: row;
