@@ -15,8 +15,9 @@ import UserAccount from './components/pages/UserAccount';
 import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
 //import SearchSuggest from './components/pages/SearchSuggest';
-//import {API} from './components/API/Api'
+import {API} from './components/API/Api'
 import UserOffers from './components/pages/UserOffers';
+import Autocomplete from './components/pages/AutoComplete';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -27,7 +28,7 @@ function App() {
   const [books, setBooks] = React.useState([])
   
     
-  /*React.useEffect(() =>{
+  React.useEffect(() =>{
       function getItems(){
           console.log('getBoooksss')
           API.get('api/get_user_books')
@@ -40,7 +41,7 @@ function App() {
           })
       }
       getItems()
-  }, [])*/
+  }, [])
 
   return (
     <div className="App">
@@ -64,7 +65,8 @@ function App() {
           <Route path='/userOffers' exact component={UserOffers}/>
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
-          {/*<Route path='/searchSuggest' exact component={SearchSuggest}/>*/}
+         {/* <Route path='/searchSuggest' exact component={Autocomplete}/>*/}
+
           
         </SearchContext.Provider>
         
