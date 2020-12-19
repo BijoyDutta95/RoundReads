@@ -1,0 +1,11 @@
+#messageInfoBlock{
+    width: 25%;
+    background-color: #EDF5E0;
+    padding: 10px;
+    align-items: center;
+    float: left;
+}
+#messageInfoBlock p{
+    font-size: 25px;
+    padding: 5px;
+}
