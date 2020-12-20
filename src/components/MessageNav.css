@@ -1,4 +1,6 @@
 #messageNav{
+    width: 70%;
+    margin: auto;
     display: flex;
     flex-direction: row;
     background-color: white;

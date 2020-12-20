@@ -120,41 +120,47 @@ function ItemCard() {
                     
                     }}>
                     <img src={card.image1} alt="cardImage" className="cardImage"/>
-                    <strong className="cardTitle">{card.title}</strong>
-                    <small className="cardCondition">{card.condition}</small>
+                    
                 </div>
-                <div id="cardBlock_button">
-                    {/*<button className="cardButtonSave">Save</button>*/}
-                    {wishList?(
-                        <>
-                        {JSON.parse(wishList).includes(card.id)?(
-                            <div id="saveButtonCard" onClick={() => removeFromWishList(card.id)}>
-                                <p>Saved</p>
-                                <BookmarkIcon id="bookmarkIcon"/>
-                            </div>
-                        ):( 
-                            <div id="saveButtonCard" onClick={() => saveToWishList(card.id)}>
-                                <p>Save</p>
-                                <BookmarkIcon id="bookmarkIcon"/>
-                            </div>
-                        )}
-                        </>
-                    ):(
-                        <div id="saveButtonCard">
-                        <p>Save</p>
-                        <BookmarkIcon id="bookmarkIcon"/>
+                <div id="cardItemInfo">
+                    <strong id="cardTitle">{card.title}</strong>
+                    <div id="itemPrcBlock">
+                        <p id="salPrice"><b>Sale Price:</b> 450</p>
+                        <p id="borPrice"><b>Borrow Price:</b> 50</p>
                     </div>
-                    )}
-                    
-                    
-                    <button id="cardButtonContact" onClick={() =>{
-                        setCurrentItem(card)
-                        openPopUp()
+                    <div id="cardBlock_button">
+                        {/*<button className="cardButtonSave">Save</button>*/}
+                        {wishList?(
+                            <>
+                            {JSON.parse(wishList).includes(card.id)?(
+                                <div id="saveButtonCard" onClick={() => removeFromWishList(card.id)}>
+                                    <p>Saved</p>
+                                    <BookmarkIcon id="bookmarkIcon"/>
+                                </div>
+                            ):( 
+                                <div id="saveButtonCard" onClick={() => saveToWishList(card.id)}>
+                                    <p>Save</p>
+                                    <BookmarkIcon id="bookmarkIcon"/>
+                                </div>
+                            )}
+                            </>
+                        ):(
+                            <div id="saveButtonCard">
+                            <p>Save</p>
+                            <BookmarkIcon id="bookmarkIcon"/>
+                        </div>
+                        )}
+                        
+                        
+                        <button id="cardButtonContact" onClick={() =>{
+                            setCurrentItem(card)
+                            openPopUp()
 
-                    }}
-                    >Contact Seller</button>
-                    <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
-                </div>    
+                        }}
+                        >Contact Seller</button>
+                        <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
+                    </div>  
+                </div>  
             </div>
         )
     }

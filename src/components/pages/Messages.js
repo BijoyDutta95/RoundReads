@@ -8,6 +8,8 @@ import {API} from '../API/Api'
 import { useParams } from 'react-router-dom';
 import { MessageContext } from '../Context/Contexts';
 import MessageNav from '../MessageNav';
+import AccountInfo from '../AccountInfo';
+import MessagesInfo from '../MessagesInfo';
 function Messages() {
     
     const params = useParams()
@@ -78,7 +80,7 @@ function Messages() {
                             setPendingClicked, setAcceptedClicked, setDeclinedClicked,
                             acceptedCount, declinedCount, pendingCount,
                             setAcceptedCount, setDeclinedCount, setPendingCount}}>
-                    <MessageNav align='center'/>
+                    <MessagesInfo align='center'/>
                     {pendingClicked?(
                         <MessageCardPending/>
                     ):(null)}
@@ -90,6 +92,7 @@ function Messages() {
                     ):(null)}
                     
                 </MessageContext.Provider>
+                
             </div>
         )
     }else{

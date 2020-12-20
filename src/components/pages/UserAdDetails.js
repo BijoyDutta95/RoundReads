@@ -11,5 +11,4 @@ function UserAd() {
         </div>
     )
 }
-
 export default UserAd
