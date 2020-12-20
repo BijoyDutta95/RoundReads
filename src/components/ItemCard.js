@@ -158,7 +158,7 @@ function ItemCard() {
 
                         }}
                         >Contact Seller</button>
-                        <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
+                        
                     </div>  
                 </div>  
             </div>
@@ -166,8 +166,9 @@ function ItemCard() {
     }
     return (
        
-            <div id="cardMainBlock">
+        <div id="cardMainBlock">
             {items.map(renderCard)}
+            <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
         </div>
        
         
