@@ -5,6 +5,7 @@
     padding: 10px;
     align-items: center;
     float: left;
+    border-radius: 5px;
 }
 #usrIcon{
     height: 70px !important;
