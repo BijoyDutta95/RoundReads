@@ -15,14 +15,69 @@ function NavBar(props) {
         modalRef.current.openModal();
     }
 
-    const {userSession} = React.useContext(UserContext)
-    //const [suggessions, setSugessions] = React.useState([])
+    const {userSession, books} = React.useContext(UserContext)
+    const [suggessions, setSugessions] = React.useState([])
     const [searchTerm, setSearchTerm] = React.useState("")
+    const [searchTermTemp, setSearchTermTemp] = React.useState("")
+    const [activeIndex, setActiveIndex]= React.useState(-1)
 
     const handleSearch = () =>{
         console.log("Search click " + searchTerm)
         //props.setSearchFlag(true)
         props.setSearchTerm(searchTerm)
+        setSugessions([])
+    }
+
+    const search = (term) =>{
+        console.log(term)
+        console.log(activeIndex)
+        let suggessionsTemp = []
+        if(term.length >= 3){
+            console.log("search")
+            for(let i in books){
+                if(books[i].author.toLowerCase().includes(term.toLowerCase())){
+                    if(!suggessionsTemp.includes(books[i].author)){
+                        suggessionsTemp.push(books[i].author)
+                    }
+                    
+                }
+                if(books[i].category.toLowerCase().includes(term.toLowerCase())){
+                    //console.log(books[i].category)
+                    if(!suggessionsTemp.includes(books[i].category)){
+                        suggessionsTemp.push(books[i].category)
+                    }
+                }
+                if(books[i].title.toLowerCase().includes(term.toLowerCase())){
+                    //console.log(books[i].title)
+                    if(!suggessionsTemp.includes(books[i].title)){
+                        suggessionsTemp.push(books[i].title)
+                    }
+                }
+            }
+            setSugessions(suggessionsTemp)
+            console.log(suggessionsTemp)
+    
+        }
+    }
+
+    const onDownKey = (e) =>{
+        //console.log("key   " + e.keyCode)
+        if(e.keyCode == 40 && activeIndex < suggessions.length-1){
+            console.log('down key pressed adn index  ' + activeIndex)
+            setActiveIndex(activeIndex+1)
+            setSearchTerm(suggessions[activeIndex+1])
+                
+        }
+        if(e.keyCode == 38 && activeIndex >= 0){
+            setActiveIndex(activeIndex-1)
+            setSearchTerm(suggessions[activeIndex-1])
+                
+        }
+        if(e.keyCode == 38 && activeIndex == -1){
+            setSearchTerm(searchTerm)
+                
+        }
+        
     }
 
     
@@ -35,17 +90,24 @@ function NavBar(props) {
             <div className="headerSearch">
                 <input className="searchBar" 
                     onChange={event => {
-                        //setSugessions([])
+                        setSugessions([])
+                        setActiveIndex(-1)
                         setSearchTerm(event.target.value)
-                        //search(event.target.value)
+                        search(event.target.value)
                     }} 
 
                     onKeyPress={event => {
                         if(event.key === 'Enter'){
                             handleSearch()
                         }
-                    }}/>
-                <SearchIcon  className="searchIcon" onClick={handleSearch}/> 
+                    }}
+                    onKeyDown={onDownKey}
+                    value={searchTerm}/>
+                <SearchIcon  className="searchIcon" onClick={handleSearch}/>
+                <SearchDropDown suggessions={suggessions} setSearchTerm={setSearchTerm}
+                    activeIndex={activeIndex}
+                    setSugessions={setSugessions}
+                /> 
                
             </div>
 

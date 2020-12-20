@@ -1,6 +1,6 @@
 .searchDropdown {
     font-weight: 300;
-    display: block;
+    display: inline-block;
     position: absolute;
     width: 380px;
     margin: 0;
@@ -22,36 +22,22 @@
     
 
 }
-
-
-#search-menu-item{
-    
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: black;
-    font-style: bold;
-    text-align: center;
-    text-align: left;
-    margin-left: -40px;
+.searchDropdownItem:hover {
+    cursor: pointer;
     list-style: none;
-    z-index: 1;
+    display: block;
+    margin: 0 auto;
+    list-style-type: none;
+    background-color: gray;
+}
+.searchDropdownItemActive {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    list-style-type: none;
+    background-color: gray;
     
+
 }
 
-/*#search-menu-item:hover {
-    background-color: #f1f196;
-}
 
-#menu-item-link{
-    text-decoration: none;
-}
-#userInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: -30px;
-    padding: 5px;
-    color: black;
-}*/

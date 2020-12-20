@@ -125,8 +125,21 @@ function ItemCard() {
                 <div id="cardItemInfo">
                     <strong id="cardTitle">{card.title}</strong>
                     <div id="itemPrcBlock">
-                        <p id="salPrice"><b>Sale Price:</b> 450</p>
-                        <p id="borPrice"><b>Borrow Price:</b> 50</p>
+                        {card.availability == 'both'?(
+                            <>
+                                <p id="salPrice"><b>Sale Price:</b> {card.sale_price}</p>
+                                <p id="borPrice"><b>Borrow Price:</b> {card.borrow_price}</p>
+                            </>
+                        ):(
+                            <>
+                                {card.availability == 'sale'?(
+                                   <p id="salPrice"><b>Sale Price:</b> {card.sale_price}</p> 
+                                ):(
+                                    <p id="borPrice"><b>Borrow Price:</b> {card.borrow_price}</p>
+                                )}
+                            </>
+                        )}
+                        
                     </div>
                     <div id="cardBlock_button">
                         {/*<button className="cardButtonSave">Save</button>*/}
