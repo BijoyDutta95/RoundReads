@@ -22,8 +22,9 @@
     align-items:center;
     box-shadow: 0 0 10px rgba(237, 245, 224,1);
     border: 1px solid #222625;
-    transition: transform .2s;
+    transition: transform .2s;    
 }
+
 #cardBlock:hover{
     transform: scale(1.1);
 }
