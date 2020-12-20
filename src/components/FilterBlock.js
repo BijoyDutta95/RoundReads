@@ -169,7 +169,7 @@ function FilterBlock(props) {
                 </div>
             </fieldset>
             <div align='center'>
-                <button className="button" onClick={filterItems}>Filter</button>
+                <button className="filterButton" onClick={filterItems}>Filter</button>
             </div>
         </div>
     )

@@ -86,13 +86,15 @@ fieldset {
     margin-left: 10px;
 }
 
-.button{
+.filterButton{
     
     background-color: #86C232;
     color: black;
-    padding: 8px 10px;
+    width: 80%;
+    padding: 4px 10px;
     margin: 8px 5px;
     border: none;
     cursor: pointer;  
-    align-items: center;  
+    align-items: center; 
+    border-radius: 5px;
 }
