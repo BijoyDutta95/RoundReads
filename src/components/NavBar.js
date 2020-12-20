@@ -7,7 +7,6 @@ import Modal from './Modal'
 import Submenu from './Submenu' 
 import { UserContext } from './Context/Contexts';
 import SearchDropDown from './SearchDropDown';
-import Autocomplete from './pages/AutoComplete2';
 
 function NavBar(props) {
     const modalRef=React.useRef();
@@ -19,12 +18,14 @@ function NavBar(props) {
     const {userSession, books} = React.useContext(UserContext)
     const [suggessions, setSugessions] = React.useState([])
     const [searchTerm, setSearchTerm] = React.useState("")
+    const [searchTermTemp, setSearchTermTemp] = React.useState("")
     const [activeIndex, setActiveIndex]= React.useState(-1)
 
     const handleSearch = () =>{
         console.log("Search click " + searchTerm)
         //props.setSearchFlag(true)
         props.setSearchTerm(searchTerm)
+        setSugessions([])
     }
 
     const search = (term) =>{
@@ -52,10 +53,6 @@ function NavBar(props) {
                         suggessionsTemp.push(books[i].title)
                     }
                 }
-              if(books[i].desc.toLowerCase().includes(term.toLowerCase())){
-                    //console.log(books[i].desc)
-                    suggessionsTemp.push(books[i].desc)
-                }
             }
             setSugessions(suggessionsTemp)
             console.log(suggessionsTemp)
@@ -74,6 +71,10 @@ function NavBar(props) {
         if(e.keyCode == 38 && activeIndex >= 0){
             setActiveIndex(activeIndex-1)
             setSearchTerm(suggessions[activeIndex-1])
+                
+        }
+        if(e.keyCode == 38 && activeIndex == -1){
+            setSearchTerm(searchTerm)
                 
         }
         
@@ -105,6 +106,7 @@ function NavBar(props) {
                 <SearchIcon  className="searchIcon" onClick={handleSearch}/>
                 <SearchDropDown suggessions={suggessions} setSearchTerm={setSearchTerm}
                     activeIndex={activeIndex}
+                    setSugessions={setSugessions}
                 /> 
                
             </div>

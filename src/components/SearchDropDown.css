@@ -22,6 +22,14 @@
     
 
 }
+.searchDropdownItem:hover {
+    cursor: pointer;
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    list-style-type: none;
+    background-color: gray;
+}
 .searchDropdownItemActive {
     list-style: none;
     display: block;
@@ -33,34 +41,3 @@
 }
 
 
-#search-menu-item{
-    
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    color: black;
-    font-style: bold;
-    text-align: center;
-    text-align: left;
-    margin-left: -40px;
-    list-style: none;
-    z-index: 1;
-    
-}
-
-/*#search-menu-item:hover {
-    background-color: #f1f196;
-}
-
-#menu-item-link{
-    text-decoration: none;
-}
-#userInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: -30px;
-    padding: 5px;
-    color: black;
-}*/

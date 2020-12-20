@@ -9,7 +9,10 @@ export default function SearchDropDown(props){
             {props.suggessions[props.activeIndex] == item?(
                 <div key={index} className="searchDropdownItemActive">
                     
-                    <li onClick={() => props.setSearchTerm(item)} 
+                    <li onClick={() => {
+                        props.setSearchTerm(item)
+                        props.setSugessions([])
+                    }} 
                     
                     >{item}</li>
                     
@@ -17,7 +20,10 @@ export default function SearchDropDown(props){
             ):(
                 <div key={index} className="searchDropdownItem">
                     
-                    <li onClick={() => props.setSearchTerm(item)} 
+                    <li onClick={() => {
+                        props.setSearchTerm(item)
+                        props.setSugessions([])
+                    }} 
                     
                     >{item}</li>
                     
