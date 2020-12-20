@@ -1,0 +1,76 @@
+#blogItemBlock{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 7px;
+    background-color: #EDF5E0;
+    border-radius: 5px;
+}
+#blogInfo{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#blogOwner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#blogOwner p{
+    font-size: 13px;
+}
+#bloggerImg{
+    height: 30px;
+    width: 30px;
+}
+#blogOther{
+    display: flex;
+    flex-direction: row;
+}
+#blogImage{
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
+}
+#publisherInfo{
+    margin-left: 5px;
+}
+#blogDetail{
+    margin-top: 5px;
+}
+#blogBottom{
+    margin-top: 10px;
+}
+#blogBottom{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+#upvoteCount{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    width: 35px;
+    text-align: center;
+    padding: 1px 5px; 
+    border-radius: 5px;
+}
+#upIcon{
+    font-size: 20px;
+    font-weight: bold;
+}
+#blogBottom button{
+    background-color: #222625;
+    color: #EDF5E0;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+
+}
