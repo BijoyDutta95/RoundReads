@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     padding-left: 35px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 #cardMainBlock{
     flex-basis:calc(25% - 40px);
@@ -80,6 +80,7 @@
     height: 24px;
     cursor: pointer;
     border-radius: 5px;
+    border: none;
 }
 #saveButtonCard{
     border: 1px solid black;
@@ -93,4 +94,5 @@
     color: #EDF5E0;
     cursor: pointer;
     border-radius: 5px;
+    border:none;
 }

@@ -1,11 +1,12 @@
 #itemsBlock{
-    height: 600px;
+    height: fit-content;
     overflow: hidden;
     overflow-y: scroll;
     margin: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 10px;
 }
 #itemsBlock p{
     margin-top: 5px;
@@ -13,12 +14,12 @@
 }
 
 .prev-next-button{
-    
+    position: relative;
     background-color: #86C232;
     color: black;
     padding: 8px 10px;
-    margin: 8px 5px;
     border: none;
     cursor: pointer;  
-    align-items: center;  
+    align-items: center;
+    border-radius: 5px;  
 }
