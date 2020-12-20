@@ -1,6 +1,6 @@
 .searchDropdown {
     font-weight: 300;
-    display: block;
+    display: inline-block;
     position: absolute;
     width: 380px;
     margin: 0;
@@ -19,6 +19,15 @@
     margin: 0 auto;
     list-style-type: none;
     background-color: #EDF5E0;
+    
+
+}
+.searchDropdownItemActive {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    list-style-type: none;
+    background-color: gray;
     
 
 }
