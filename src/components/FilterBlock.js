@@ -69,7 +69,7 @@ function FilterBlock(props) {
         setCondition(condition)
         setCategory(category)
         if(searchTerm){
-            getItems("http://localhost:8000/api/bookd/?search=" + searchTerm, availability, condition, category)
+            getItems("http://localhost:8000/api/books/?search=" + searchTerm, availability, condition, category)
         }else{
             getItems("http://localhost:8000/api/books", availability, condition, category)
         }
