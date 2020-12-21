@@ -1,10 +1,15 @@
 import React from 'react'
+import LatestBlogs from '../LatestBlogs'
+import TrendingBlogs from '../TrendingBlogs'
+import WriteBlog from '../WriteBlog'
 import IndividualItem from './IndividualItem'
 
 function BlogPage() {
     return (
-        <div>
-            <h1>Blog page</h1>
+        <div className="globalBlock">
+            <LatestBlogs/>
+            <TrendingBlogs/>
+            <WriteBlog/>
         </div>
     )
 }

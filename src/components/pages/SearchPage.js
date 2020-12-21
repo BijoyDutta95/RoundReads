@@ -1,4 +1,5 @@
 import React from 'react'
+import Banner from '../Banner'
 import FilterBlock from '../FilterBlock'
 import ItemHeader from '../ItemHeader'
 import ItemComponent from '../ItemComponent'
@@ -47,7 +48,7 @@ export default function SearchPage(){
     
     return (
         <div>
-           
+            <Banner/>
             <FilterContext.Provider value={{setAvailability, setCondition, setCategory, getItems}}>
                 <FilterBlock/>
             </FilterContext.Provider>
