@@ -7,6 +7,7 @@ import {API} from './API/Api'
 function WriteBlog() {
     const [title, setTitle] = React.useState('')
     const [content, setContent] = React.useState('')
+    const [contentCount, setContentCount] = React.useState(5000)
     const [coverPhoto, setCoverPhoto] = React.useState('')
     const [success, setSuccess] = React.useState(false)
     const [error, setError] = React.useState(false)
@@ -75,9 +76,14 @@ function WriteBlog() {
         <div id="writeBlogBlock">
             <h3>Post A Blog</h3>
             <strong>Blog Title</strong>
-            <input type="text" value={title} placeholder="Enter Blog Title" onChange={(e)=>setTitle(e.target.value)}/>
-            <strong>Blog Content<span id="characterCount">5000 characters</span></strong>
-            <textarea type="text" value={content} placeholder="Blog Content" onChange={(e)=>setContent(e.target.value)}/>
+            <input type="text" value={title} placeholder="Enter Blog Title" onChange={(e)=>{
+                setTitle(e.target.value)
+            }}/>
+            <strong>Blog Content<span id="characterCount">{contentCount} characters</span></strong>
+            <textarea type="text" value={content} placeholder="Blog Content" onChange={(e)=>{
+                setContent(e.target.value)
+                setContentCount(...[5000 - e.target.value.length])
+            }}/>
             <strong>Choose a cover picture</strong>
             <input type="file" onChange={handleChangeImage}/> 
              
