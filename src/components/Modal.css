@@ -4,6 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    
 }
 .modalBackdrop{
     position: fixed;
@@ -24,4 +25,7 @@
     background-color: #EDF5E0;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
     z-index: 101;
+    border: 10px solid;
+    border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66));
+    border-image-slice: 1;
 }

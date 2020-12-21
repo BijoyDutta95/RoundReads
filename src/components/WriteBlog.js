@@ -74,12 +74,13 @@ function WriteBlog() {
     return (
         <div id="writeBlogBlock">
             <h3>Post A Blog</h3>
-            <label>Blog Title</label>
+            <strong>Blog Title</strong>
             <input type="text" value={title} placeholder="Enter Blog Title" onChange={(e)=>setTitle(e.target.value)}/>
-            <label>Blog Content</label>
+            <strong>Blog Content<span id="characterCount">5000 characters</span></strong>
             <textarea type="text" value={content} placeholder="Blog Content" onChange={(e)=>setContent(e.target.value)}/>
-            <label>Choose a cover picture</label>
+            <strong>Choose a cover picture</strong>
             <input type="file" onChange={handleChangeImage}/> 
+             
             <div id="blogButtons">
                 <button id="clearBlogBtn" onClick={clearAll}>Clear</button>
                 <button id="postBlogBtn" onClick={postBlog}>Post</button>
