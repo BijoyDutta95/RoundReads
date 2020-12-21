@@ -6,6 +6,10 @@
     margin-bottom: 7px;
     background-color: #EDF5E0;
     border-radius: 5px;
+    transition: transform .2s;    
+}
+#blogItemBlock:hover{
+    transform: scale(1.025);
 }
 #blogInfo{
     padding: 10px;

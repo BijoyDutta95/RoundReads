@@ -127,15 +127,15 @@ function ItemCard() {
                     <div id="itemPrcBlock">
                         {card.availability == 'both'?(
                             <>
-                                <p id="salPrice"><b>Sale Price:</b> {card.sale_price}</p>
-                                <p id="borPrice"><b>Borrow Price:</b> {card.borrow_price}</p>
+                                <p id="salPrice"><b>Sale Price:</b> &#8377; {card.sale_price}</p>
+                                <p id="borPrice"><b>Borrow Price:</b> &#8377; {card.borrow_price}</p>
                             </>
                         ):(
                             <>
                                 {card.availability == 'sale'?(
-                                   <p id="salPrice"><b>Sale Price:</b> {card.sale_price}</p> 
+                                   <p id="salPrice"><b>Sale Price:</b> &#8377; {card.sale_price}</p> 
                                 ):(
-                                    <p id="borPrice"><b>Borrow Price:</b> {card.borrow_price}</p>
+                                    <p id="borPrice"><b>Borrow Price:</b> &#8377; {card.borrow_price}</p>
                                 )}
                             </>
                         )}
