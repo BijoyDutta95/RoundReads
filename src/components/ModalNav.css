@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     top: 0;
-    background-color: seagreen;
+    background-color: #222629;
     align-items: center;
     text-align: center;
     height: fit-content; 
@@ -18,7 +18,7 @@
 }
 #navSignupTrue{
     align-self: center;
-    color: #05AAF6;
+    color: #222629;
     width: 50%;
     height: 100%;
     background-color: #EDF5E0;
@@ -28,7 +28,7 @@
 }
 #navLoginFalse{
     align-self: center;
-    color: #05AAF6;
+    color: #222629;
     width: 50%;
     height: 100%;
     background-color: #EDF5E0;
@@ -41,7 +41,7 @@
     color: #EDF5E0;
     width: 50%;
     height: 100%;
-    background-color: #05AAF6;
+    background-color: #222629;
     padding: 10px;
     font-style: bold;
     

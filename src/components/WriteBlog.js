@@ -4,11 +4,11 @@ function WriteBlog() {
     return (
         <div id="writeBlogBlock">
             <h3>Post A Blog</h3>
-            <label>Blog Title</label>
+            <strong>Blog Title</strong>
             <input type="text" placeholder="Enter Blog Title"/>
-            <label>Blog Content</label>
+            <strong>Blog Content<span id="characterCount">5000 characters</span></strong>
             <textarea type="text" placeholder="Blog Content"/>
-            <label>Choose a cover picture</label>
+            <strong>Choose a cover picture</strong>
             <input type="file"/> 
             <div id="blogButtons">
                 <button id="clearBlogBtn">Clear</button>

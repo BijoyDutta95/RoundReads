@@ -1,0 +1,47 @@
+#singleBlogReading{
+    width: 60%;
+    margin: auto;
+    background-color: #EDF5E0;
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(237, 245, 224,1);
+}
+#blogPublisher{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+#blogPublisher p{
+    font-size: 13px;
+}
+#bloggerIm{
+    height: 30px;
+    width: 30px;
+}
+#blogCover{
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    background-color: #222625;
+}
+#blogContent>*{
+    margin-top: 5%;
+}
+#likeCount{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    width: 35px;
+    text-align: center;
+    padding: 1px 5px; 
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+#upvoteIcon{
+    font-size: 20px;
+    font-weight: bold;
+}
