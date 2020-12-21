@@ -46,3 +46,7 @@
 #postBlogBtn{
     background-color: #222625;
 }
+
+#successMessage{
+    color: green;
+}

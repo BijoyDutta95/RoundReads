@@ -112,7 +112,7 @@ function ItemCard() {
         }*/
         
         return(
-            <div id="cardBlock" key={index} href="/blog">
+            <div id="cardBlock" key={index}>
             
                 <div id="itemBlockLink" onClick={() =>{
                     setItemId(card.id)

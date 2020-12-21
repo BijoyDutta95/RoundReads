@@ -7,3 +7,4 @@ export const ModalContext= React.createContext(null);
 export const UserContext= React.createContext(null);
 export const WishListContext= React.createContext(null);
 export const MessageContext= React.createContext(null);
+export const TrendingBlogContext = React.createContext(null);
