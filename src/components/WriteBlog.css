@@ -1,0 +1,48 @@
+#writeBlogBlock{
+    display: flex;
+    flex-direction: column;
+    background-color: #86C232;
+    width: 37%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 5px;
+}
+#writeBlogBlock h3{
+    background-color: #222625;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #EDF5E0;
+    padding: 2px;
+
+}
+#writeBlogBlock input[type=text]{
+    width: 100%;
+    padding: 5px 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+#writeBlogBlock textarea{
+    resize: none;
+    width: 99%;
+    height: 120px;
+}
+#blogButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+#blogButtons > *{
+    width: 45%;
+    padding: 5px;
+    color: #EDF5E0;
+    border: none;
+    border-radius: 5px;
+}
+#clearBlogBtn{
+    background-color: #B6073B;
+}
+#postBlogBtn{
+    background-color: #222625;
+}
