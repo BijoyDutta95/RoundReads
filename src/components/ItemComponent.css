@@ -1,5 +1,5 @@
 #itemsBlock{
-    height: fit-content;
+    height: 700px;
     overflow: hidden;
     overflow-y: scroll;
     margin: 5px;
@@ -16,6 +16,7 @@
 .prev-next-button{
     position: relative;
     background-color: #86C232;
+    bottom: 0;
     color: black;
     padding: 8px 10px;
     border: none;
