@@ -23,7 +23,7 @@ function TrendingBlogs() {
     return (
         <div id="trendingBlogBlock">
             <h3>Trending Blogs</h3>
-            <BlogItem blogs={blogs}/>
+            <BlogItem blogs={blogs} setBlogs={setBlogs}/>
         </div>
     )
 }

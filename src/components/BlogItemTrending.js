@@ -3,15 +3,18 @@ import UserIcon from '../icons/user.svg';
 import './BlogItem.css'
 import UpvoteIcon from '@material-ui/icons/ThumbUp';
 import { API } from './API/Api';
+import {Redirect} from 'react-router-dom'
 //import { TrendingBlogContext } from './Context/Contexts';
 
 function BlogItem(props) {
     //const {blogs, setBlogs} = React.useContext(TrendingBlogContext)
+    const [readClicked, setReadClicked] = React.useState(false)
+    const [currentBlog, setCurrentBlog] = React.useState(null)
 
-    /*const addLike = (id, currentLikes) =>{
+    const addLike = (id, currentLikes) =>{
         console.log('addLikes')
         
-        var blogsTemp = blogs
+        var blogsTemp = props.blogs
         
         for(let i in blogsTemp){
             if(blogsTemp[i].id == id){
@@ -19,7 +22,7 @@ function BlogItem(props) {
                 blogsTemp[i].likes = blogsTemp[i].likes + 1
                 //blogsTemp[i].title = 'editedsss'
                 console.log(blogsTemp[i].likes)
-                setBlogs([...blogsTemp])
+                props.setBlogs([...blogsTemp])
                 break
             }
         }
@@ -40,7 +43,7 @@ function BlogItem(props) {
         .catch(err =>{
             console.log(err)
         })
-    }*/
+    }
     
     const renderBlogs = (blog, index) =>{
         return (
@@ -62,20 +65,29 @@ function BlogItem(props) {
                     </div>
                     <div id="blogDetail">
                         <strong>{blog.title}</strong>
-                        <p>{blog.date_published}</p>
+                        <p>{blog.date_published.substring(0,10)}</p>
                     </div>
                     <div id="blogBottom">
                         <div id="upvoteCount">
                             <UpvoteIcon id="upIcon" onClick={() =>{
-                                //addLike(blog.id, blog.likes)
+                                addLike(blog.id, blog.likes)
                                 
                             }}/>
                             <p>{blog.likes}</p>
                         </div>
-                        <button>Read Blog</button>
+                        <button onClick={() =>{
+                            setReadClicked(true)
+                            setCurrentBlog(blog.id)
+                        }}>Read Blog</button>
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    if(readClicked && currentBlog){
+        return (
+            <Redirect to={'currentBlog/' + currentBlog}/>
         )
     }
     

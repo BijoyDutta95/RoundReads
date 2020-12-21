@@ -4,9 +4,13 @@ import './BlogItem.css'
 import UpvoteIcon from '@material-ui/icons/ThumbUp';
 import { API } from './API/Api';
 import { TrendingBlogContext } from './Context/Contexts';
+import SingleBlog from './SingleBlog'
+import { Redirect } from 'react-router-dom';
 
 function BlogItem() {
     const {blogs, setBlogs} = React.useContext(TrendingBlogContext)
+    const [readClicked, setReadClicked] = React.useState(false)
+    const [currentBlog, setCurrentBlog] = React.useState(null)
 
     const addLike = (id, currentLikes) =>{
         console.log('addLikes')
@@ -62,7 +66,7 @@ function BlogItem() {
                     </div>
                     <div id="blogDetail">
                         <strong>{blog.title}</strong>
-                        <p>{blog.date_published}</p>
+                        <p>{blog.date_published.substring(0,10)}</p>
                     </div>
                     <div id="blogBottom">
                         <div id="upvoteCount">
@@ -72,10 +76,19 @@ function BlogItem() {
                             }}/>
                             <p>{blog.likes}</p>
                         </div>
-                        <button>Read Blog</button>
+                        <button onClick={() =>{
+                            setReadClicked(true)
+                            setCurrentBlog(blog.id)
+                        }}>Read Blog</button>
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    if(readClicked && currentBlog){
+        return (
+            <Redirect to={'currentBlog/' + currentBlog}/>
         )
     }
     
