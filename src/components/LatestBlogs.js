@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogItem from './BlogItem'
+import BlogItem from './BlogItemLatest'
 import './LatestBlogs.css'
 import { API } from './API/Api'
 import { TrendingBlogContext } from './Context/Contexts'
