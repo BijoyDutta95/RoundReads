@@ -19,6 +19,7 @@ import IndividualItem from './components/pages/IndividualItem';
 import {API} from './components/API/Api'
 import UserOffers from './components/pages/UserOffers';
 import Autocomplete from './components/pages/AutoComplete';
+import SingleBlog from './components/SingleBlog';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -67,6 +68,7 @@ function App() {
           <Route path='/userOffers' exact component={UserOffers}/>
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
+          <Route path='/currentBlog/:id' exact component={SingleBlog}/>
          {/* <Route path='/searchSuggest' exact component={Autocomplete}/>*/}
 
           

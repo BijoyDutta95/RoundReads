@@ -105,11 +105,11 @@ function ItemCard() {
 
     
     const renderCard= (card, index) =>{
-        if(userSession){
+        /*if(userSession){
             if(card.poster_email == JSON.parse(userSession).email){
                 return
             }
-        }
+        }*/
         
         return(
             <div id="cardBlock" key={index}>

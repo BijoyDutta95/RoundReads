@@ -48,6 +48,7 @@ function Login(){
             setUser(JSON.stringify(data.data))
             sessionStorage.setItem('user', JSON.stringify(data.data))
             setUserSession(JSON.stringify(data.data))
+            setDisplay(false)
             getWishList(data.data.id)
             
         })
@@ -64,7 +65,7 @@ function Login(){
             console.log("success wishlist : " + JSON.stringify(data))
             setWishList(JSON.stringify(data.data.wishlist))
             sessionStorage.setItem('wishlist', JSON.stringify(data.data.wishlist))
-            setDisplay(false)
+            
         })
         .catch(e => {
             console.log("failed catched error wishlist : " + e)
