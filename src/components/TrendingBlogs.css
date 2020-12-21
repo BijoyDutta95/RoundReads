@@ -1,0 +1,15 @@
+#trendingBlogBlock{
+    width: 37%;
+    background-color: #EDF5E0;
+    margin:auto;
+    overflow: hidden;
+    padding: 5px;
+}
+#trendingBlogBlock h3{
+    background-color: #222625;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #EDF5E0;
+    padding: 2px;
+}
