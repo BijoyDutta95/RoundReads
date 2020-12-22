@@ -6,6 +6,7 @@ import ItemComponent from '../ItemComponent'
 import axios from 'axios'
 import { DataContext, FilterContext } from '../Context/Contexts'
 import { API } from '../API/Api'
+import { BannerData } from '../BannerData';
 
 function HomePage() {
     let url = "api/books/"
@@ -46,7 +47,7 @@ function HomePage() {
 
     return (
         <div>
-            <Banner/>
+            <Banner slides={BannerData}/>
             <FilterContext.Provider value={{setAvailability, setCondition, setCategory, getItems}}>
                 <FilterBlock/>
             </FilterContext.Provider>
