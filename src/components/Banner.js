@@ -3,17 +3,6 @@ import BookIcon from '@material-ui/icons/Book'
 import ArrowRight from '@material-ui/icons/ArrowForwardIos';
 import ArrowLeft from '@material-ui/icons/ArrowBackIos';
 import './Banner.css'
-// function Banner() {
-//     return (
-//         <div className="bannerBlock">
-//             <ArrowBackIcon id="forwardIcon"/>
-//             <img src="/images/banner1.jpg" alt="banner1" id="banner1"/>
-//             <ArrowForwardIcon id="backwardIcon"/>
-//         </div>
-//     )
-// }
-
-// export default Banner
 import { BannerData } from './BannerData';
 
 const Banner = ({slides}) => {
