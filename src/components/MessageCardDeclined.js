@@ -5,6 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import ReplyPopUp from './ReplyPopUp';
 import DeclinePopUp from './DeclinePopUp';
 import { MessageContext } from './Context/Contexts';
+import Mailbox from '../icons/mailbox.svg';
 
 function MessageCardDeclined(props) {
     const {messages, declinedCount} = React.useContext(MessageContext)
@@ -14,26 +15,25 @@ function MessageCardDeclined(props) {
             return null
         }
         return (
-            <div id="messageCard" key={index}>
+            <div className="messageCard" key={index}>
                 <img src="/images/bookImg.jpg"/>
-                <div id="messageText">
-                    <p id="receivedMessage">{message.message}</p>
-                    <hr/>
-                    <div id="offers">
-                        <label>Customer Name: {message.requester_name}</label><br/>
-                        <label>Customer Email: {message.requester_email}</label><br/>
-                        <label>Request For: {message.request_for}</label><br/>                        
+                <div className="messageText">
+                    <p className="receivedMessage">{message.message}</p>
+                    <hr id="mesHline"/>
+                    <div className="offers">
+                        <label>Customer Name: {message.requester_name}&nbsp;</label><br/>
+                        <label>Customer Email: {message.requester_email}&nbsp;</label><br/>
+                        <label>Request For: {message.request_for}&nbsp;</label><br/>                        
                         {message.request_for == 'buying'?(
-                            <label>Offered Amount: {message.buying_offer}</label>
+                            <label>Offered Amount: {message.buying_offer}&nbsp;</label>
                         ):(
-                            <label>Requested Duration: {message.borrowing_offer} months</label>
+                            <label>Requested Duration: {message.borrowing_offer}&nbsp; months</label>
                         )}
                         
                     </div>
                     
                     
                 </div>
-                <div id="vl"></div>
                 
             </div>
         )
@@ -41,12 +41,16 @@ function MessageCardDeclined(props) {
     
     if(declinedCount == 0){
         return(
-            <h1>No Declined Requests</h1>
+            <div id="noMessages">
+                <p>Empty Mail Box!</p>
+                <p>It seems lonely here! Try Posting a new Ad</p>
+                <img src={Mailbox} alt="mailbox" id="mailImage"/>
+            </div>
         )
     }
 
     return (
-        <div id="cardMainBlock">
+        <div className="cardMainBlock">
             {messages.map(renderMessages)}
         </div>
     )
