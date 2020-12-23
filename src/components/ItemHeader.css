@@ -5,9 +5,9 @@
     align-items: center;
     border-radius: 5px;
     margin: 5px;
-    padding: 1px;
     overflow: hidden;
     color: #EDF5E0;
+    padding: 3px;
 }
 #itemSort{
     display: flex;
