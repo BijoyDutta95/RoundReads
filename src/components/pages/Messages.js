@@ -98,7 +98,7 @@ function Messages() {
     }else{
         return(
             <div align='center'>
-                <h1>Loading Messages</h1>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </div>
         )
     }
