@@ -7,6 +7,7 @@ import axios from 'axios'
 import { DataContext, FilterContext } from '../Context/Contexts'
 import { API } from '../API/Api'
 import { BannerData } from '../BannerData';
+import HomeFooter from '../HomeFooter'
 
 function HomePage() {
     let url = "api/books/"
@@ -55,6 +56,7 @@ function HomePage() {
             <DataContext.Provider value={{items, count, prev, next, getItems}}>
                 <ItemComponent/>
             </DataContext.Provider>
+            <HomeFooter/>
         </div>
     )
 }
