@@ -6,6 +6,7 @@ import ItemComponent from '../ItemComponent'
 import {useParams} from 'react-router-dom'
 import { FilterContext, DataContext} from '../Context/Contexts'
 import { API } from '../API/Api'
+import { BannerData } from '../BannerData'
 
 export default function SearchPage(){
     let params = useParams()
@@ -18,6 +19,8 @@ export default function SearchPage(){
     const [availability, setAvailability] = React.useState([])
     const [condition, setCondition] = React.useState([])
     const [category, setCategory] = React.useState([])
+    const [fetched, setFetched] = React.useState(false)
+    const [prevCount, setPrevCount] = React.useState(1)
     //const [searchTerm, setSearchTerm] = React.useState(null)
     
     React.useEffect(() => {
@@ -25,6 +28,7 @@ export default function SearchPage(){
     }, [url])
 
     const getItems = (url, availability, condition, category) =>{
+        setFetched(false)
         console.log("get Items called")
         API.get(url, {
             params : {
@@ -36,6 +40,7 @@ export default function SearchPage(){
         .then(data =>{
             console.log("Returning data from getItems  " + data.data.count)
             setItems(data.data.results)
+            setFetched(true)
             setCount(data.data.count)
             setPrev(data.data.previous)
             setNext(data.data.next)
@@ -48,12 +53,12 @@ export default function SearchPage(){
     
     return (
         <div>
-            <Banner/>
+            <Banner slides={BannerData}/>
             <FilterContext.Provider value={{setAvailability, setCondition, setCategory, getItems}}>
                 <FilterBlock/>
             </FilterContext.Provider>
             <ItemHeader/>
-            <DataContext.Provider value={{items, count, prev, next, getItems}}>
+            <DataContext.Provider value={{items, count, prev, next, getItems, fetched, prevCount, setPrevCount}}>
                 <ItemComponent/>
             </DataContext.Provider>
         </div>
