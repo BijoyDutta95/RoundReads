@@ -54,7 +54,9 @@ function SingleBlog() {
 
     if(!blog){
         return(
-            <h1>Loading</h1>
+            <div align='center'>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
         )
         
     }else

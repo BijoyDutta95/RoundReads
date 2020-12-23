@@ -13,7 +13,7 @@ import MakeOfferPopUp from './MakeOfferPopUp';
 function ItemCard() {
     const popRef=React.useRef();
 
-    const {items} = React.useContext(DataContext)
+    const {items, fetched} = React.useContext(DataContext)
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
 
@@ -27,7 +27,41 @@ function ItemCard() {
 
 
     const saveToWishList = (id) =>{
-        if(JSON.parse(wishList).length == 3){
+        /*console.log('wishlist save')
+        let body = JSON.stringify({
+            wishlist : [1, 2, 6]
+        })
+        API.patch('auth/users/me/', body, {
+            headers:{
+                'Authorization' : 'JWT ' + sessionStorage.getItem('access_token'),
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log(data.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })*/
+        console.log('refresh')
+        let body = JSON.stringify({
+            token : (sessionStorage.getItem('access_token')),
+        })
+        API.post('auth/jwt/verify/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log("success : " + JSON.stringify(data.data))
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+        
+        
+        
+        /*if(JSON.parse(wishList).length == 3){
             alert("You can add maximum 10 items to Your WishList")
             return
         }
@@ -60,7 +94,7 @@ function ItemCard() {
         })
         .catch(err=>{
             console.log(err)
-        })
+        })*/
     }
 
     const removeFromWishList = (id) =>{
@@ -183,15 +217,18 @@ function ItemCard() {
             </div>
         )
     }
+    
+   
     return (
-       
+    
         <div id="cardMainBlock">
             {items.map(renderCard)}
             <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
         </div>
-       
+        
         
     )
+
 }
 
 export default ItemCard

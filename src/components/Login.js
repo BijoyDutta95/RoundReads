@@ -7,13 +7,27 @@ function Login(){
 
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
+    const [loading, setLoading] = React.useState(false)
+    const [loginError, setLoginError] = React.useState(false)
+    const [fieldsError, setFieldsError] = React.useState(false)
 
     const {setDisplay} = React.useContext(ModalContext)
     const {setUser, setUserSession, setWishList, wishList} = React.useContext(UserContext)
 
+
     const handleLogin = (e) =>{
         e.preventDefault();
 
+        setFieldsError(false)
+        setLoginError(false)
+        
+        if(email.trim() == '' || password.trim() == ''){
+            setFieldsError(true)
+            return
+        }else{
+            setLoading(true)
+        }
+        
         let url = "auth/jwt/create/"
         let body = JSON.stringify({
             email : email,
@@ -33,6 +47,8 @@ function Login(){
         })
         .catch(e =>{
             console.log(e)
+            setLoading(false)
+            setLoginError(true)
         })
     }
 
@@ -45,6 +61,7 @@ function Login(){
         })
         .then(data => {
             console.log("success : " + JSON.stringify(data))
+            setLoading(false)
             setUser(JSON.stringify(data.data))
             sessionStorage.setItem('user', JSON.stringify(data.data))
             setUserSession(JSON.stringify(data.data))
@@ -54,6 +71,8 @@ function Login(){
         })
         .catch(e => {
             console.log("failed catched error : " + e)
+            setLoading(false)
+            setLoginError(true)
             
         });
     }
@@ -85,6 +104,18 @@ function Login(){
                     <label for="pwd"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}} required></input>
                 </div>
+                {loginError?(
+                    <div id='loginError' align='center'>
+                        <p>Invalid Email or Password</p>
+                    </div>
+                ):(null)}
+
+                {fieldsError?(
+                    <div id='loginError' align='center'>
+                        <p>Fields Cannot be Empty</p>
+                    </div>
+                ):(null)}
+
                 <button type="submit" onClick={handleLogin}>LOGIN</button>
                 <div id="bottomText">
                     <label>
@@ -92,6 +123,11 @@ function Login(){
                     </label>
                     <small>Forgot Password?</small>
                 </div>
+                {loading?(
+                    <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                ):(null)}
             </form>
         </div>
     )
