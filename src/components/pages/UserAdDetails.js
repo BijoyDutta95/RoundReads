@@ -6,6 +6,7 @@ import './GlobalChange.css'
 function UserAd() {
     return (
         <div className="globalBlock">
+            <h2>Your Ads</h2>   
             <AccountInfo/>
             <UserAdItems/>
         </div>

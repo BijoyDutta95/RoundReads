@@ -17,7 +17,7 @@
     ) 1 100%;
 }
 #formMainBlock h2{
-    background-color: #222629;
+    background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
     color: #EDF5E0;
     width: 99%;
     text-align: center;
@@ -30,7 +30,7 @@
 }
 .formField fieldset{
     border: 3px solid;
-    border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(24, 24, 24));
+    border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
     border-image-slice: 1;
 }
 .formField input[type=text]{
