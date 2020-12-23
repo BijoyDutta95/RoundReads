@@ -36,7 +36,8 @@ function WishlistPage() {
     }
 
     return (
-        <div className="globalBlock">           
+        <div className="globalBlock">
+            <h2>Your Wishlist</h2>           
             <AccountInfo/>
             <WishListContext.Provider value={{items, setItems}}>
                 <WishlistItems/>

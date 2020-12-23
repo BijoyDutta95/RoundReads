@@ -1,21 +1,25 @@
 .filterBlock{
     position: relative;
-    
     width: 200px;
     background-color: #EDF5E0;
     border-radius: 5px;
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    float: left;
-    
+    float: left;   
+}
+.filterBlock fieldset{
+    border: 2px solid;
+    border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
+    border-image-slice: 1;
 }
 .filterHeader{
     display: flex;
     justify-content: space-between;
-    background-color: #86C232;
+    background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
     border-radius: 5px;
-    padding: 5px;
+    padding: 7px;
+    color: #EDF5E0;
 }
 .avInner{
     padding: 5px;
@@ -88,8 +92,8 @@ fieldset {
 
 .filterButton{
     
-    background-color: #86C232;
-    color: black;
+    background-color: #222629;
+    color: #EDF5E0;
     width: 80%;
     padding: 4px 10px;
     margin: 8px 5px;

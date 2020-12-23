@@ -67,7 +67,7 @@ function OfferItems(props) {
                                             infoPopUp()
                                         }} 
                                         >Contact Info</button>
-                                        <SellerContactInfo ref={infoRef} currentOffer={currentOffer} books={props.books}/>
+                                        
                                     </>
                                 ):(null)}
                                 {offer.status == 'declined'?(
@@ -80,7 +80,7 @@ function OfferItems(props) {
                                             }
                                             openPopUp()
                                         }}>Make New Offer</button>
-                                        <MakeOfferPopUp ref={offerRef} currentItem={currentBook}/>
+                                        
                                     </>
                                 ):(null)}
                                 
@@ -97,6 +97,8 @@ function OfferItems(props) {
     return (
         <div id="offerMainBlock">
             {props.offers.map(renderOffers)}
+            <SellerContactInfo ref={infoRef} currentOffer={currentOffer} books={props.books}/>
+            <MakeOfferPopUp ref={offerRef} currentItem={currentBook}/>
         </div>
     )
 }
