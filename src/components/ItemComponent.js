@@ -5,30 +5,46 @@ import { DataContext } from './Context/Contexts'
 
 
 function ItemComponent() {
-    const {next, prev, getItems, count, items} = React.useContext(DataContext)
+    const {next, prev, getItems, count, items, fetched, prevCount, setPrevCount} = React.useContext(DataContext)
     
-    return (
-        <div>
-            <div id="itemsBlock">
-                <p>Showing {items.length} of {count} Results</p>
-                <ItemCard/> 
-                <div id="componentButtons" align='center'>
-                    {prev?(
-                            <button className='prev-next-button' onClick={() => {getItems(prev)}}>Prev</button> 
-                    ):(
-                        <button className='prev-next-button'>Prev</button>
-                    )}
-                    {next?(
-                            <button className='prev-next-button' onClick={() => {getItems(next)}}>Next</button> 
-                    ):(
-                        <button className='prev-next-button'>Next</button>
-                    )}
+    if(fetched){
+        return (
+            <div>
+                <div id="itemsBlock">
+                    <p>Showing {prevCount} to {prevCount + items.length - 1} of {count} Results</p>
+                    <ItemCard/> 
+                    <div id="componentButtons" align='center'>
+                        {prev?(
+                                <button className='prev-next-button' onClick={() => {
+                                    getItems(prev)
+                                    setPrevCount(prevCount - 12)
+                                }}>Prev</button> 
+                        ):(
+                            <button className='prev-next-button'>Prev</button>
+                        )}
+                        {next?(
+                                <button className='prev-next-button' onClick={() => {
+                                    getItems(next)
+                                    setPrevCount(items.length+prevCount)
+                                }}>Next</button> 
+                        ):(
+                            <button className='prev-next-button'>Next</button>
+                        )}
+                    
+                    </div>          
+                </div>
                 
-                </div>          
             </div>
-            
-        </div>
-            
-    )
+                
+        )
+    }else{
+        return(
+            <div align='center'>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        )
+        
+    }
+    
 }
 export default ItemComponent

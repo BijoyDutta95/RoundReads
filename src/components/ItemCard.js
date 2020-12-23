@@ -13,7 +13,7 @@ import MakeOfferPopUp from './MakeOfferPopUp';
 function ItemCard() {
     const popRef=React.useRef();
 
-    const {items} = React.useContext(DataContext)
+    const {items, fetched} = React.useContext(DataContext)
 
     const {userSession, wishList, setWishList} = React.useContext(UserContext)
 
@@ -217,15 +217,18 @@ function ItemCard() {
             </div>
         )
     }
+    
+   
     return (
-       
+    
         <div id="cardMainBlock">
             {items.map(renderCard)}
             <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
         </div>
-       
+        
         
     )
+
 }
 
 export default ItemCard
