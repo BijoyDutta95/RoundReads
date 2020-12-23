@@ -7,7 +7,6 @@ import './GlobalChange.css'
 import {API} from '../API/Api'
 import { useParams } from 'react-router-dom';
 import { MessageContext } from '../Context/Contexts';
-import MessageNav from '../MessageNav';
 import AccountInfo from '../AccountInfo';
 import MessagesInfo from '../MessagesInfo';
 function Messages() {
@@ -80,6 +79,7 @@ function Messages() {
                             setPendingClicked, setAcceptedClicked, setDeclinedClicked,
                             acceptedCount, declinedCount, pendingCount,
                             setAcceptedCount, setDeclinedCount, setPendingCount}}>
+                    
                     <MessagesInfo align='center'/>
                     {pendingClicked?(
                         <MessageCardPending/>

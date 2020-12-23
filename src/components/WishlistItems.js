@@ -81,7 +81,7 @@ function WishlistItems() {
                 </div>
                 <div id="singleItemButtons">
                     <BookmarkIcon id="saveButton" onClick={() => removeFromWishList(item.id)}/>
-                    <button>Contact Seller</button>
+                    <button id="wishlistConSeller">Contact Seller</button>
                 </div>
             </div>
         )

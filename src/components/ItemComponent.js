@@ -11,21 +11,22 @@ function ItemComponent() {
         <div>
             <div id="itemsBlock">
                 <p>Showing {items.length} of {count} Results</p>
-                <ItemCard/>         
+                <ItemCard/> 
+                <div id="componentButtons" align='center'>
+                    {prev?(
+                            <button className='prev-next-button' onClick={() => {getItems(prev)}}>Prev</button> 
+                    ):(
+                        <button className='prev-next-button'>Prev</button>
+                    )}
+                    {next?(
+                            <button className='prev-next-button' onClick={() => {getItems(next)}}>Next</button> 
+                    ):(
+                        <button className='prev-next-button'>Next</button>
+                    )}
+                
+                </div>          
             </div>
-            <div align='center'>
-                {prev?(
-                        <button className='prev-next-button' onClick={() => {getItems(prev)}}>Prev</button> 
-                ):(
-                    <button className='prev-next-button'>Prev</button>
-                )}
-                {next?(
-                        <button className='prev-next-button' onClick={() => {getItems(next)}}>Next</button> 
-                ):(
-                    <button className='prev-next-button'>Next</button>
-                )}
             
-            </div>   
         </div>
             
     )

@@ -1,33 +1,33 @@
-#messageCard{
+.messageCard{
+    position: relative;
     display: flex;
     flex-direction: row;
+    width: 70%;
+    margin: auto;
     background-color: #EDF5E0;
     align-items: center;
-    margin: auto;
     margin-bottom: 5px;
-    border-bottom-left-radius: 15%;
-    border-top-right-radius: 15%;
-    box-shadow: 0 0 10px rgba(237, 245, 224,1);
+    border-left: 10px solid #008F68;
+    border-right: 10px solid #B6073B;
+    border-radius: 2em 1em 4em / 0.5em 3em;
+    border-image-slice: 1;
+    box-shadow: 0 0 10px rgba(237, 245, 224,0.5);
 }
-#messageCard img{
-    height: 100px;
-    width: 100px;
+.messageCard img{
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     padding: 5px;
 }
-#offers{
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-}
-#messageText{
+.messageText{
     display: flex;
     flex-direction: column;
+    padding: 0;
 }
-#vl{
-    border-left: 10px solid #EDF5E0;
-}
+
 #messageButtons{
+    position: absolute;
+    right: 0;
     display: flex;
     flex-direction: column;
     padding-right: 15px;

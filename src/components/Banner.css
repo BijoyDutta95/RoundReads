@@ -1,28 +1,48 @@
-.bannerBlock{
-    background-color: #EDF5E0;
+.sliderBanner{
     position: relative;
-    /* mask-image: linear-gradient(to bottom, rgba(0,0,0,1) , rgba(0,0,0,0)); */
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    width: 99%;
 }
-.bannerText p{
-    color: #222629;
-    font-style: bold;
-    font-size: 40px;
+.actualBanner{
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
 }
-.bannerIcon{
-    height: 300px !important;
-    width: 220px !important;
-    color: #222629; 
-}
-#forwardIcon{
+.arrowLeft{
     position: absolute;
-    left: 0;
-    margin-left: 5px;
+    top:50%;
+    left: 32px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    color: #EDF5E0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    padding: 3px;
 }
-#backwardIcon{
+.arrowRight{
     position: absolute;
-    right: 0;
-    margin-right: 5px;
+    top:50%;
+    right: 32px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    color: #EDF5E0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    padding: 3px;
+}
+.arrowLeft:hover, .arrowRight:hover{
+    background-color: rgba(0,0,0,1);
+}
+.slide{
+    opacity: 0;
+    transition-duration: 1s ease;
+}
+.slide.active{
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.02);
 }

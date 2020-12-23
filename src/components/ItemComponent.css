@@ -24,3 +24,13 @@
     align-items: center;
     border-radius: 5px;  
 }
+
+#componentButtons{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;   
+    margin-top: 5%;
+    justify-content: space-evenly;
+
+}
