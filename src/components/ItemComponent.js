@@ -19,7 +19,7 @@ function ItemComponent() {
         return (
             <div>
                 <div id="itemsBlock">
-                    <p>Showing {prevCount} to {prevCount + items.length - 1} of {count} Results</p>
+                    <p>Showing {prevCount} - {prevCount + items.length - 1} of {count} Results</p>
                     <ItemCard/> 
                     <div id="componentButtons" align='center'>
                         {prev?(

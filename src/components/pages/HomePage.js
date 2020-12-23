@@ -60,7 +60,8 @@ function HomePage() {
             <DataContext.Provider value={{items, count, prev, next, getItems, fetched, prevCount, setPrevCount}}>
                 <ItemComponent/>
             </DataContext.Provider>
-            <HomeFooter/>
+            {fetched?(<HomeFooter/>):(null)}
+            
         </div>
     )
 }
