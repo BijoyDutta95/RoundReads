@@ -10,7 +10,10 @@ function WriteBlog() {
     const [contentCount, setContentCount] = React.useState(5000)
     const [coverPhoto, setCoverPhoto] = React.useState('')
     const [success, setSuccess] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(false)
+    const [empty, setEmpty] = React.useState(false)
+    const [contentLimit, setContentLimit] = React.useState(false)
 
     const {userSession} = React.useContext(UserContext)
 
@@ -33,10 +36,25 @@ function WriteBlog() {
         setTitle('')
         setContent('')
         setCoverPhoto('')
+        setEmpty(false)
+        setContentLimit(false)
+        setError(false)
     }
     
     const postBlog = () =>{
-        
+        setEmpty(false)
+        setContentLimit(false)
+        setError(false)
+
+        if(title.trim()==0 || content.trim()==0){
+            setEmpty(true)
+            return
+        }
+        if(content.length > 5000){
+            setContentLimit(true)
+            return
+        }
+        setLoading(true)
         let body = JSON.stringify({
             title : title,
             content : content,
@@ -57,18 +75,24 @@ function WriteBlog() {
         .then(data =>{
             console.log(data.data)
             setSuccess(true)
+            setLoading(false)
         })
         .catch(err =>{
             console.log(err)
             setError(true)
+            setLoading(false)
         })
     }
 
     if(success){
         return(
-            <div className='successMessage'>
-                <h3>Post Success</h3>
-                <button onClick={() =>setSuccess(false)}>PostAnotherBlog</button>
+            <div id="writeBlogBlock">
+                <h3>Blog Posted Successfully</h3>
+                <button onClick={() =>{
+                    setSuccess(false)
+                    setTitle('')
+                    setContent('')
+                }}>PostAnotherBlog</button>
             </div>
         )
     }else    
@@ -86,11 +110,34 @@ function WriteBlog() {
             }}/>
             <strong>Choose a cover picture</strong>
             <input type="file" onChange={handleChangeImage}/> 
+
+            {empty?(
+                <div id='empty' align='center'>
+                    <p>Fields cannot be Empty</p>
+                </div>
+            ):(null)}
+
+            {contentLimit?(
+                <div id='empty' align='center'>
+                    <p>Content cannot exceeds more than 5000 characters</p>
+                </div>
+            ):(null)}
+
+            {error?(
+                <div id='empty' align='center'>
+                    <p>Something Error Occured</p>
+                </div>
+            ):(null)}
              
             <div id="blogButtons">
                 <button id="clearBlogBtn" onClick={clearAll}>Clear</button>
                 <button id="postBlogBtn" onClick={postBlog}>Post</button>
             </div>
+            {loading?(
+                <div align='center'>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
+            ):(null)}
         </div>
     )
 }

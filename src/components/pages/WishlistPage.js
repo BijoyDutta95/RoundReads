@@ -10,10 +10,12 @@ import { API } from '../API/Api'
 function WishlistPage() {
     const {wishList, userSession} = React.useContext(UserContext)
     const [items, setItems] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
 
     React.useEffect(() =>{
         function getWishList(wishList){
             console.log("getWishlist called")
+            setLoading(true)
             let url = "api/get_wishlist/"
             API.get(url, {
                 params : {
@@ -23,6 +25,7 @@ function WishlistPage() {
             .then(data =>{
                 console.log(data.data)
                 setItems((data.data))
+                setLoading(false)
             })
             .catch(err =>{
                 console.log(err)
@@ -39,7 +42,13 @@ function WishlistPage() {
         <div className="globalBlock">           
             <AccountInfo/>
             <WishListContext.Provider value={{items, setItems}}>
-                <WishlistItems/>
+                {loading?(
+                    <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                ):(
+                    <WishlistItems/>
+                )}
             </WishListContext.Provider>
         </div>
     )

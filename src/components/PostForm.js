@@ -18,6 +18,11 @@ function PostForm() {
     const [image1, setImage1] = React.useState('')
     const [image2, setImage2] = React.useState('')
     const [postSuccess, setPostSuccess] = React.useState(false)
+
+    const [empty, setEmpty] = React.useState(false)
+    const [error, setError] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
+    const [cancel, setCancel] = React.useState(false)
     
     const {userSession} = React.useContext(UserContext)
 
@@ -52,7 +57,15 @@ function PostForm() {
 
     
     const handlePostAd = () =>{
-
+        setEmpty(false)
+        setError(false)
+        
+        if(title.trim() == '' || author.trim() == '' || desc.trim() == ''){
+            setEmpty(true)
+            return
+        }else(
+            setLoading(true)
+        )
         let form_data = new FormData();
         form_data.append('image1', image1);
         form_data.append('image2', image2);
@@ -93,14 +106,21 @@ function PostForm() {
             .then(data => {
                 console.log("reaturned data : " + data)
                 setPostSuccess(true)
+                setLoading(false)
             })
             .catch(e => {
                 console.log("catched errorss : " + e)
+                setError(true)
+                setLoading(false)
             });
 
     }
 
     if(!userSession){
+        alert("Please Login to Post an Ad")
+        return <Redirect to="/"/>
+    }
+    if(cancel){
         return <Redirect to="/"/>
     }
 
@@ -108,6 +128,22 @@ function PostForm() {
         return(
             <div id="formMainBlock">
                 <h2>You have successfully Posted Your Ad</h2>
+                <div className="formField">
+                <div id="buttonsDiv">
+                    <button id="submitButton" onClick={()=>setCancel(true)}><b>Goto Home</b></button>
+                    <button id="submitButton" onClick={()=>{
+                        setTitle('')
+                        setAuthor('')
+                        setDesc('')
+                        setBorrowPrice(null)
+                        setSalePrice(null)
+                        setImage1('')
+                        setImage2('')
+                        setPostSuccess(false)
+                    }
+                    }><b>Post Again</b></button>
+                </div>
+                </div>
             </div>
         )
     }
@@ -203,10 +239,26 @@ function PostForm() {
                             </div>
                         </form>
                 </fieldset>
+                {error?(
+                    <div id='loginError' align='center'>
+                        <p>Something error occured</p>
+                    </div>
+                ):(null)}
+                {empty?(
+                    <div id='loginError' align='center'>
+                        <p>Fields cannot be Empty</p>
+                    </div>
+                ):(null)}
+                {loading?(
+                    <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                ):(null)}
                 <div id="buttonsDiv">
-                    <button id="cancelButton"><b>Cancel</b></button>
-                    <button type='submit' onClick={handlePostAd} id="submitButton"><b>Request Verification</b></button>
+                    <button id="cancelButton" onClick={()=>setCancel(true)}><b>Cancel</b></button>
+                    <button type='submit' onClick={handlePostAd} id="submitButton"><b>Post Ad</b></button>
                 </div>
+                
                 
             </div>
         </div>

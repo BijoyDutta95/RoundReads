@@ -3,10 +3,15 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import './WishlistItems.css'
 import { WishListContext, UserContext } from './Context/Contexts';
 import { API } from './API/Api'
+import { Redirect } from 'react-router-dom';
 
 function WishlistItems() {
     const {items, setItems} = React.useContext(WishListContext)
     const {wishList, setWishList, userSession} = React.useContext(UserContext)
+
+    const [itemClicked, setItemClicked] = React.useState(false)
+    const [currentItem, setCurrentItem] = React.useState('')
+
     const removeFromWishList = (id) =>{
         console.log("books id to remove" + id)
         //console.log(items[0].id)
@@ -54,7 +59,11 @@ function WishlistItems() {
 
     const renderItem = (item, index) =>{
         return (
-            <div id="SingleItem" key={index}>
+            <div id="SingleItem" key={index} onClick={() => {
+                    setCurrentItem(item)    
+                    setItemClicked(true)
+                    
+                }}>
                 <img src={item.image1} alt="itemImage" id="SingleItemImage"/>
                 <div id="singleItemInfo">
                     <strong>Title : {item.title}</strong>
@@ -86,6 +95,21 @@ function WishlistItems() {
             </div>
         )
     }
+
+    if(itemClicked){
+        return(
+            <Redirect to='/currentItem/1'/>
+        )
+    }
+
+    if(items.length == 0){
+        return(
+        <div align='center' id='empty'>
+            <h3>Your WishList is Empty</h3>
+        </div>
+        )
+        
+    }else
 
     return (   
         <div id="wishlistItemsBlock">

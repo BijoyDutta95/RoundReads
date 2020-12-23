@@ -81,7 +81,14 @@ function UserOffers() {
             
         }
     }else{
-        return <AccountInfo/>
+        return (
+            <div className='globalBlock'>
+                <AccountInfo/>
+                <div align='center'>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
+            </div>
+        )
     }
     
 }

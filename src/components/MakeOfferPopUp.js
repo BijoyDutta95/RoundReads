@@ -27,9 +27,13 @@ const MakeOfferPopUp = forwardRef((props,ref) =>{
     const [borrowingOffer, setBorrowingOffer] = React.useState(1)
     const [message, setMessage] = React.useState('')
     const [messageSent, setMessageSent] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(false)
 
     const sendRequest = () =>{
-       
+        setLoading(true)
+        setError(false)
+
         let requestForTemp = requestFor
         if(props.currentItem.availability == 'borrow'){
             requestForTemp = 'borrowing'
@@ -57,10 +61,15 @@ const MakeOfferPopUp = forwardRef((props,ref) =>{
         })
         .then(data =>{
             console.log(data.data)
-            setMessageSent(true)
+            alert("Message Sent to Seller")
+            setLoading(false)
+            setDisplay(false)
         })
         .catch(err =>{
             console.log(err)
+            alert('Something error occured')
+            setLoading(false)
+            
         })
     }
 
@@ -144,22 +153,23 @@ const MakeOfferPopUp = forwardRef((props,ref) =>{
                     ):(null)}
                     
                     
-                    
-                    
-                
-                    
-                        
-                                            
-                   
-                   
-                   
                     <div id="message">
                         <textarea type="text" placeholder="Additional Message" required onChange={(e) =>{setMessage(e.target.value)}}></textarea>
                     </div>
+                    {error?(
+                        <div id='loginError' align='center'>
+                            <p>Something Error Occured</p>
+                        </div>
+                    ):(null)}
                     <div id="popButtons">
                         <button id="messageCancel" onClick={close}>Cancel</button>
                         <button id="messageSend" onClick={sendRequest}>Send Message </button>
                     </div>
+                    {loading?(
+                        <div align='center'>
+                            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                        </div>
+                    ):(null)}
                 </div>
             </div>
         )

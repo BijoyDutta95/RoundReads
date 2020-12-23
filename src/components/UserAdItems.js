@@ -12,15 +12,18 @@ import { Link } from 'react-router-dom';
 function UserAdItems() {
     const {userSession} = React.useContext(UserContext)
     const [items, setItems] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
     
     React.useEffect(() =>{
         function getUserItems(){
+            setLoading(true)
             let url = "api/get_user_books/?search=" + JSON.parse(userSession).email
             console.log("User items called")
             API.get(url)
             .then(data =>{
                 console.log(data.data)
                 setItems(data.data)
+                setLoading(false)
             })
             .catch(err =>{
                 console.log(err)
@@ -89,6 +92,13 @@ function UserAdItems() {
         )
     }
 
+    if(loading){
+        return(
+            <div align='center'>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        )
+    }else
     return (   
         <div id="itemsDiplayedBlock">
             {items.map(renderItem)}

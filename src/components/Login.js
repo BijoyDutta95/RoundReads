@@ -116,19 +116,18 @@ function Login(){
                     </div>
                 ):(null)}
 
-                {loading?(
-                    <div align='center'>
-                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    </div>
-                ):(
-                    <button type="submit" onClick={handleLogin}>LOGIN</button>
-                )}
+                <button type="submit" onClick={handleLogin}>LOGIN</button>
                 <div id="bottomText">
                     <label>
                         <input type="checkbox" name="remember"></input> Remember me
                     </label>
                     <small>Forgot Password?</small>
                 </div>
+                {loading?(
+                    <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                ):(null)}
             </form>
         </div>
     )
