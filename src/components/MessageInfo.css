@@ -1,8 +1,11 @@
 #messageInfoBlock{
     width: 25%;
-    background-color: #86C232;
+    background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
     align-items: center;
     float: left; 
+    color: #EDF5E0;
+    margin-left: 1%;
+
 }
 #messageNavItem{
     width: 99%;
@@ -14,7 +17,7 @@
 }
 
 #messageInfoBlock p:hover{
-    background-color: #EDF5E0;
+    background-color: #222625;
 }
 
 #messageInfoBlock p.active{

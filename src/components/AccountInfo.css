@@ -6,6 +6,8 @@
     align-items: center;
     float: left;
     border-radius: 5px;
+    background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
+    color: #EDF5E0;
 }
 #usrIcon{
     height: 70px !important;

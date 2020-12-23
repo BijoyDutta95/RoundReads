@@ -75,6 +75,7 @@ function Messages() {
         }else
         return (
             <div className="globalBlock">
+                <h2>Ad Messages Received</h2>
                 <MessageContext.Provider value={{messages, setMessages, setMessageCount, 
                             setPendingClicked, setAcceptedClicked, setDeclinedClicked,
                             acceptedCount, declinedCount, pendingCount,

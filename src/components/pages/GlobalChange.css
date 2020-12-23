@@ -102,3 +102,6 @@
       transform: translate(24px, 0);
     }
   }
+  #itemMessagesCards{
+    width: 70%;
+  }
