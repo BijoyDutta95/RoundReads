@@ -23,7 +23,9 @@
     width: 30%;
     background-color: #EDF5E0;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
-    border: 5px solid #86C232;
+    border: 10px solid;
+    border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
+    border-image-slice: 1;
     z-index: 101;
 }
 .popUpBox > *{
@@ -56,7 +58,7 @@
     font-weight: bold;
 }
 #messageSend{
-    background-color: #86C232;
+    background-color: #222629;
     color: #EDF5E0;
     font-weight: bold;
 }
