@@ -1,11 +1,18 @@
 #messageInfoBlock{
     width: 25%;
-    background-color: #EDF5E0;
-    padding: 10px;
+    background-color: #86C232;
     align-items: center;
-    float: left;
+    float: left; 
 }
-#messageInfoBlock p{
+#messageNavItem{
+    width: 99%;
     font-size: 25px;
-    padding: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 10px 1px;
+    
+}
+
+#messageInfoBlock p:hover{
+    background-color: #EDF5E0;
 }

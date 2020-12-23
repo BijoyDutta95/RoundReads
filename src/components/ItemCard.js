@@ -133,9 +133,15 @@ function ItemCard() {
                         ):(
                             <>
                                 {card.availability == 'sale'?(
-                                   <p id="salPrice"><b>Sale Price:</b> &#8377; {card.sale_price}</p> 
+                                   <> 
+                                    <p id="salPrice"><b>Sale Price:</b> &#8377; {card.sale_price}</p> 
+                                    <p id="borPrice"><b>Borrow Price:</b> N/A </p>
+                                   </>
                                 ):(
-                                    <p id="borPrice"><b>Borrow Price:</b> &#8377; {card.borrow_price}</p>
+                                    <>
+                                        <p id="salPrice"><b>Sale Price:</b>N/A</p>
+                                        <p id="borPrice"><b>Borrow Price:</b> &#8377; {card.borrow_price}</p>
+                                    </>
                                 )}
                             </>
                         )}
