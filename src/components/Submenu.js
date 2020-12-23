@@ -41,7 +41,7 @@ function Submenu() {
             <Link to='/userOffers' id="menu-item-link"><p id="menu-item">My Offers</p></Link>
           </li>
           <li className="dropdown-submenu-item ">
-            <Link to='#' id="menu-item-link"><p id="menu-item">My Blogs</p></Link>
+            <Link to='/userBlogs' id="menu-item-link"><p id="menu-item">My Blogs</p></Link>
           </li>
           <li className="dropdown-submenu-item ">
             <p id="menu-item" onClick={logout}>Logout</p>

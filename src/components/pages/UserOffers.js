@@ -74,6 +74,7 @@ function UserOffers() {
         }else{
             return(
                 <div className="globalBlock">
+                    <h2>Offers You Made</h2>      
                     <AccountInfo/>
                     <OfferItems offers={offers} books={books}/>
                 </div>

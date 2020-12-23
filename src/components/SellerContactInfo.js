@@ -23,7 +23,7 @@ const SellerContactInfo=forwardRef((props,ref)=> {
             <div className="infoWrapper">
                     <div onClick={close} className="infoBackdrop"/>
                     <div className="infoBox">
-                        <div id="sellerDetail">
+                        <div id="pubDetail">
                                 {props.books.map((book) =>(
                                     <>{book.id == props.currentOffer.book_id?(
                                         <>
@@ -35,7 +35,7 @@ const SellerContactInfo=forwardRef((props,ref)=> {
                                 ))}
                             
                         </div>
-                        <button id="hideButton" onClick={close}>Hide</button>
+                        <button id="hideBtn" onClick={close}>Hide</button>
                     </div>
                     
                 </div>

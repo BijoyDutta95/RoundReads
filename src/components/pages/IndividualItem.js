@@ -26,6 +26,7 @@ function IndividualItem() {
 
     return (
         <div className="globalBlock">
+            <h2>Item Information</h2>
             <ItemImageBlock items={items}/>
             <ItemMoreInfo items={items}/>
         </div>
