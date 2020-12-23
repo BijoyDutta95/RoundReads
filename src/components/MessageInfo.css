@@ -16,3 +16,7 @@
 #messageInfoBlock p:hover{
     background-color: #EDF5E0;
 }
+
+#messageInfoBlock p.active{
+    background-color: #EDF5E0;
+}
