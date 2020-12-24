@@ -6,22 +6,33 @@ import { API } from '../API/Api'
 function IndividualItem() {
     let params = useParams()
     const [items, setItems] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
     
     React.useEffect(() =>{
         function getCurrentItem(){
+            setLoading(true)
             console.log("getcurrent called")
             API.get("api/books/" + params.id)
             .then(data =>{
                 console.log(data.data)
                 setItems(data.data)
+                setLoading(false)
             })
             .catch(err =>{
                 console.log(err)
+                setLoading(false)
             })
         }
         getCurrentItem()
     }, [])
 
+    if(loading){
+        return(
+            <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+        )
+    }else
     
 
     return (

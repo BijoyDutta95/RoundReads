@@ -41,8 +41,8 @@ function Login(){
         })
         .then(data =>{
             console.log((data.data.refresh))
-            sessionStorage.setItem('refresh_token', data.data.refresh)
-            sessionStorage.setItem('access_token', data.data.access)
+            localStorage.setItem('refresh_token', data.data.refresh)
+            localStorage.setItem('access_token', data.data.access)
             getUserData()
         })
         .catch(e =>{
@@ -56,17 +56,20 @@ function Login(){
         let url = "auth/users/me/"
         API.get(url,{
             headers: {
-                'Authorization' : 'JWT ' + sessionStorage.getItem('access_token')
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token')
             }
         })
         .then(data => {
             console.log("success : " + JSON.stringify(data))
             setLoading(false)
-            setUser(JSON.stringify(data.data))
-            sessionStorage.setItem('user', JSON.stringify(data.data))
-            setUserSession(JSON.stringify(data.data))
             setDisplay(false)
-            getWishList(data.data.id)
+            setUser(JSON.stringify(data.data))
+            localStorage.setItem('user', JSON.stringify(data.data))
+            setUserSession(JSON.stringify(data.data))
+            localStorage.setItem('wishlist', JSON.stringify(data.data.wishlist))
+            setWishList(JSON.stringify(data.data.wishlist))
+            
+            //getWishList(data.data.id)
             
         })
         .catch(e => {
@@ -77,7 +80,7 @@ function Login(){
         });
     }
 
-    const getWishList = (id) =>{
+    /*const getWishList = (id) =>{
         let url = "api/wishlist/" + id
         API.get(url)
         .then(data => {
@@ -90,7 +93,7 @@ function Login(){
             console.log("failed catched error wishlist : " + e)
             
         });
-    }
+    }*/
     
     
     return (

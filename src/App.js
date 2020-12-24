@@ -25,8 +25,8 @@ import UserBlogs from './components/pages/UserBlogs';
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
   const [user, setUser] = React.useState(null)
-  const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
-  const [wishList, setWishList] = React.useState(sessionStorage.getItem('wishlist'))
+  const [userSession, setUserSession] = React.useState(localStorage.getItem('user'))
+  const [wishList, setWishList] = React.useState((localStorage.getItem('wishlist')))
 
   const [books, setBooks] = React.useState([])
   

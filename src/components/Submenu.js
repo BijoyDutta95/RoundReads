@@ -12,7 +12,7 @@ function Submenu() {
   const logout = () =>{
         console.log("logout")
         setUser(null)
-        sessionStorage.clear()
+        localStorage.clear()
         setUserSession(null)
         setWishList(null)
         
