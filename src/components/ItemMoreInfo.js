@@ -1,8 +1,7 @@
 import React from 'react'
 import './ItemMoreInfo.css'
-
-import { propTypes } from 'react-bootstrap/esm/Image'
 import MakeOfferPopUp from './MakeOfferPopUp';
+import { UserContext } from './Context/Contexts';
 function ItemMoreInfo(props) {
 
     const popRef=React.useRef();
@@ -11,6 +10,7 @@ function ItemMoreInfo(props) {
         popRef.current.openModal();
     }
     const [currentItem, setCurrentItem] = React.useState([])
+    const {userSession} = React.useContext(UserContext)
 
     return (
         <div id="ItemBlockRight">
@@ -20,6 +20,10 @@ function ItemMoreInfo(props) {
                 <p>Seller Name : {props.items.poster_name}</p>
                 <p>Seller Email : {props.items.poster_email}</p>
                 <button id="contactSellerItem" onClick={() =>{
+                    if(!userSession){
+                        alert('Please Login')
+                        return
+                    }
                     setCurrentItem(props.items)
                     openPopUp()
                 }}

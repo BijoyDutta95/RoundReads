@@ -117,7 +117,6 @@ function PostForm() {
     }
 
     if(!userSession){
-        alert("Please Login to Post an Ad")
         return <Redirect to="/"/>
     }
     if(cancel){

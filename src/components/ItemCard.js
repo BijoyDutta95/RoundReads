@@ -225,6 +225,10 @@ function ItemCard() {
                         
                         
                         <button id="cardButtonContact" onClick={() =>{
+                            if(!userSession){
+                                alert('Please Login')
+                                return
+                            }
                             setCurrentItem(card)
                             openPopUp()
 
