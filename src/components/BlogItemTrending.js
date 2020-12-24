@@ -4,6 +4,7 @@ import './BlogItem.css'
 import UpvoteIcon from '@material-ui/icons/ThumbUp';
 import { API } from './API/Api';
 import {Redirect} from 'react-router-dom'
+import { UserContext } from './Context/Contexts';
 //import { TrendingBlogContext } from './Context/Contexts';
 
 function BlogItem(props) {
@@ -11,11 +12,100 @@ function BlogItem(props) {
     const [readClicked, setReadClicked] = React.useState(false)
     const [currentBlog, setCurrentBlog] = React.useState(null)
 
-    const addLike = (id, currentLikes) =>{
+    const {userSession, likedBlogs, setLikedBlogs} = React.useContext(UserContext)
+
+    const validateUser = (id, currentLikes, flag) =>{
+        let body = JSON.stringify({
+            token : localStorage.getItem('access_token')
+        })
+        API.post('auth/jwt/verify/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success access : ' + JSON.stringify(data.data))
+            if(flag == 1){
+                likeBlog(id, currentLikes)
+            }else{
+                dislikeBlog(id, currentLikes)
+            }
+        })
+        .catch(err=>{
+            console.log('err access: ' + err)
+            getAccess(id, currentLikes, flag)
+    
+        })
+    }
+
+    const getAccess = (id, currentLikes, flag) =>{
+        let body = JSON.stringify({
+            refresh : localStorage.getItem('refresh_token')
+        })
+        API.post('auth/jwt/refresh/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success refresh : ' + (data.data.access))
+            localStorage.setItem('access_token', data.data.access)
+            if(flag == 1){
+                likeBlog(id, currentLikes)
+            }else{
+                dislikeBlog(id, currentLikes)
+            }
+            
+        })
+        .catch(err=>{
+            console.log('err refresh: ' + err)
+            alert('Please Login to like a Blog')
+    
+        })
+    }
+    
+    const likeBlog = (id, currentLikes) =>{
         console.log('addLikes')
         
-        var blogsTemp = props.blogs
+        //var blogsTemp = []
         
+        let blogsTemp = []
+        for(let i in (JSON.parse(likedBlogs))){
+            console.log(JSON.parse(likedBlogs)[i])
+            blogsTemp.push(JSON.parse(likedBlogs)[i])
+        }
+        blogsTemp.push(id)
+        console.log(blogsTemp)
+       
+        setLikedBlogs(JSON.stringify(blogsTemp))
+        localStorage.setItem('likedBlogs', JSON.stringify(blogsTemp))
+        //console.log("after : " + wishList)
+        
+
+        let url = "auth/users/me/"
+        let body = JSON.stringify({
+            
+            liked_blogs : blogsTemp
+        })
+        API.patch(url, body, {
+            headers : {
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(JSON.stringify(data.data))
+            addLike(id, currentLikes)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
+        
+    }
+
+    const addLike = (id, currentLikes) =>{
+        let blogsTemp = props.blogs
         for(let i in blogsTemp){
             if(blogsTemp[i].id == id){
                 
@@ -26,11 +116,75 @@ function BlogItem(props) {
                 break
             }
         }
-        //console.log(blogsTemp)
-        
+
         
         let body = JSON.stringify({
             likes : (currentLikes+1)
+        })
+        API.patch('api/blogs/' + id + '/', body, {
+            headers :{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(data.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
+    const dislikeBlog = (id, currentLikes) =>{
+        console.log('dislike')
+        let blogsTemp = []
+        for(let i in JSON.parse(likedBlogs)){
+            console.log(JSON.parse(likedBlogs)[i])
+            blogsTemp.push(JSON.parse(likedBlogs)[i])
+        }
+        //wishListTemp.push(id)
+        blogsTemp.splice(blogsTemp.indexOf(id), 1)
+        console.log("after delete : " + blogsTemp)
+       
+        setLikedBlogs(JSON.stringify(blogsTemp))
+        localStorage.setItem('likedBlogs', JSON.stringify(blogsTemp))
+        //console.log("after : " + wishList)
+        
+
+        let url = "auth/users/me/" 
+        let body = JSON.stringify({
+            liked_blogs : blogsTemp
+        })
+        API.patch(url, body, {
+            headers : {
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(JSON.stringify(data.data))
+            removeLike(id, currentLikes)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+    const removeLike = (id, currentLikes) =>{
+        let blogsTemp = props.blogs
+        for(let i in blogsTemp){
+            if(blogsTemp[i].id == id){
+                
+                blogsTemp[i].likes = blogsTemp[i].likes - 1
+                //blogsTemp[i].title = 'editedsss'
+                console.log(blogsTemp[i].likes)
+                props.setBlogs([...blogsTemp])
+                break
+            }
+        }
+
+        
+        let body = JSON.stringify({
+            likes : (currentLikes-1)
         })
         API.patch('api/blogs/' + id + '/', body, {
             headers :{
@@ -69,11 +223,36 @@ function BlogItem(props) {
                     </div>
                     <div id="blogBottom">
                         <div id="upvoteCount">
-                            <UpvoteIcon id="upIcon" onClick={() =>{
-                                addLike(blog.id, blog.likes)
-                                
-                            }}/>
-                            <p>{blog.likes}</p>
+                            {userSession?(
+                                <>
+                                {JSON.stringify(likedBlogs).includes(blog.id)?(
+                                    <>
+                                        <UpvoteIcon id="upIconLiked" onClick={() =>{
+                                            validateUser(blog.id, blog.likes, 0)
+                                            
+                                        }}/>
+                                        <p>{blog.likes}</p>
+                                    </>
+                                ):(
+                                    <>
+                                        <UpvoteIcon id="upIcon" onClick={() =>{
+                                            validateUser(blog.id, blog.likes, 1)
+                                            
+                                        }}/>
+                                        <p>{blog.likes}</p>
+                                    </>
+                                )}
+                                </>
+                            ):(
+                                <>
+                                    <UpvoteIcon id="upIcon" onClick={() =>{
+                                        alert('Please Login to like a Blog')
+                                        
+                                    }}/>
+                                    <p>{blog.likes}</p>
+                                </>
+                            )}
+                            
                         </div>
                         <button onClick={() =>{
                             setReadClicked(true)
