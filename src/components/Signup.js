@@ -66,7 +66,9 @@ function Signup(){
             'yearOfGraduation' : '',
             'dept' : '',
             'roll' : '',
-            'hostel' : ''
+            'hostel' : '',
+            'wishlist' : [],
+            'liked_blogs' : []
         })
 
         API.post(url, body, {
@@ -76,19 +78,20 @@ function Signup(){
         })
         .then(data =>{
             console.log("success : " + JSON.stringify(data))
-            createWishList(data.data.id)
-        
-            //setFlag(true)
+            //createWishList(data.data.id)
+            setLoading(false)
+            setFlag(true)
         })
         .catch(err => {
             console.log("error here : " + err)
             setError(true)
             setLoading(false)
+            setFlag(true)
         })
 
     }
 
-    const createWishList = (id) =>{
+    /*const createWishList = (id) =>{
         let url = "api/wishlist/"
         let body = JSON.stringify({
             user_id : id,
@@ -104,7 +107,7 @@ function Signup(){
             setFlag(true)
             setLoading(false)
         })
-    }
+    }*/
 
     
     return (

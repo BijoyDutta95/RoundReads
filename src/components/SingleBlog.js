@@ -4,6 +4,7 @@ import './SingleBlog.css'
 import UpvoteIcon from '@material-ui/icons/ThumbUp';
 import {useParams} from 'react-router-dom'
 import { API } from './API/Api';
+import { UserContext } from './Context/Contexts';
 
 function SingleBlog() {
     const params = useParams()
@@ -11,6 +12,7 @@ function SingleBlog() {
 
     const [blog, setBlog] = React.useState(null)
     const [keys, setKeys] = React.useState(0)
+    const {userSession, likedBlogs, setLikedBlogs} = React.useContext(UserContext)
 
     React.useEffect(() =>{
         function getCurrentBlog(id){
@@ -27,19 +29,189 @@ function SingleBlog() {
         getCurrentBlog(id)
     }, [id])
 
-    const addLike = () =>{
+    const validateUser = (id, currentLikes, flag) =>{
+        let body = JSON.stringify({
+            token : localStorage.getItem('access_token')
+        })
+        API.post('auth/jwt/verify/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success access : ' + JSON.stringify(data.data))
+            if(flag == 1){
+                likeBlog(id, currentLikes)
+            }else{
+                dislikeBlog(id, currentLikes)
+            }
+        })
+        .catch(err=>{
+            console.log('err access: ' + err)
+            getAccess(id, currentLikes, flag)
+    
+        })
+    }
+
+    const getAccess = (id, currentLikes, flag) =>{
+        let body = JSON.stringify({
+            refresh : localStorage.getItem('refresh_token')
+        })
+        API.post('auth/jwt/refresh/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success refresh : ' + (data.data.access))
+            localStorage.setItem('access_token', data.data.access)
+            if(flag == 1){
+                likeBlog(id, currentLikes)
+            }else{
+                dislikeBlog(id, currentLikes)
+            }
+            
+        })
+        .catch(err=>{
+            console.log('err refresh: ' + err)
+            alert('Please Login to like a Blog')
+    
+        })
+    }
+    
+    const likeBlog = (id, currentLikes) =>{
         console.log('addLikes')
         
-        var blogTemp = blog
-        blogTemp.likes = blogTemp.likes+1
-        setBlog(blogTemp)
+        //var blogsTemp = []
+        
+        let blogsTemp = []
+        for(let i in (JSON.parse(likedBlogs))){
+            console.log(JSON.parse(likedBlogs)[i])
+            blogsTemp.push(JSON.parse(likedBlogs)[i])
+        }
+        blogsTemp.push(id)
+        console.log(blogsTemp)
+       
+        setLikedBlogs(JSON.stringify(blogsTemp))
+        localStorage.setItem('likedBlogs', JSON.stringify(blogsTemp))
+        //console.log("after : " + wishList)
+        
+
+        let url = "auth/users/me/"
+        let body = JSON.stringify({
+            
+            liked_blogs : blogsTemp
+        })
+        API.patch(url, body, {
+            headers : {
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(JSON.stringify(data.data))
+            addLike(id, currentLikes)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+
+        
+    }
+
+    const addLike = (id, currentLikes) =>{
+        let blogsTemp = blog
+        blogsTemp.likes = blogsTemp.likes + 1
+        setBlog(blogsTemp)
         setKeys(keys+1)
-        console.log(blogTemp.likes)
+        /*
+        for(let i in blogsTemp){
+            if(blogsTemp[i].id == id){
+                
+                blogsTemp[i].likes = blogsTemp[i].likes + 1
+                //blogsTemp[i].title = 'editedsss'
+                console.log(blogsTemp[i].likes)
+                setBlog([...blogsTemp])
+                break
+            }
+        }*/
+
         
         let body = JSON.stringify({
-            likes : (blog.likes+1)
+            likes : (currentLikes+1)
         })
-        API.patch('api/blogs/' + blog.id + '/', body, {
+        API.patch('api/blogs/' + id + '/', body, {
+            headers :{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(data.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
+    const dislikeBlog = (id, currentLikes) =>{
+        console.log('dislike')
+        let blogsTemp = []
+        for(let i in JSON.parse(likedBlogs)){
+            console.log(JSON.parse(likedBlogs)[i])
+            blogsTemp.push(JSON.parse(likedBlogs)[i])
+        }
+        //wishListTemp.push(id)
+        blogsTemp.splice(blogsTemp.indexOf(id), 1)
+        console.log("after delete : " + blogsTemp)
+       
+        setLikedBlogs(JSON.stringify(blogsTemp))
+        localStorage.setItem('likedBlogs', JSON.stringify(blogsTemp))
+        //console.log("after : " + wishList)
+        
+
+        let url = "auth/users/me/" 
+        let body = JSON.stringify({
+            liked_blogs : blogsTemp
+        })
+        API.patch(url, body, {
+            headers : {
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log(JSON.stringify(data.data))
+            removeLike(id, currentLikes)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+    const removeLike = (id, currentLikes) =>{
+        let blogsTemp = blog
+        blogsTemp.likes = blogsTemp.likes - 1
+        //blogsTemp[i].title = 'editedsss'
+        console.log(blogsTemp.likes)
+        setBlog(blogsTemp)
+        setKeys(keys+1)
+        /*
+        for(let i in blogsTemp){
+            if(blogsTemp[i].id == id){
+                
+                blogsTemp[i].likes = blogsTemp[i].likes - 1
+                //blogsTemp[i].title = 'editedsss'
+                console.log(blogsTemp[i].likes)
+                setBlog([...blogsTemp])
+                break
+            }
+        }*/
+
+        
+        let body = JSON.stringify({
+            likes : (currentLikes-1)
+        })
+        API.patch('api/blogs/' + id + '/', body, {
             headers :{
                 'Content-Type' : 'application/json'
             }
@@ -82,8 +254,35 @@ function SingleBlog() {
             </div>
             <div id="singleBlogButton">
                 <div id="likeCount">
-                    <UpvoteIcon id="upvoteIcon" onClick={addLike}/>
-                    <p>{blog.likes}</p>
+                {userSession?(
+                    <>
+                    {JSON.stringify(likedBlogs).includes(blog.id)?(
+                        <>
+                            <UpvoteIcon id="upIconLiked" onClick={() =>{
+                                validateUser(blog.id, blog.likes, 0)
+                                
+                            }}/>
+                            <p>{blog.likes}</p>
+                        </>
+                    ):(
+                        <>
+                            <UpvoteIcon id="upIcon" onClick={() =>{
+                                validateUser(blog.id, blog.likes, 1)
+                                
+                            }}/>
+                            <p>{blog.likes}</p>
+                        </>
+                    )}
+                    </>
+                ):(
+                    <>
+                        <UpvoteIcon id="upIcon" onClick={() =>{
+                            alert('Please Login to like a Blog')
+                            
+                        }}/>
+                        <p>{blog.likes}</p>
+                    </>
+                )}
                 </div>
             </div>
         </div>

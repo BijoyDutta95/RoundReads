@@ -15,18 +15,17 @@ import { SearchContext, UserContext } from './components/Context/Contexts';
 import UserAccount from './components/pages/UserAccount';
 import Messages from './components/pages/Messages';
 import IndividualItem from './components/pages/IndividualItem';
-//import SearchSuggest from './components/pages/SearchSuggest';
 import {API} from './components/API/Api'
 import UserOffers from './components/pages/UserOffers';
-import Autocomplete from './components/pages/AutoComplete';
 import SingleBlog from './components/SingleBlog';
 import UserBlogs from './components/pages/UserBlogs';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
   const [user, setUser] = React.useState(null)
-  const [userSession, setUserSession] = React.useState(sessionStorage.getItem('user'))
-  const [wishList, setWishList] = React.useState(sessionStorage.getItem('wishlist'))
+  const [userSession, setUserSession] = React.useState(localStorage.getItem('user'))
+  const [wishList, setWishList] = React.useState((localStorage.getItem('wishlist')))
+  const [likedBlogs, setLikedBlogs] = React.useState((localStorage.getItem('likedBlogs')))
 
   const [books, setBooks] = React.useState([])
   
@@ -49,7 +48,7 @@ function App() {
   return (
     <div className="App">
     <Router>
-    <UserContext.Provider value={{user, setUser, userSession, setUserSession, wishList, setWishList, books}}>
+    <UserContext.Provider value={{user, setUser, userSession, setUserSession, wishList, setWishList, books, likedBlogs, setLikedBlogs}}>
       <NavBar setSearchTerm={setSearchTerm}/>
       {searchTerm?(
         <Redirect to={'/search/' + searchTerm}/>
@@ -71,7 +70,6 @@ function App() {
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           <Route path='/currentBlog/:id' exact component={SingleBlog}/>
-         {/* <Route path='/searchSuggest' exact component={Autocomplete}/>*/}
 
           
         </SearchContext.Provider>

@@ -19,7 +19,7 @@ function WishlistPage() {
             let url = "api/get_wishlist/"
             API.get(url, {
                 params : {
-                    wishlist : JSON.parse(wishList).reverse()
+                    wishlist : JSON.parse(wishList)
                 }
             })
             .then(data =>{

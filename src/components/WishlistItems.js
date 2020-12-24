@@ -4,8 +4,14 @@ import './WishlistItems.css'
 import { WishListContext, UserContext } from './Context/Contexts';
 import { API } from './API/Api'
 import { Redirect } from 'react-router-dom';
+import MakeOfferPopUp from './MakeOfferPopUp';
 
 function WishlistItems() {
+    const popRef=React.useRef();
+    const openPopUp=()=>{
+        popRef.current.openModal();
+    }
+    
     const {items, setItems} = React.useContext(WishListContext)
     const {wishList, setWishList, userSession} = React.useContext(UserContext)
 
@@ -59,11 +65,7 @@ function WishlistItems() {
 
     const renderItem = (item, index) =>{
         return (
-            <div id="SingleItem" key={index} onClick={() => {
-                    setCurrentItem(item)    
-                    setItemClicked(true)
-                    
-                }}>
+            <div id="SingleItem" key={index} >
                 <img src={item.image1} alt="itemImage" id="SingleItemImage"/>
                 <div id="singleItemInfo">
                     <strong>Title : {item.title}</strong>
@@ -90,7 +92,14 @@ function WishlistItems() {
                 </div>
                 <div id="singleItemButtons">
                     <BookmarkIcon id="saveButton" onClick={() => removeFromWishList(item.id)}/>
-                    <button id="wishlistConSeller">Contact Seller</button>
+                    <button id='wishlistConSeller' onClick={()=>{
+                        setCurrentItem(item.id)
+                        setItemClicked(true)
+                    }}>View Ad</button>
+                    <button id="wishlistConSeller" onClick={()=>{
+                        setCurrentItem(item)
+                        openPopUp()
+                    }}>Contact Seller</button>
                 </div>
             </div>
         )
@@ -98,7 +107,7 @@ function WishlistItems() {
 
     if(itemClicked){
         return(
-            <Redirect to='/currentItem/1'/>
+            <Redirect to={'/currentItem/' + currentItem}/>
         )
     }
 
@@ -114,6 +123,7 @@ function WishlistItems() {
     return (   
         <div id="wishlistItemsBlock">
             {items.map(renderItem)}
+            <MakeOfferPopUp ref={popRef} currentItem={currentItem}/>
         </div>
     )
 }

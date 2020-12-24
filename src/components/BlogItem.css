@@ -77,6 +77,13 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    
+}
+#upIconLiked{
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: royalblue;
 }
 #blogBottom button{
     background-color: #222625;
