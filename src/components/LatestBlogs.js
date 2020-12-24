@@ -44,14 +44,14 @@ function LatestBlogs() {
                 </TrendingBlogContext.Provider>
                 <div id="navButtons">
                     {prev?(
-                        <button onClick={() => setUrl(prev)}>Previous</button>
+                        <button onClick={() => setUrl(prev)}>&#8592; Previous</button>
                     ):(
-                        <button>Previous</button>
+                        <button>&#8592; Previous</button>
                     )}
                     {next?(
-                        <button onClick={() => setUrl(next)}>Next</button>
+                        <button onClick={() => setUrl(next)}>Next &#8594;</button>
                     ):(
-                        <button>Next</button>
+                        <button>Next &#8594;</button>
                     )}
                 </div>
                 </>
