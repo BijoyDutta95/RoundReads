@@ -1,4 +1,5 @@
 .globalBlock{
+  position: relative;
     margin: auto;
     width: 1250px;
     align-items: center;
