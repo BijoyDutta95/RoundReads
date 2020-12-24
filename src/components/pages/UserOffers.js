@@ -4,11 +4,10 @@ import OfferItems from '../OfferItems'
 import Deal from '../../icons/agreement.svg';
 import { UserContext } from '../Context/Contexts';
 import {API} from '../API/Api'
+import { Redirect } from 'react-router-dom';
 
 function UserOffers() {
     const {userSession} = React.useContext(UserContext)
-    
-    let url = 'api/requests/?search=' + JSON.parse(userSession).email
 
     const [offers, setOffers] = React.useState([])
     const [fetched, setFetched] = React.useState(false)
@@ -17,8 +16,8 @@ function UserOffers() {
 
     React.useEffect(() =>{
         function getMessages(){
-            console.log("get offers called :  " + url)
-            API.get(url)
+            //console.log("get offers called :  " + url)
+            API.get('api/requests/?search=' + JSON.parse(userSession).email)
             .then(data =>{
                 console.log(data.data)
                 setOffers(data.data)
@@ -30,7 +29,7 @@ function UserOffers() {
             })
         }
         getMessages()
-    }, [url])
+    }, [])
     
     function getItemsExtraInfo(offers){
         let offersTemp = JSON.parse(offers)
@@ -56,6 +55,10 @@ function UserOffers() {
         
         
         
+    }
+
+    if(!userSession){
+        return <Redirect to='/'/>
     }
     
     if(fetched){

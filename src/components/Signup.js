@@ -86,28 +86,9 @@ function Signup(){
             console.log("error here : " + err)
             setError(true)
             setLoading(false)
-            setFlag(true)
         })
 
     }
-
-    /*const createWishList = (id) =>{
-        let url = "api/wishlist/"
-        let body = JSON.stringify({
-            user_id : id,
-            wishlist : []
-        })
-        API.post(url, body, {
-            headers : {
-                'Content-Type' : 'application/json'
-            }
-        })
-        .then((data) =>{
-            console.log("wishlist created  " + JSON.stringify(data.data))
-            setFlag(true)
-            setLoading(false)
-        })
-    }*/
 
     
     return (

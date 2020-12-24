@@ -2,18 +2,20 @@ import React from 'react'
 import BlogItem from './BlogItemTrending'
 import './TrendingBlogs.css'
 import { API } from './API/Api'
-function TrendingBlogs() {
+function TrendingBlogs(props) {
     const [blogs, setBlogs] = React.useState([])
     const [fetched, setFetched] = React.useState(false)
 
     React.useEffect(()=>{
         function getBlogs(){
+            props.setLoadingTrend(true)
             console.log('get Trendingssss')
             API.get('api/trending_blogs')
             .then(data=>{
                 console.log(data.data)
                 setBlogs(data.data)
                 setFetched(true)
+                props.setLoadingTrend(false)
             })
             .catch(err=>{
                 console.log(err)

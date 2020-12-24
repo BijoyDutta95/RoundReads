@@ -43,6 +43,10 @@ function WriteBlog() {
     }
     
     const postBlog = () =>{
+        if(!userSession){
+            alert('Please Login to Post a Blog')
+            return
+        }
         setEmpty(false)
         setContentLimit(false)
         setError(false)
@@ -109,19 +113,19 @@ function WriteBlog() {
             <input type="file" onChange={handleChangeImage} /> 
 
             {empty?(
-                <div id='empty' align='center'>
+                <div id='loginError' align='center'>
                     <p>Fields cannot be Empty</p>
                 </div>
             ):(null)}
 
             {contentLimit?(
-                <div id='empty' align='center'>
+                <div id='loginError' align='center'>
                     <p>Content cannot exceeds more than 5000 characters</p>
                 </div>
             ):(null)}
 
             {error?(
-                <div id='empty' align='center'>
+                <div id='loginError' align='center'>
                     <p>Something Error Occured</p>
                 </div>
             ):(null)}

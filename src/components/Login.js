@@ -40,7 +40,7 @@ function Login(){
             }
         })
         .then(data =>{
-            console.log((data.data.refresh))
+            console.log('resposne : ' + JSON.stringify(data))
             localStorage.setItem('refresh_token', data.data.refresh)
             localStorage.setItem('access_token', data.data.access)
             getUserData()

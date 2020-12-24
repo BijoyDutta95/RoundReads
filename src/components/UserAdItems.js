@@ -7,6 +7,8 @@ import { API } from './API/Api'
 import ChatIcon from '@material-ui/icons/ChatBubble';
 import ChatNotificationIcon from '@material-ui/icons/Announcement';
 import { Link } from 'react-router-dom';
+import Mailbox from '../icons/mailbox.svg';
+
 
 
 function UserAdItems() {
@@ -98,6 +100,16 @@ function UserAdItems() {
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </div>
         )
+    }else
+    if(items.length == 0){
+        return(
+            <div id="noMessages">
+                <p>Empty Wishlist!</p>
+                <p>It seems lonely here! Try Saving some items</p>
+                <img src={Mailbox} alt="mailbox" id="mailImage"/>
+            </div>
+        )
+        
     }else
     return (   
         <div id="itemsDiplayedBlock">
