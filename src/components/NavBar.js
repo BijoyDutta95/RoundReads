@@ -131,7 +131,7 @@ function NavBar(props) {
                 </div>
             ):(
                 <div className="headerLinks" onClick={openModal}>
-                    <p>Login</p>                
+                    <p id="linkToLogin">Login</p>                
                 </div>
             )}
             

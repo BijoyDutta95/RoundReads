@@ -1,7 +1,9 @@
 #latestBlogBlock{
+    position: relative;
     background-color: #EDF5E0;
     float: left;
     width: 60%;
+    min-height: 760px;
     padding: 5px;
     border-radius: 10px;
     box-shadow: 
@@ -18,11 +20,14 @@
     color: #EDF5E0;
 }
 #navButtons{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2%;
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
-    margin-top: 5%;
+    padding: 0 5px;
 }
 #navButtons button{
     background-color: #222625;

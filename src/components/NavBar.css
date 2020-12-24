@@ -71,6 +71,10 @@
 #linkToHome:checked {
     color: #86C232;
 }
+#linkToHome:hover, #linkToAbout:hover, #linkToBlog:hover,#linkToLogin:hover{
+    color: #86C232;
+    transform: scale(1.1);
+}
 #linkToSell{
     background-color: #86C232;
     border-radius: 10px;

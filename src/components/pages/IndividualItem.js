@@ -3,6 +3,7 @@ import ItemMoreInfo from '../ItemMoreInfo'
 import ItemImageBlock from '../ItemImageBlock'
 import { useParams } from 'react-router-dom'
 import { API } from '../API/Api'
+import SimilarBooks from '../SimilarBooks'
 function IndividualItem() {
     let params = useParams()
     const [items, setItems] = React.useState([])
@@ -40,6 +41,7 @@ function IndividualItem() {
             <h2>Item Information</h2>
             <ItemImageBlock items={items}/>
             <ItemMoreInfo items={items}/>
+            <SimilarBooks/>
         </div>
     )
 }
