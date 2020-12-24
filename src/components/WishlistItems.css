@@ -63,3 +63,14 @@
 #empty{
     color: royalblue;
 }
+#emptyWishlist{
+    position: absolute;
+    background-color: #EDF5E0;
+    margin-top: 10%;
+    margin-left: 50%;
+    height: 350px;
+    width: 400px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(237, 245, 224,1);
+}

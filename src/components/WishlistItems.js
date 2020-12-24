@@ -5,7 +5,7 @@ import { WishListContext, UserContext } from './Context/Contexts';
 import { API } from './API/Api'
 import { Redirect } from 'react-router-dom';
 import MakeOfferPopUp from './MakeOfferPopUp';
-import Mailbox from '../icons/mailbox.svg';
+import Santa from '../icons/santa.svg';
 
 function WishlistItems() {
     const popRef=React.useRef();
@@ -115,10 +115,10 @@ function WishlistItems() {
     if(items.length == 0){
         return(
         
-            <div id="noMessages">
+            <div id="emptyWishlist">
                     <p>Empty Wishlist!</p>
-                    <p>It seems lonely here! Try Saving some items</p>
-                    <img src={Mailbox} alt="mailbox" id="mailImage"/>
+                    <p>It seems lonely here! Hit that Save Button</p>
+                    <img src={Santa} alt="mailbox" id="mailImage"/>
                 </div>
         
         )
