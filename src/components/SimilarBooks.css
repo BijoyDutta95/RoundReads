@@ -1,0 +1,52 @@
+#similarBooksBlock{
+    position: relative;
+    background-color: #EDF5E0;
+    width: 30%;
+    height: 600px;
+    float: right;
+    margin-top: 10px;
+    border-width: 8px;
+    border-style: solid;
+    border-image: 
+    linear-gradient(
+      to bottom, 
+      rgb(0,143,104), 
+      rgba(182, 7, 59, 1)
+    ) 1 100%;
+    
+}
+
+#similarBooksBlock h3{
+    width: 98%;
+    background-color: #222629;
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #EDF5E0;
+}
+#similarCards{
+    position: absolute;
+    width: 100%;
+    height: 94%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+#similarCards::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+	background-color: #EDF5E0;
+}
+
+#similarCards::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #EDF5E0;
+}
+
+#similarCards::-webkit-scrollbar-thumb
+{
+	background-color: #222629;
+}
