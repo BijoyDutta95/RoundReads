@@ -7,9 +7,9 @@ import { Redirect } from 'react-router-dom'
 
 
 function UserAccount() {
-    const {user, userSession} = React.useContext(UserContext)
+    const {userSession} = React.useContext(UserContext)
     
-    if(user || userSession){
+    if(userSession){
         return (
             <div className="globalBlock">
                 <AccountInfo/>

@@ -13,6 +13,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import Mailbox from '../icons/mailbox.svg';
+
+
 function UserBlogBlock() {
     const [blogs, setBlogs] = React.useState([])
     const [readClicked, setReadClicked] = React.useState(false)
@@ -125,7 +128,16 @@ function UserBlogBlock() {
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </div>
         )
-    }
+    }else
+    if(blogs.length == 0){
+        return(
+            <div id="noMessages">
+                <p>Empty Wishlist!</p>
+                <p>It seems lonely here! Try Saving some items</p>
+                <img src={Mailbox} alt="mailbox" id="mailImage"/>
+            </div>
+        )
+    }else
 
     return(
         <div id='blogCardBlock'>

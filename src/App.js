@@ -70,7 +70,7 @@ function App() {
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           <Route path='/currentBlog/:id' exact component={SingleBlog}/>
-
+         
           
         </SearchContext.Provider>
         

@@ -136,7 +136,11 @@ function NavBar(props) {
             )}
             
             <Modal ref={modalRef}/>
-            <Link to='/postad' id="postLink"><p id="linkToSell">POST AD</p></Link>
+            <p id="linkToSell" onClick={() =>{
+                if(!userSession){
+                    alert('Please Login')
+                }
+            }}>POST AD</p>
         </nav>
     )
 }

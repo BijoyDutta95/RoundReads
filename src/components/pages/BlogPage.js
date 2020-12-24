@@ -4,11 +4,15 @@ import TrendingBlogs from '../TrendingBlogs'
 import WriteBlog from '../WriteBlog'
 
 function BlogPage() {
+    const [loadingTrend, setLoadingTrend] = React.useState(false)
+    const [loadingLatest, setLoadingLatest] = React.useState(false)
     return (
         <div className="globalBlock">
-            <LatestBlogs/>
-            <TrendingBlogs/>
-            <WriteBlog/>
+            <LatestBlogs setLoadingLatest={setLoadingLatest}/>
+            <TrendingBlogs setLoadingTrend={setLoadingTrend}/>
+            {!loadingTrend && !loadingLatest?(
+                <WriteBlog/>
+            ):(null)}
         </div>
     )
 }

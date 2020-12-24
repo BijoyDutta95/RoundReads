@@ -3,52 +3,66 @@ import './AccountDetail.css'
 import { UserContext } from './Context/Contexts'
 import { API } from './API/Api'
 
-function AccountDetail(props) {
+function AccountDetail() {
     
-    const [fname, setFname] = React.useState(JSON.parse(sessionStorage.getItem('user')).fname)
-    const [mname, setMname] = React.useState(JSON.parse(sessionStorage.getItem('user')).mname)
-    const [lname, setLname] = React.useState(JSON.parse(sessionStorage.getItem('user')).lname)
-    const [email] = React.useState(JSON.parse(sessionStorage.getItem('user')).email)
-    const [phone, setPhone] = React.useState(JSON.parse(sessionStorage.getItem('user')).phone)
-    const [address, setAddress] = React.useState(JSON.parse(sessionStorage.getItem('user')).address)
-    const [yearOfEnrollment, setYearOfEnrollment] = React.useState(JSON.parse(sessionStorage.getItem('user')).yearOfEnrollment)
-    const [yearOfGraduation, setYearOfGraduation] = React.useState(JSON.parse(sessionStorage.getItem('user')).yearOfGraduation)
-    const [dept, setdept] = React.useState(JSON.parse(sessionStorage.getItem('user')).dept)
-    const [roll, setRoll] = React.useState(JSON.parse(sessionStorage.getItem('user')).roll)
-    const [hostel, setHostel] = React.useState(JSON.parse(sessionStorage.getItem('user')).hostel)
+    const [fname, setFname] = React.useState(JSON.parse(localStorage.getItem('user')).fname)
+    const [mname, setMname] = React.useState(JSON.parse(localStorage.getItem('user')).mname)
+    const [lname, setLname] = React.useState(JSON.parse(localStorage.getItem('user')).lname)
+    const [email] = React.useState(JSON.parse(localStorage.getItem('user')).email)
+    const [phone, setPhone] = React.useState(JSON.parse(localStorage.getItem('user')).phone)
+    const [address, setAddress] = React.useState(JSON.parse(localStorage.getItem('user')).address)
+    const [yearOfEnrollment, setYearOfEnrollment] = React.useState(JSON.parse(localStorage.getItem('user')).yearOfEnrollment)
+    const [yearOfGraduation, setYearOfGraduation] = React.useState(JSON.parse(localStorage.getItem('user')).yearOfGraduation)
+    const [dept, setdept] = React.useState(JSON.parse(localStorage.getItem('user')).dept)
+    const [roll, setRoll] = React.useState(JSON.parse(localStorage.getItem('user')).roll)
+    const [hostel, setHostel] = React.useState(JSON.parse(localStorage.getItem('user')).hostel)
     const [password, setPassword] = React.useState("")
     
-    const [updateClicked, setUpdateClicked] = React.useState(false)
-    const {setUser} = React.useContext(UserContext)
+    const {setUserSession} = React.useContext(UserContext)
 
-    const handleUpdate = () => {
-        setUpdateClicked(true)
-    }
-
-    const verifyUser = () =>{
-        let url = "auth/jwt/create/"
+    const validateUser = () =>{
         let body = JSON.stringify({
-            email : email,
-            password : password
+            token : localStorage.getItem('access_token')
         })
-
-        API.post(url, body, {
-            headers : {
+        API.post('auth/jwt/verify/', body, {
+            headers:{
                 'Content-Type' : 'application/json'
             }
         })
-        .then(data =>{
-            console.log(data.data.access)
-            sessionStorage.setItem('access_token', data.data.access)
-            patchUserDetails(data.data.access)
-
+        .then(data=>{
+            console.log('success access : ' + JSON.stringify(data.data))
+            patchUserDetails()
         })
-        .catch(err =>{
-            console.log(err)
+        .catch(err=>{
+            console.log('err access: ' + err)
+            getAccess()
+    
         })
     }
 
-    const patchUserDetails = (token) =>{
+    const getAccess = () =>{
+        let body = JSON.stringify({
+            refresh : localStorage.getItem('refresh_token')
+        })
+        API.post('auth/jwt/refresh/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success refresh : ' + (data.data.access))
+            localStorage.setItem('access_token', data.data.access)
+            patchUserDetails()
+            
+        })
+        .catch(err=>{
+            console.log('err refresh: ' + err)
+            alert('Please Login')
+    
+        })
+    }
+
+    const patchUserDetails = () =>{
         console.log(fname)
         console.log(mname)
         console.log(lname)
@@ -78,43 +92,21 @@ function AccountDetail(props) {
 
         API.patch(url, body, {
             headers: {
-                'Authorization' : 'JWT ' + token,
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
                 'Content-Type' : 'application/json'
             }
         })
         .then(data =>{
             console.log(JSON.stringify(data.data))
-            sessionStorage.setItem('user', JSON.stringify(data.data))
-            setUser(JSON.stringify(data.data))
-            setUpdateClicked(false)
+            localStorage.setItem('user', JSON.stringify(data.data))
+            setUserSession(JSON.stringify(data.data))
+            //setUpdateClicked(false)
         })
         .catch(err =>{
             console.log("error  " + err)
         })
     }
     
-    if(updateClicked){
-        return(
-            <div>
-               <div id="detailBlock">
-                <h2>Verify that its You</h2>
-                <div className="formField">
-                    <fieldset className="personalDetail">
-                    <div className="inputField">
-                        <label for="name"><b>Enter the Password for {email}</b></label>
-                        <div id="names">
-                            <input type="password" value={password} placeholder="Enter Password" name="password" onChange={(e) =>{ setPassword(e.target.value) }}></input>
-                        </div>
-                        <div id="buttonsDiv">
-                            <button  id="submitButton" onClick={verifyUser}><b>Verify</b></button>
-                        </div>
-                    </div>  
-                    </fieldset>
-                </div>
-                </div> 
-            </div>
-        )
-    }
 
     return (
         <div id="detailBlock">
@@ -176,7 +168,7 @@ function AccountDetail(props) {
                     </fieldset>
                     
                     <div id="buttonsDiv">
-                        <button  id="submitButton" onClick={handleUpdate}><b>Update Details</b></button>
+                        <button  id="submitButton" onClick={validateUser}><b>Update Details</b></button>
                     </div>
                 </div>
             </div>

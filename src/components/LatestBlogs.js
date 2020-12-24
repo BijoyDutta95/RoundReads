@@ -4,7 +4,7 @@ import './LatestBlogs.css'
 import { API } from './API/Api'
 import { TrendingBlogContext } from './Context/Contexts'
 
-function LatestBlogs() {
+function LatestBlogs(props) {
     const [blogs, setBlogs] = React.useState([])
     const [url, setUrl] = React.useState('api/blogs')
     const [next, setNext] = React.useState('')
@@ -16,6 +16,7 @@ function LatestBlogs() {
     }, [url])
 
     const getBlogs = (url) =>{
+        props.setLoadingLatest(true)
         setFetched(false)
         console.log('getBlogs called')
         API.get(url)
@@ -24,6 +25,7 @@ function LatestBlogs() {
             setFetched(true)
             setNext(data.data.next)
             setPrev(data.data.previous)
+            props.setLoadingLatest(false)
         })
         .catch(err =>{
             console.log(err)
