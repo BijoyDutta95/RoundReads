@@ -26,17 +26,17 @@ function ItemComponent() {
                                 <button className='prev-next-button' onClick={() => {
                                     getItems(prev)
                                     setPrevCount(prevCount - 12)
-                                }}>Prev</button> 
+                                }}>&#8592; Prev</button> 
                         ):(
-                            <button className='prev-next-button'>Prev</button>
+                            <button className='prev-next-button-false'>&#8592; Prev</button>
                         )}
                         {next?(
                                 <button className='prev-next-button' onClick={() => {
                                     getItems(next)
                                     setPrevCount(items.length+prevCount)
-                                }}>Next</button> 
+                                }}>Next &#8594;</button> 
                         ):(
-                            <button className='prev-next-button'>Next</button>
+                            <button className='prev-next-button-false'>Next &#8594;</button>
                         )}
                     
                     </div>          

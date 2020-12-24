@@ -13,22 +13,18 @@
 .headerLogo{
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 1%;
     object-fit: contain;
 }
-.text{
-    color: #86C232;
-    font-size: 12px;
-    margin-left: 2px;
-    font-style: bold;
-}
+
 .headerSearch{
     display: flex;
-    margin-left: 350px;
+    margin-left: 25%;
+    width: 30%;
 }
 .searchBar{
     height: 20px;
-    width: 350px;
+    width: 100%;
     border-style: solid;
     border-width: 2;
     border-color: #86C232;
@@ -42,7 +38,7 @@
 
 .headerLinks{
     display: flex;
-    margin-left: 20px;
+    margin-left: 1%;
     align-items: center;
     cursor: pointer;
 }

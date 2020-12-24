@@ -39,6 +39,14 @@
     align-items: center;
     border-radius: 5px;  
 }
+.prev-next-button-false{
+    background-color: #EDF5E0;
+    color: black;
+    padding: 4px 14px;
+    border: none;  
+    align-items: center;
+    border-radius: 5px;  
+}
 
 #componentButtons{
     width: 50%;
