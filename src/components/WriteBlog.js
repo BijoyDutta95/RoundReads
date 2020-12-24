@@ -14,6 +14,7 @@ function WriteBlog() {
     const [error, setError] = React.useState(false)
     const [empty, setEmpty] = React.useState(false)
     const [contentLimit, setContentLimit] = React.useState(false)
+    const [image, setImage] = React.useState('')
 
     const {userSession} = React.useContext(UserContext)
 
@@ -60,6 +61,7 @@ function WriteBlog() {
             content : content,
             publisher_name : JSON.parse(userSession).fname + " " + JSON.parse(userSession).mname + " " + JSON.parse(userSession).lname,
             publisher_dept : JSON.parse(userSession).dept,
+            publisher_email : JSON.parse(userSession).email,
             likes : 0,
             cover_photo : coverPhoto
         })
@@ -85,16 +87,11 @@ function WriteBlog() {
     }
 
     if(success){
-        return(
-            <div id="writeBlogBlock">
-                <h3>Blog Posted Successfully</h3>
-                <button onClick={() =>{
-                    setSuccess(false)
-                    setTitle('')
-                    setContent('')
-                }}>PostAnotherBlog</button>
-            </div>
-        )
+        setLoading(false)
+        setSuccess(false)
+        setTitle('')
+        setContent('')
+        alert('Blog Posted Successfully')
     }else    
     return (
         <div id="writeBlogBlock">
@@ -109,7 +106,7 @@ function WriteBlog() {
                 setContentCount(...[5000 - e.target.value.length])
             }}/>
             <strong>Choose a cover picture</strong>
-            <input type="file" onChange={handleChangeImage}/> 
+            <input type="file" onChange={handleChangeImage} /> 
 
             {empty?(
                 <div id='empty' align='center'>
@@ -128,16 +125,16 @@ function WriteBlog() {
                     <p>Something Error Occured</p>
                 </div>
             ):(null)}
-             
-            <div id="blogButtons">
-                <button id="clearBlogBtn" onClick={clearAll}>Clear</button>
-                <button id="postBlogBtn" onClick={postBlog}>Post</button>
-            </div>
             {loading?(
                 <div align='center'>
                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                 </div>
             ):(null)}
+            <div id="blogButtons">
+                <button id="clearBlogBtn" onClick={clearAll}>Clear</button>
+                <button id="postBlogBtn" onClick={postBlog}>Post</button>
+            </div>
+            
         </div>
     )
 }

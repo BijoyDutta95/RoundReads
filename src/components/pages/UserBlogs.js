@@ -1,13 +1,13 @@
 import React from 'react'
 import AccountInfo from '../AccountInfo'
-import BlogCard from '../BlogCard'
+import UserBlogBlock from '../UserBlogBlock'
 
 function UserBlogs() {
     return (
         <div className="globalBlock">
             <h2>Your Blogs</h2>
             <AccountInfo/>
-            <BlogCard/>
+            <UserBlogBlock/>
         </div>
     )
 }
