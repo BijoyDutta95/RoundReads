@@ -151,6 +151,23 @@ function ItemCard() {
     
     }
 
+    const addViews = (id, views) =>{
+        let body = JSON.stringify({
+            views : views + 1
+        })
+        API.patch('api/books/' + id + '/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data =>{
+            console.log('views added : ' + data.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
     if(itemClicked && itemId){
         return <Redirect to={"currentItem/" + itemId}/>
     }
@@ -158,18 +175,13 @@ function ItemCard() {
 
     
     const renderCard= (card, index) =>{
-        /*if(userSession){
-            if(card.poster_email == JSON.parse(userSession).email){
-                return
-            }
-        }*/
-        
         return(
             <div id="cardBlock" key={index}>
             
                 <div id="itemBlockLink" onClick={() =>{
                     setItemId(card.id)
                     setItemClciked(true)
+                    addViews(card.id, card.views)
                     
                     }}>
                     <img src={card.image1} alt="cardImage" className="cardImage"/>
