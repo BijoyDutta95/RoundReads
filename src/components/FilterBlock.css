@@ -119,3 +119,6 @@ fieldset {
     border-radius: 5px;
 }
 
+#clearAll{
+    cursor: pointer;
+}

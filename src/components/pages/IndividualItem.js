@@ -8,6 +8,7 @@ function IndividualItem() {
     let params = useParams()
     const [items, setItems] = React.useState([])
     const [loading, setLoading] = React.useState(false)
+    const [fetched, setFecthed] = React.useState(false)
     
     React.useEffect(() =>{
         function getCurrentItem(){
@@ -18,6 +19,7 @@ function IndividualItem() {
                 console.log(data.data)
                 setItems(data.data)
                 setLoading(false)
+                setFecthed(true)
             })
             .catch(err =>{
                 console.log(err)
@@ -41,7 +43,9 @@ function IndividualItem() {
             <h2>Item Information</h2>
             <ItemImageBlock items={items}/>
             <ItemMoreInfo items={items}/>
-            <SimilarBooks/>
+            {fetched?(
+                <SimilarBooks items={items}/>
+            ):(null)}
         </div>
     )
 }

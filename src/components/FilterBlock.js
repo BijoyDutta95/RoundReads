@@ -8,13 +8,23 @@ import HeavyIcon from '../icons/1star.svg';
 
 import { FilterContext, SearchContext } from './Context/Contexts';
 
-function FilterBlock(props) {
+function FilterBlock() {
 
     const [saleIcon, setSaleIcon] = React.useState(false)
     const [borrowIcon, setBorrowIcon] = React.useState(false)
     const [asNewIcon, setAsNewIcon] = React.useState(false)
     const [lightUsedIcon, setLightUsedIcon] = React.useState(false)
     const [heavyUsedIcon, setHeavyUsedIcon] = React.useState(false)
+    const [engineering, setEngineering] = React.useState(false)
+    const [bussiness, setBussiness] = React.useState(false)
+    const [management, setManagement] = React.useState(false)
+    const [novel, setNovel] = React.useState(false)
+    const [entertainment, setEntertainment] = React.useState(false)
+    const [arts, setArts] = React.useState(false)
+    const [math, setMath] = React.useState(false)
+    const [physics, setPhysics] = React.useState(false)
+    const [chemistry, setChemistry] = React.useState(false)
+    const [life, setLife] = React.useState(false)
 
     //const {searchTerm, searchFlag} = React.useContext(FilterContext)
     const {setAvailability, setCondition, setCategory, getItems} = React.useContext(FilterContext)
@@ -49,18 +59,43 @@ function FilterBlock(props) {
     }
 
     const getCategoryArray = (e) =>{
-        if(category.includes(e.target.name)){
-            console.log('exist  ' + e.target.name)
-            category.splice(category.indexOf(e.target.name), 1)
-        }else{
-            console.log('pushed')
-            category.push(e.target.name)
+        if(engineering){
+            category.push('engineering')
+        }
+        if(entertainment){
+            category.push('entertainment')
+        }
+        if(arts){
+            category.push('arts')
+        }
+        if(math){
+            category.push('mathematics')
+        }
+        if(physics){
+            category.push('physics')
+        }
+        if(chemistry){
+            category.push('chemistry')
+        }
+        if(life){
+            category.push('lifeScience')
+        }
+        if(bussiness){
+            category.push('business')
+        }
+        if(management){
+            category.push('management')
+        }
+        if(novel){
+            category.push('novel')
         }
     }
+
 
     const filterItems = () =>{
         getAvailabilityArray()
         getConditionArray()
+        getCategoryArray()
         if(availability.length === 0 && condition.length === 0 && category.length === 0){
             alert("Please select some Filters")
             return
@@ -73,18 +108,32 @@ function FilterBlock(props) {
         }else{
             getItems("http://localhost:8000/api/books", availability, condition, category)
         }
-        setAvailability([])
+        /*setAvailability([])
         setCondition([])
-        setCategory([])  
+        setCategory([])*/  
     }
 
-    
+    const setCategoryEmpty = () =>{
+        setEngineering(false); setEntertainment(false)
+        setBussiness(false); setManagement(false)
+        setNovel(false); setArts(false)
+        setMath(false); setLife(false)
+        setPhysics(false); setChemistry(false)
+    }
 
     return (
         <div className="filterBlock">
             <div className="filterHeader">
                 <strong>Filter</strong>
-                <small>clear all</small>
+                <small id='clearAll' onClick={()=>{
+                    setSaleIcon(false)
+                    setBorrowIcon(false)
+                    setAsNewIcon(false)
+                    setLightUsedIcon(false)
+                    setHeavyUsedIcon(false)
+                    setCategoryEmpty()
+                
+                }}>Clear All</small>
             </div>
             <fieldset className="avField">
                 <legend>By Availability</legend>
@@ -127,43 +176,43 @@ function FilterBlock(props) {
                 <legend>By Category</legend>
                 <div className="catInner">
                     <div className="catList">
-                        <input type="checkbox" name="engineering"onChange={getCategoryArray}/>
+                        <input type="checkbox" checked={engineering} onChange={() => setEngineering(!engineering)}/>
                         <label for="Engineering"> Engineering</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="business" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="business" checked={bussiness} onChange={() => setBussiness(!bussiness)}/>
                         <label for="Business"> Business</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="management" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="management" checked={management} onChange={() => setManagement(!management)}/>
                         <label for="Management"> Management</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="novel" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="novel" checked={novel} onChange={() => setNovel(!novel)}/>
                         <label for="Novel"> Novel</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="entertainment" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="entertainment" checked={entertainment} onChange={() => setEntertainment(!entertainment)}/>
                         <label for="Entertainment"> Entertainment</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="arts" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="arts" checked={arts} onChange={() => setArts(!arts)}/>
                         <label for="Arts"> Arts</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="mathematics" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="mathematics" checked={math} onChange={() => setMath(!math)}/>
                         <label for="Mathematics"> Mathematics</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="physics" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="physics" checked={physics} onChange={() => setPhysics(!physics)}/>
                         <label for="Physics"> Physics</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="chemistry" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="chemistry" checked={chemistry} onChange={() => setChemistry(!chemistry)}/>
                         <label for="Chemistry"> Chemistry</label>
                     </div>
                     <div className="catList">
-                        <input type="checkbox" name="lifeScience" onChange={getCategoryArray}/>
+                        <input type="checkbox" id="lifeScience" checked={life} onChange={() => setLife(!life)}/>
                         <label for="Life Science"> Life Science</label>
                     </div>
                 </div>
