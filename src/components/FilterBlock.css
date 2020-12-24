@@ -102,3 +102,7 @@ fieldset {
     align-items: center; 
     border-radius: 5px;
 }
+
+#clearAll{
+    cursor: pointer;
+}
