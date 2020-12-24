@@ -118,7 +118,7 @@ function WishlistItems() {
             <div id="emptyWishlist">
                     <p>Empty Wishlist!</p>
                     <p>It seems lonely here! Hit that Save Button</p>
-                    <img src={Santa} alt="mailbox" id="mailImage"/>
+                    <img src={Santa} alt="mailbox" id="santaImage"/>
                 </div>
         
         )

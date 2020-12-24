@@ -7,7 +7,7 @@ import { API } from './API/Api'
 import ChatIcon from '@material-ui/icons/ChatBubble';
 import ChatNotificationIcon from '@material-ui/icons/Announcement';
 import { Link } from 'react-router-dom';
-import Mailbox from '../icons/mailbox.svg';
+import Rat from '../icons/rat.svg';
 
 
 
@@ -103,10 +103,10 @@ function UserAdItems() {
     }else
     if(items.length == 0){
         return(
-            <div id="noMessages">
-                <p>Empty Wishlist!</p>
-                <p>It seems lonely here! Try Saving some items</p>
-                <img src={Mailbox} alt="mailbox" id="mailImage"/>
+            <div id="noAdPosted">
+                <p>No Ad Posted!</p>
+                <p>It seems lonely here! Try Posting a Ad</p>
+                <img src={Rat} alt="mailbox" id="ratImage"/>
             </div>
         )
         

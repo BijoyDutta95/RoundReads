@@ -13,7 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import Mailbox from '../icons/mailbox.svg';
+import Keyboard from '../icons/blogkey.svg';
 
 
 function UserBlogBlock() {
@@ -131,10 +131,10 @@ function UserBlogBlock() {
     }else
     if(blogs.length == 0){
         return(
-            <div id="noMessages">
-                <p>Empty Wishlist!</p>
-                <p>It seems lonely here! Try Saving some items</p>
-                <img src={Mailbox} alt="mailbox" id="mailImage"/>
+            <div id="noBlog">
+                <p>No Blogs Yet!</p>
+                <p>Share Your Experience with a Book. Smash the Keyboard!</p>
+                <img src={Keyboard} alt="mailbox" id="keyImage"/>
             </div>
         )
     }else
