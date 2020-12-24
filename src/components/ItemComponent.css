@@ -8,19 +8,42 @@
     align-items: center;
     padding-bottom: 10px;
 }
+#itemsBlock::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #EDF5E0;
+}
+
+#itemsBlock::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #EDF5E0;
+}
+
+#itemsBlock::-webkit-scrollbar-thumb
+{
+	background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));;
+}
+
 #itemsBlock p{
     margin-top: 5px;
     color: #EDF5E0;
 }
 
 .prev-next-button{
-    position: relative;
     background-color: #86C232;
-    bottom: 0;
     color: black;
-    padding: 8px 10px;
+    padding: 4px 14px;
     border: none;
     cursor: pointer;  
+    align-items: center;
+    border-radius: 5px;  
+}
+.prev-next-button-false{
+    background-color: #EDF5E0;
+    color: black;
+    padding: 4px 14px;
+    border: none;  
     align-items: center;
     border-radius: 5px;  
 }
