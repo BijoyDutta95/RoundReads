@@ -1,0 +1,51 @@
+#enterMailBlock{
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    width: 300px;
+    background-color: #EDF5E0;
+    border-width: 5px;
+    border-style: solid;
+    border-image: 
+    linear-gradient(
+      to bottom, 
+      rgb(0,143,104), 
+      rgba(182, 7, 59, 1)
+    ) 1 100%;   
+    align-items: center;
+    box-shadow: 
+    12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, .25) inset;
+
+}
+#emailIcon{
+    height: 100px !important;
+    width: 100px !important;
+    color: #B6073B;
+}
+#idDetails{
+    width: 100%;
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+
+}
+#idDetails input[type=text]{
+    width: 95%;
+    margin: auto;
+    padding: 5px 5px;
+    border: 1px solid black;
+}
+#sendResetRequest{
+    width: 50%;
+    margin: auto;
+    margin-top: 8%;
+    background-image: linear-gradient(45deg, rgb(0,143,104), rgb(182, 7, 59));
+    color: #EDF5E0;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
