@@ -9,8 +9,8 @@ function EnterPassword() {
                 <h3>Enter New Password</h3>
             </>
             <div id="passwordDetail">
-                <input type="text" id="newPassword" placeholder="Enter New Password"/>
-                <input type="text" id="newPassword" placeholder="Re-enter Password"/>
+                <input type="password" id="newPassword" placeholder="Enter New Password"/>
+                <input type="password" id="newPassword" placeholder="Re-enter Password"/>
                 <button id="confirmPassword">Update</button>
             </div>
         </div>

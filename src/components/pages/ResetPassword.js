@@ -4,6 +4,7 @@ import EnterPassword from '../EnterPassword'
 function ResetPassword() {
     return (
         <div className="globalBlock">
+            <EnterID/>
             <EnterPassword/>
         </div>
     )
