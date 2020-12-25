@@ -19,6 +19,7 @@ import {API} from './components/API/Api'
 import UserOffers from './components/pages/UserOffers';
 import SingleBlog from './components/SingleBlog';
 import UserBlogs from './components/pages/UserBlogs';
+import ResetPassword from './components/pages/ResetPassword';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -70,6 +71,7 @@ function App() {
           <Route path='/messages/:id' exact component={Messages}/>
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           <Route path='/currentBlog/:id' exact component={SingleBlog}/>
+          <Route path='/resetPassword' exact component={ResetPassword}/>
          
           
         </SearchContext.Provider>
