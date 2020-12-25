@@ -79,21 +79,6 @@ function Login(){
             
         });
     }
-
-    /*const getWishList = (id) =>{
-        let url = "api/wishlist/" + id
-        API.get(url)
-        .then(data => {
-            console.log("success wishlist : " + JSON.stringify(data))
-            setWishList(JSON.stringify(data.data.wishlist))
-            sessionStorage.setItem('wishlist', JSON.stringify(data.data.wishlist))
-            
-        })
-        .catch(e => {
-            console.log("failed catched error wishlist : " + e)
-            
-        });
-    }*/
     
     
     return (
