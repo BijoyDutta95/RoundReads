@@ -4,6 +4,7 @@ import AccountInfo from '../AccountInfo'
 import './GlobalChange.css'
 import { UserContext } from '../Context/Contexts'
 import { Redirect } from 'react-router-dom'
+import ChangePass from '../ChangePass'
 
 
 function UserAccount() {
@@ -13,6 +14,7 @@ function UserAccount() {
         return (
             <div className="globalBlock">
                 <AccountInfo/>
+                <ChangePass/>
                 <AccountDetail/>
             </div>
         )

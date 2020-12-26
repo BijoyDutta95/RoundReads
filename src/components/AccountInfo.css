@@ -23,4 +23,21 @@
     justify-content: space-evenly;
     font-size: 20px;
 }
+
+#changePass{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25%;
+    background-color: #EDF5E0;
+    padding: 10px;
+    float: left;
+    border-radius: 5px;
+    margin-top: 8%;
+}
+#passIcon{
+    height: 30px;
+    width: 30px;
+}
     
