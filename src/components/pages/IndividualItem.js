@@ -9,12 +9,13 @@ function IndividualItem() {
     const [items, setItems] = React.useState([])
     const [loading, setLoading] = React.useState(false)
     const [fetched, setFecthed] = React.useState(false)
+    const [id, setId] = React.useState(params.id)
     
     React.useEffect(() =>{
         function getCurrentItem(){
             setLoading(true)
             console.log("getcurrent called")
-            API.get("api/books/" + params.id)
+            API.get("api/books/" + id)
             .then(data =>{
                 console.log(data.data)
                 setItems(data.data)
@@ -27,7 +28,7 @@ function IndividualItem() {
             })
         }
         getCurrentItem()
-    }, [])
+    }, [id])
 
     if(loading){
         return(
@@ -44,7 +45,7 @@ function IndividualItem() {
             <ItemImageBlock items={items}/>
             <ItemMoreInfo items={items}/>
             {fetched?(
-                <SimilarBooks items={items}/>
+                <SimilarBooks items={items} setId={setId}/>
             ):(null)}
         </div>
     )
