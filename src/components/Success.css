@@ -1,0 +1,15 @@
+#successMessage{
+    height: 100px;
+    width: 100px;
+    background-color: #EDF5E0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+#successIcon{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    color: #86C232;
+}
