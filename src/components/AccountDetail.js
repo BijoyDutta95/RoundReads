@@ -17,10 +17,15 @@ function AccountDetail() {
     const [roll, setRoll] = React.useState(JSON.parse(localStorage.getItem('user')).roll)
     const [hostel, setHostel] = React.useState(JSON.parse(localStorage.getItem('user')).hostel)
     const [password, setPassword] = React.useState("")
+
+    const [loading, setLoading] = React.useState(false)
+    const [updated, setUpdated] = React.useState(false)
+    const [errors, setErrors] = React.useState(false)
     
     const {setUserSession} = React.useContext(UserContext)
 
     const validateUser = () =>{
+        setLoading(true)
         let body = JSON.stringify({
             token : localStorage.getItem('access_token')
         })
@@ -57,7 +62,9 @@ function AccountDetail() {
         })
         .catch(err=>{
             console.log('err refresh: ' + err)
+            setLoading(false)
             alert('Please Login')
+
     
         })
     }
@@ -101,9 +108,14 @@ function AccountDetail() {
             localStorage.setItem('user', JSON.stringify(data.data))
             setUserSession(JSON.stringify(data.data))
             //setUpdateClicked(false)
+            setLoading(false)
+            alert('Profile details updated successfully')
         })
         .catch(err =>{
             console.log("error  " + err)
+            setLoading(false)
+            setErrors(true)
+            
         })
     }
     
@@ -166,10 +178,22 @@ function AccountDetail() {
                                 
                             </form>
                     </fieldset>
+
+                    {loading?(
+                        <div align='center'>
+                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    ):(null)}
+
+                    {errors?(
+                        <p>Something error occured !!!</p>
+                    ):(null)}
                     
                     <div id="buttonsDiv">
                         <button  id="submitButton" onClick={validateUser}><b>Update Details</b></button>
                     </div>
+
+                    
                 </div>
             </div>
     )

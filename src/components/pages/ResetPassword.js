@@ -5,7 +5,7 @@ function ResetPassword() {
     return (
         <div className="globalBlock">
             <EnterID/>
-            <EnterPassword/>
+            {/*<EnterPassword/>*/}
         </div>
     )
 }

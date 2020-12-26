@@ -36,3 +36,6 @@ width: 100%;
 #loginError{
     color: red;
 }
+#forgot{
+    cursor: pointer;
+}

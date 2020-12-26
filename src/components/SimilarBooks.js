@@ -4,9 +4,11 @@ import { API } from './API/Api'
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 function SimilarBooks(props) {
     const [books, setBooks] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
     
     React.useEffect(() =>{
         function getBooks(){
+            setLoading(true)
             console.log('get similar')
             API.get('api/similar_books', {
                 params:{
@@ -16,9 +18,11 @@ function SimilarBooks(props) {
             .then(data=>{
                 setBooks(data.data)
                 console.log(data.data)
+                setLoading(false)
             })
             .catch(err=>{
                 console.log(err)
+                setLoading(false)
             })
         }
         getBooks()
@@ -108,6 +112,20 @@ function SimilarBooks(props) {
         )
     }
     
+    if(loading){
+        return(
+            <div align='center'>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+        )
+    }else
+    if(books.length = 1){
+        return(
+        <div align='center'>
+            <h3>Noooo Items Found</h3>
+        </div>
+        )
+    }else
 
     return(
         <div id="similarBooksBlock">

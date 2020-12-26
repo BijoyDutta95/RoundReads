@@ -20,6 +20,8 @@ import UserOffers from './components/pages/UserOffers';
 import SingleBlog from './components/SingleBlog';
 import UserBlogs from './components/pages/UserBlogs';
 import ResetPassword from './components/pages/ResetPassword';
+import ActivateUser from './components/pages/ActivateUser';
+import EnterPassword from './components/EnterPassword';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -72,6 +74,9 @@ function App() {
           <Route path='/currentItem/:id' exact component={IndividualItem}/>
           <Route path='/currentBlog/:id' exact component={SingleBlog}/>
           <Route path='/resetPassword' exact component={ResetPassword}/>
+          <Route path='/activate/:uid/:token' exact component={ActivateUser}/>
+          <Route path='/password/reset/confirm/:uid/:token' exact component={EnterPassword}/>
+          
          
           
         </SearchContext.Provider>

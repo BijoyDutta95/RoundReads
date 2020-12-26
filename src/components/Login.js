@@ -2,6 +2,8 @@ import React from 'react'
 import './Login.css'
 import { API } from './API/Api'
 import { UserContext, ModalContext } from './Context/Contexts';
+import EnterID from './EnterID';
+import { Redirect } from 'react-router-dom';
 
 function Login(){
 
@@ -10,6 +12,7 @@ function Login(){
     const [loading, setLoading] = React.useState(false)
     const [loginError, setLoginError] = React.useState(false)
     const [fieldsError, setFieldsError] = React.useState(false)
+    const [forgotClicked, setForgotClicked] = React.useState(false)
 
     const {setDisplay} = React.useContext(ModalContext)
     const {setUser, setUserSession, setWishList, wishList} = React.useContext(UserContext)
@@ -79,22 +82,13 @@ function Login(){
             
         });
     }
-
-    /*const getWishList = (id) =>{
-        let url = "api/wishlist/" + id
-        API.get(url)
-        .then(data => {
-            console.log("success wishlist : " + JSON.stringify(data))
-            setWishList(JSON.stringify(data.data.wishlist))
-            sessionStorage.setItem('wishlist', JSON.stringify(data.data.wishlist))
-            
-        })
-        .catch(e => {
-            console.log("failed catched error wishlist : " + e)
-            
-        });
-    }*/
     
+    if(forgotClicked){
+        setDisplay(false)
+        return(
+            <Redirect to='/resetPassword'/>
+        )
+    }
     
     return (
         <div className="loginForm">
@@ -124,7 +118,7 @@ function Login(){
                     <label>
                         <input type="checkbox" name="remember"></input> Remember me
                     </label>
-                    <small>Forgot Password?</small>
+                    <small id='forgot' onClick={() => setForgotClicked(true)}>Forgot Password?</small>
                 </div>
                 {loading?(
                     <div align='center'>

@@ -105,8 +105,8 @@ function PostForm() {
         )
             .then(data => {
                 console.log("reaturned data : " + data)
-                setPostSuccess(true)
                 setLoading(false)
+                setPostSuccess(true)
             })
             .catch(e => {
                 console.log("catched errorss : " + e)
@@ -116,36 +116,14 @@ function PostForm() {
 
     }
 
-    if(!userSession){
+    if(!userSession || cancel){
         return <Redirect to="/"/>
     }
-    if(cancel){
+    if(postSuccess){
+        alert('Posted Successfully')
         return <Redirect to="/"/>
     }
 
-    if(postSuccess){
-        return(
-            <div id="formMainBlock">
-                <h2>You have successfully Posted Your Ad</h2>
-                <div className="formField">
-                <div id="buttonsDiv">
-                    <button id="submitButton" onClick={()=>setCancel(true)}><b>Goto Home</b></button>
-                    <button id="submitButton" onClick={()=>{
-                        setTitle('')
-                        setAuthor('')
-                        setDesc('')
-                        setBorrowPrice(null)
-                        setSalePrice(null)
-                        setImage1('')
-                        setImage2('')
-                        setPostSuccess(false)
-                    }
-                    }><b>Post Again</b></button>
-                </div>
-                </div>
-            </div>
-        )
-    }
     else
     return (
         <div id="formMainBlock">

@@ -16,6 +16,7 @@ function Signup(){
     const [passwordMismatch, setPasswordMismatch] = React.useState(false)
     const [error, setError] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
+    const [success, setSuccess] = React.useState(false)
 
     const {setFlag} = React.useContext(ModalContext)
 
@@ -37,6 +38,15 @@ function Signup(){
         }else{
             setPasswordMismatch(false)
         }
+    }
+
+    const emptyFields = () =>{
+        setFname('')
+        setMname('')
+        setLname('')
+        setEmail('')
+        setPassword('')
+        setRepassword('')
     }
 
     const handleSignup = (e) =>{
@@ -80,7 +90,8 @@ function Signup(){
             console.log("success : " + JSON.stringify(data))
             //createWishList(data.data.id)
             setLoading(false)
-            setFlag(true)
+            emptyFields()
+            setSuccess(true)
         })
         .catch(err => {
             console.log("error here : " + err)
@@ -143,7 +154,12 @@ function Signup(){
                         <p>Email Already Exist</p>
                     </div>
                 ):(null)}
-
+                
+                {success?(
+                    <p id='successSignUp'>Your account has been created successfully. A confirmation link has been sent to Your
+                        email. Please click the link to Activate Your Account </p>
+                ):(null)}
+                
                 <button type="submit" onClick={handleSignup} >Register</button>
                 
                 {loading?(
