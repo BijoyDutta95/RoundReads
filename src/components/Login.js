@@ -4,6 +4,7 @@ import { API } from './API/Api'
 import { UserContext, ModalContext } from './Context/Contexts';
 import EnterID from './EnterID';
 import { Redirect } from 'react-router-dom';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 function Login(){
 
@@ -16,6 +17,7 @@ function Login(){
 
     const {setDisplay} = React.useContext(ModalContext)
     const {setUser, setUserSession, setWishList, wishList} = React.useContext(UserContext)
+    const [showPass, setShowPass] = React.useState(false)
 
 
     const handleLogin = (e) =>{
@@ -98,8 +100,23 @@ function Login(){
                     <input type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => {setEmail(e.target.value)}} required></input>
                 </div>
                 <div className="inputField">
-                    <label for="pwd"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}} required></input>
+                    <div id='passField'>
+                        {showPass?(
+                            <>
+                            <input type="text" placeholder="Enter Password" name="password" value={password} onChange={(e) => {
+                                setPassword(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='showPass' onClick={() => setShowPass(false)}/>
+                            </>
+                        ):(
+                            <>
+                            <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => {
+                                setPassword(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
+                            </>
+                        )}
+                    </div>
                 </div>
                 {loginError?(
                     <div id='loginError' align='center'>

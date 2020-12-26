@@ -3,6 +3,7 @@ import './PostForm.css'
 import { API } from './API/Api'
 import { UserContext } from './Context/Contexts'
 import { Redirect } from 'react-router-dom'
+import Success from './Success'
 
 
 function PostForm() {
@@ -23,6 +24,7 @@ function PostForm() {
     const [error, setError] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
     const [cancel, setCancel] = React.useState(false)
+    const [redirect, setRedirect] = React.useState(false)
     
     const {userSession} = React.useContext(UserContext)
 
@@ -119,9 +121,21 @@ function PostForm() {
     if(!userSession || cancel){
         return <Redirect to="/"/>
     }
-    if(postSuccess){
+    /*if(postSuccess){
         alert('Posted Successfully')
         return <Redirect to="/"/>
+    }*/
+    if(postSuccess){
+        setTimeout(() => {
+                setRedirect(true)
+        
+        }, 5000)
+    }
+
+    if(redirect){
+        return(
+            <Redirect to='/'/>
+        )
     }
 
     else
@@ -224,6 +238,15 @@ function PostForm() {
                 {empty?(
                     <div id='loginError' align='center'>
                         <p>Fields cannot be Empty</p>
+                    </div>
+                ):(null)}
+                {postSuccess?(
+                    <div align='center'>
+                        <Success/>
+                        Successfully Posted, Redirecting to Home Page...
+                        <div align='center'>
+                            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                        </div>
                     </div>
                 ):(null)}
                 {loading?(

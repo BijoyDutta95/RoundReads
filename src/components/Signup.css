@@ -36,5 +36,19 @@ width: 100%;
 }
 #successSignUp{
     color: slateblue;
+   
     
+}
+#hidePass{
+    width: 50px;
+    height: 30px;
+}
+#showPass{
+    width: 50px;
+    height: 30px;
+    color: blue;
+}
+#passField{
+    display: flex;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import './AccountDetail.css'
 import { UserContext } from './Context/Contexts'
 import { API } from './API/Api'
+import Success from './Success'
 
 function AccountDetail() {
     
@@ -109,7 +110,7 @@ function AccountDetail() {
             setUserSession(JSON.stringify(data.data))
             //setUpdateClicked(false)
             setLoading(false)
-            alert('Profile details updated successfully')
+            setUpdated(true)
         })
         .catch(err =>{
             console.log("error  " + err)
@@ -183,6 +184,12 @@ function AccountDetail() {
                         <div align='center'>
                         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     </div>
+                    ):(null)}
+                    {updated?(
+                        <div align='center'>
+                        <Success/>
+                        Account Details Updated Successfully
+                        </div>
                     ):(null)}
 
                     {errors?(

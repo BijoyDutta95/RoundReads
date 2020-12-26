@@ -19,18 +19,59 @@ function WishlistItems() {
     const [itemClicked, setItemClicked] = React.useState(false)
     const [currentItem, setCurrentItem] = React.useState('')
 
+    const validateUser = (id, flag) =>{
+        let body = JSON.stringify({
+            token : localStorage.getItem('access_token')
+        })
+        API.post('auth/jwt/verify/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success access : ' + JSON.stringify(data.data))
+            if(flag == 1){
+                //saveToWishList(id)
+            }else{
+                removeFromWishList(id)
+            }
+        })
+        .catch(err=>{
+            console.log('err access: ' + err)
+            getAccess(id, flag)
+    
+        })
+    }
+
+    const getAccess = (id, flag) =>{
+        let body = JSON.stringify({
+            refresh : localStorage.getItem('refresh_token')
+        })
+        API.post('auth/jwt/refresh/', body, {
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then(data=>{
+            console.log('success refresh : ' + (data.data.access))
+            localStorage.setItem('access_token', data.data.access)
+            if(flag == 1){
+                //saveToWishList(id)
+            }else{
+                removeFromWishList(id)
+            }
+            
+        })
+        .catch(err=>{
+            console.log('err refresh: ' + err)
+            alert('Please Login to add items to Wishlist')
+    
+        })
+    }
+    
+
     const removeFromWishList = (id) =>{
         console.log("books id to remove" + id)
-        //console.log(items[0].id)
-        let itemsTemp = []
-        for(let i in items)
-        {
-            if(items[i].id != id){
-                itemsTemp.push(items[i])
-            }
-        }
-        setItems(itemsTemp)
-        
         let wishListTemp = []
         for(let i in JSON.parse(wishList)){
             console.log(JSON.parse(wishList)[i])
@@ -39,19 +80,19 @@ function WishlistItems() {
         //wishListTemp.push(id)
         wishListTemp.splice(wishListTemp.indexOf(id), 1)
         console.log("after delete : " + wishListTemp)
-        
+       
         setWishList(JSON.stringify(wishListTemp))
         sessionStorage.setItem('wishlist', JSON.stringify(wishListTemp))
         //console.log("after : " + wishList)
         
 
-        let url = "api/wishlist/" + JSON.parse(userSession).id + "/"
+        let url = "auth/users/me/" 
         let body = JSON.stringify({
-            
             wishlist : wishListTemp
         })
         API.patch(url, body, {
             headers : {
+                'Authorization' : 'JWT ' + localStorage.getItem('access_token'),
                 'Content-Type' : 'application/json'
             }
         })
@@ -92,7 +133,7 @@ function WishlistItems() {
                     
                 </div>
                 <div id="singleItemButtons">
-                    <BookmarkIcon id="saveButton" onClick={() => removeFromWishList(item.id)}/>
+                    <BookmarkIcon id="saveButton" onClick={() => validateUser(item.id, 0)}/>
                     <button id='wishlistConSeller' onClick={()=>{
                         setCurrentItem(item.id)
                         setItemClicked(true)

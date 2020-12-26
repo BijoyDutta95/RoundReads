@@ -3,6 +3,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import './Reset.css'
 import { useParams } from 'react-router-dom';
 import { API } from './API/Api';
+import Success from './Success';
 function EnterPassword() {
     const params = useParams()
     const [password, setPassword] = React.useState('')
@@ -45,13 +46,17 @@ function EnterPassword() {
                 <LockIcon id="lockIcon"/>
                 <h3>Enter New Password</h3>
             </>
+            {success?(
+                <>
+                <Success/>
+                <p >Password Successfully changed, Please login to your Account !!!</p>
+                </>
+            ):(
             <div id="passwordDetail">
                 <input type="password" id="newPassword" placeholder="Enter New Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <input type="password" id="newPassword" placeholder="Re-enter Password" value={repassword} onChange={e => setRepassword(e.target.value)}/>
                 
-                {success?(
-                    <p >Password Successfully changed, Please login to your Account !!!</p>
-                ):(null)}
+                
 
                 {error?(
                     <p id='loginError'>Something error occured !!!</p>
@@ -64,6 +69,8 @@ function EnterPassword() {
                     </div>
                 ):(null)}
             </div>
+            )}
+            
         </div>
     )
 }

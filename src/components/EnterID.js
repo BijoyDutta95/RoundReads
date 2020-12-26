@@ -2,6 +2,7 @@ import React from 'react'
 import EmailIcon from '@material-ui/icons/Email';
 import './Reset.css'
 import { API } from './API/Api';
+import Success from './Success';
 function EnterID() {
     const [email, setEmail] = React.useState('')
     const [success, setSuccess] = React.useState(false)
@@ -46,13 +47,18 @@ function EnterID() {
             ):(null)}
 
             {success?(
+                <>
+                <Success/>
                 <p>A verification mail has been sent to your registered Email ID, Please Check you mail box !!!</p>
-            ):(null)}
+                </>
+            ):(
+                <div id="idDetails">
+                    <input type="text" id="mailID" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <button id="sendResetRequest" onClick={sendRequest}>Send Request</button>
+                </div>
+            )}
             
-            <div id="idDetails">
-                <input type="text" id="mailID" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <button id="sendResetRequest" onClick={sendRequest}>Send Request</button>
-            </div>
+            
             
             {loading?(
                 <div align='center'>

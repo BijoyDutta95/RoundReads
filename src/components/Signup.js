@@ -2,6 +2,7 @@ import React from 'react'
 import './Signup.css'
 import { API } from './API/Api'
 import { ModalContext } from './Context/Contexts'
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 function Signup(){
     const [fname, setFname] = React.useState("")
@@ -17,6 +18,8 @@ function Signup(){
     const [error, setError] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
     const [success, setSuccess] = React.useState(false)
+    const [passLength, setPassLength] = React.useState(false)
+    const [showPass, setShowPass] = React.useState(false)
 
     const {setFlag} = React.useContext(ModalContext)
 
@@ -47,6 +50,14 @@ function Signup(){
         setEmail('')
         setPassword('')
         setRepassword('')
+    }
+
+    const lengthCheck = (pass) =>{
+        if(pass.length < 8){
+            setPassLength(true)
+        }else{
+            setPassLength(false)
+        }
     }
 
     const handleSignup = (e) =>{
@@ -128,15 +139,54 @@ function Signup(){
                 ):(null)}
 
                 <div className="inputField">
+                    
                     <label for="pwd"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required></input>
+                    <div id='passField'>
+                        {showPass?(
+                            <>
+                            <input type="text" placeholder="Enter Password" name="password" value={password} onChange={(e) => {
+                                setPassword(e.target.value)
+                                lengthCheck(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='showPass' onClick={() => setShowPass(false)}/>
+                            </>
+                        ):(
+                            <>
+                            <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => {
+                                setPassword(e.target.value)
+                                lengthCheck(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
+                            </>
+                        )}
+                    
+                    </div>
                 </div>
+                {passLength?(
+                    <p id='loginError'>Password minimum length should be 8</p>
+                ):(null)}
                 <div className="inputField">
                     <label for="pwd"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="repassword" value={repassword} onChange={(e) => {
-                        setRepassword(e.target.value)
-                        validatePassword(e.target.value)
-                    }} required></input>
+                    <div id='passField'>
+                        {showPass?(
+                            <>
+                            <input type="text" placeholder="Enter Password" name="repassword" value={repassword} onChange={(e) => {
+                                setRepassword(e.target.value)
+                                validatePassword(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='showPass' onClick={() => setShowPass(false)}/>
+                            </>
+                        ):(
+                            <>
+                            <input type="password" placeholder="Enter Password" name="repassword" value={repassword} onChange={(e) => {
+                                setRepassword(e.target.value)
+                                validatePassword(e.target.value)
+                            }} required></input>
+                            <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
+                            </>
+                        )}
+                        
+                    </div>
                 </div>
                 {passwordMismatch?(
                     <div id='signupError'>
