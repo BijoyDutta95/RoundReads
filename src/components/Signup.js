@@ -20,6 +20,7 @@ function Signup(){
     const [success, setSuccess] = React.useState(false)
     const [passLength, setPassLength] = React.useState(false)
     const [showPass, setShowPass] = React.useState(false)
+    const [showRepass, setShowRepass] = React.useState(false)
 
     const {setFlag} = React.useContext(ModalContext)
 
@@ -173,13 +174,13 @@ function Signup(){
                 <div className="inputField">
                     <label for="pwd"><b>Confirm Password</b></label>
                     <div id='passField'>
-                        {showPass?(
+                        {showRepass?(
                             <>
                             <input type="text" placeholder="Enter Password" name="repassword" value={repassword} onChange={(e) => {
                                 setRepassword(e.target.value)
                                 validatePassword(e.target.value)
                             }} required></input>
-                            <VisibilityIcon id='showPass' onClick={() => setShowPass(false)}/>
+                            <VisibilityIcon id='showPass' onClick={() => setShowRepass(false)}/>
                             </>
                         ):(
                             <>
@@ -187,7 +188,7 @@ function Signup(){
                                 setRepassword(e.target.value)
                                 validatePassword(e.target.value)
                             }} required></input>
-                            <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
+                            <VisibilityIcon id='hidePass' onClick={() => setShowRepass(true)}/>
                             </>
                         )}
                         
