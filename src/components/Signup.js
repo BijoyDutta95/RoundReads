@@ -154,7 +154,12 @@ function Signup(){
                             <>
                             <input type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => {
                                 setPassword(e.target.value)
-                                lengthCheck(e.target.value)
+                                if(e.target.value == 0){
+                                    setPassLength(false);
+                                }
+                                else
+                                    lengthCheck(e.target.value)
+                                
                             }} required></input>
                             <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
                             </>

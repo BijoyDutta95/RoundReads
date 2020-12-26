@@ -40,13 +40,13 @@ width: 100%;
     
 }
 #hidePass{
-    width: 50px;
-    height: 30px;
+    width: 30px;
+    height: 20px;
 }
 #showPass{
-    width: 50px;
-    height: 30px;
-    color: blue;
+    width: 30px;
+    height: 20px;
+    color: #B6073B;
 }
 #passField{
     display: flex;

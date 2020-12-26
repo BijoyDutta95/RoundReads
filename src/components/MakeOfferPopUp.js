@@ -3,7 +3,6 @@ import './MakeOfferPopUp.css'
 import { UserContext } from './Context/Contexts';
 import { API } from './API/Api';
 import Success from './Success';
-import Alert from '@material-ui/lab/Alert';
 
 const MakeOfferPopUp = forwardRef((props,ref) =>{
     const {userSession} = React.useContext(UserContext)
