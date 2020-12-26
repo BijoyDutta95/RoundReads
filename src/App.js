@@ -22,6 +22,7 @@ import UserBlogs from './components/pages/UserBlogs';
 import ResetPassword from './components/pages/ResetPassword';
 import ActivateUser from './components/pages/ActivateUser';
 import EnterPassword from './components/EnterPassword';
+import ChangePass2 from './components/ChangePass2';
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState(null)
@@ -76,6 +77,7 @@ function App() {
           <Route path='/resetPassword' exact component={ResetPassword}/>
           <Route path='/activate/:uid/:token' exact component={ActivateUser}/>
           <Route path='/password/reset/confirm/:uid/:token' exact component={EnterPassword}/>
+          <Route path='/changePass' exact component={ChangePass2}/>
           
          
           

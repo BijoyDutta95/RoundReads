@@ -4,6 +4,8 @@ import './Reset.css'
 import { useParams } from 'react-router-dom';
 import { API } from './API/Api';
 import Success from './Success';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
 function EnterPassword() {
     const params = useParams()
     const [password, setPassword] = React.useState('')
@@ -11,7 +13,11 @@ function EnterPassword() {
     const [success, setSuccess] = React.useState(false)
     const [error, setError] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
-    
+
+    const [showPass, setShowPass] = React.useState(false)
+    const [showRepass, setShowRepass] = React.useState(false)
+    const [mismatch, setMismatch] = React.useState(false)
+
     const updatePassword = () =>{
         setLoading(true)
         setSuccess(false)
@@ -53,13 +59,60 @@ function EnterPassword() {
                 </>
             ):(
             <div id="passwordDetail">
-                <input type="password" id="newPassword" placeholder="Enter New Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <input type="password" id="newPassword" placeholder="Re-enter Password" value={repassword} onChange={e => setRepassword(e.target.value)}/>
+                <div id='passField'>
+                    {showPass?(
+                        
+                        <>
+                        <input type="text" id="newPassword" placeholder="Enter New Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <VisibilityIcon id='showPass' onClick={() => setShowPass(false)}/>
+                        </>
+                    ):(
+                        <>
+                        <input type="password" id="newPassword" placeholder="Enter New Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <VisibilityIcon id='hidePass' onClick={() => setShowPass(true)}/>
+                        </>
+                    )}
+               
+                </div>
+                <div id='passField'>
+                    {showRepass?(
+                        <>
+                        <input type="text" id="newPassword" placeholder="Re-enter Password" value={repassword} onChange={e => {
+                            setRepassword(e.target.value)
+                            
+                            if(e.target.value != password){
+                                setMismatch(true)
+                            }else{
+                                setMismatch(false)
+                            }
+                        }}/>
+                        <VisibilityIcon id='showPass' onClick={() => {setShowRepass(false)}}/>
+                        </>
+                    ):(
+                        <>
+                        <input type="password" id="newPassword" placeholder="Re-enter Password" value={repassword} onChange={e => {
+                            setRepassword(e.target.value)
+                            //setRepassword(e.target.value)
+                            
+                            if(e.target.value != password){
+                                setMismatch(true)
+                            }else{
+                                setMismatch(false)
+                            }
+                        }}/>
+                        <VisibilityIcon id='hidePass' onClick={() => setShowRepass(true)}/>
+                        </>
+                    )}
+                    
+                </div>
+                {mismatch?(
+                    <p align='center' id='loginError'>Password Mismatch</p>
+                ):(null)}
                 
                 
 
                 {error?(
-                    <p id='loginError'>Something error occured !!!</p>
+                    <p id='loginError' align='center'>Something error occured !!!</p>
                 ):(null)}
 
                 <button id="confirmPassword" onClick={updatePassword}>Update</button>

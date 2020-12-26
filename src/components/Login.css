@@ -36,6 +36,9 @@ width: 100%;
 #loginError{
     color: red;
 }
+#loginSuccess{
+    color: chartreuse;
+}
 #forgot{
     cursor: pointer;
 }

@@ -2,6 +2,8 @@ import React, {forwardRef,useImperativeHandle} from 'react';
 import './MakeOfferPopUp.css'
 import { UserContext } from './Context/Contexts';
 import { API } from './API/Api';
+import Success from './Success';
+import Alert from '@material-ui/lab/Alert';
 
 const MakeOfferPopUp = forwardRef((props,ref) =>{
     const {userSession} = React.useContext(UserContext)
@@ -61,14 +63,16 @@ const MakeOfferPopUp = forwardRef((props,ref) =>{
         })
         .then(data =>{
             console.log(data.data)
-            alert("Message Sent to Seller")
+            //setMessageSent(true)
             setLoading(false)
             setDisplay(false)
+            alert('Message Sent Successfully')
         })
         .catch(err =>{
             console.log(err)
-            alert('Something error occured')
+            setError(true)
             setLoading(false)
+            alert('Something Error Occured')
             
         })
     }
@@ -156,11 +160,11 @@ const MakeOfferPopUp = forwardRef((props,ref) =>{
                     <div id="message">
                         <textarea type="text" placeholder="Additional Message" required onChange={(e) =>{setMessage(e.target.value)}}></textarea>
                     </div>
-                    {error?(
+                    {/*{error?(
                         <div id='loginError' align='center'>
                             <p>Something Error Occured</p>
                         </div>
-                    ):(null)}
+                    ):(null)}*/}
                     <div id="popButtons">
                         <button id="messageCancel" onClick={close}>Cancel</button>
                         <button id="messageSend" onClick={sendRequest}>Send Message </button>

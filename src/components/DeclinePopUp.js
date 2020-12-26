@@ -42,6 +42,7 @@ const DeclinePopUp = forwardRef((props,ref) => {
             console.log(data.data)
             setLocalMessages()
             close()
+            alert('Declination Sent')
         })
         .catch(err =>{
             console.log(err)
