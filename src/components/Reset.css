@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     height: 400px;
-    width: 350px;
+    width: 300px;
     background-color: #EDF5E0;
     border-width: 5px;
     border-style: solid;
@@ -42,11 +42,12 @@
     padding: 5px 5px;
     margin-bottom: 1%;
 }
-#passwordDetail input[type=password]{
+#passwordDetail input[type=password] ,#passwordDetail input[type=text]{
     width: 95%;
     margin: auto;
     padding: 8px 8px;
     margin-bottom: 1%;
+    margin-left: 1%;
 }
 
 #sendResetRequest,#confirmPassword{
@@ -59,4 +60,14 @@
     border-radius: 5px;
     border: none;
     padding: 5px;
+}
+
+#showPass{
+    width: 50px;
+    height: 30px;
+    color: blue;
+}
+#passField{
+    display: flex;
+    align-items: center;
 }

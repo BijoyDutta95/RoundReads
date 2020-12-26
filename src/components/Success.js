@@ -6,7 +6,7 @@ function Success() {
     return (
         <div id="successMessage">
             <SuccessIcon id="successIcon"/>
-            <p>Successful</p>
+            
         </div>
     )
 }

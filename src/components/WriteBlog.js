@@ -3,6 +3,7 @@ import './WriteBlog.css'
 //import Axios from 'axios'
 import { UserContext } from './Context/Contexts'
 import {API} from './API/Api'
+import Success from './Success'
 
 function WriteBlog() {
     const [title, setTitle] = React.useState('')
@@ -40,6 +41,7 @@ function WriteBlog() {
         setEmpty(false)
         setContentLimit(false)
         setError(false)
+        setSuccess(false)
     }
     
     const postBlog = () =>{
@@ -82,6 +84,8 @@ function WriteBlog() {
             console.log(data.data)
             setSuccess(true)
             setLoading(false)
+            setTitle('')
+            setContent('')
         })
         .catch(err =>{
             console.log(err)
@@ -89,14 +93,13 @@ function WriteBlog() {
             setLoading(false)
         })
     }
-
+/*
     if(success){
         setLoading(false)
-        setSuccess(false)
+        //setSuccess(false)
         setTitle('')
         setContent('')
-        alert('Blog Posted Successfully')
-    }else    
+    }else */   
     return (
         <div id="writeBlogBlock">
             <h3>Post A Blog</h3>
@@ -132,6 +135,12 @@ function WriteBlog() {
             {loading?(
                 <div align='center'>
                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
+            ):(null)}
+            {success?(
+                <div align='center'>
+                    <Success/>
+                    <p>Blog Posted Successfully</p>
                 </div>
             ):(null)}
             <div id="blogButtons">
